@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="传送门 A.HDU - 3507  Print Article题意就是输出序列a[n]，每连续输出的费用是连续输出的数字和的平方加上常数M 让我们求这个费用的最小值。 题解概率DP的入门题，把我搞得要死要活的。 首先dp[i]表示输出前i个的最小费用 很简单得得出一个方程  dp[i]=min(dp[i],dp[j]+(sum[i]-sum[j])^2\\1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-26T14:47:41.158Z">
+<meta property="og:updated_time" content="2018-09-26T14:55:06.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「kuangbin带你飞」专题二十 斜率DP">
 <meta name="twitter:description" content="传送门 A.HDU - 3507  Print Article题意就是输出序列a[n]，每连续输出的费用是连续输出的数字和的平方加上常数M 让我们求这个费用的最小值。 题解概率DP的入门题，把我搞得要死要活的。 首先dp[i]表示输出前i个的最小费用 很简单得得出一个方程  dp[i]=min(dp[i],dp[j]+(sum[i]-sum[j])^2\\1">
@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -315,14 +315,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2018-09-26 22:22:12 / Modified: 22:47:41" itemprop="dateCreated datePublished" datetime="2018-09-26T22:22:12+08:00">2018-09-26</time>
+              <time title="Post created: 2018-09-26 22:22:12 / Updated at: 22:55:06" itemprop="dateCreated datePublished" datetime="2018-09-26T22:22:12+08:00">2018-09-26</time>
             
 
             
@@ -381,7 +381,9 @@ Y(x)=dp[x]+sum[j]^2\\X(x)=2×sum[j]</script><p>于是上面的式子变成斜率
 <p>所以我们另</p>
 <script type="math/tex; mode=display">
 g[j,k]=[Y(j)-Y(k)]/[X(j)-X(k)]</script><p>1.如果上面的不等式成立 说明J比K优,而且随着i的增加上述不等式一定是成立的，也就是对于以后的i来说J都比K优秀，所以K是可以淘汰的</p>
-<p>2.如果k<j<i 而且g[j，k]="">g[I，J]那么J是可以淘汰的</j<i></p>
+<p>2.如果</p>
+<script type="math/tex; mode=display">
+g[J，K]>g[I，J]\\k<j<i</script><p>那么J是可以淘汰的</p>
 <p>假设g[I,J]&lt;sum[i] 就是I比J优秀,那么J就没存在的价值</p>
 <p>相反，如果g[I，J]&gt;sum[i] 那么同样有g[J，K]&gt;sum[I]     那么K比J优秀 所以J是可以淘汰的</p>
 <p> 所以这样相当于维护一个下凸的图形，斜率在增加，用队列维护</p>
@@ -469,10 +471,10 @@ g[j,k]=[Y(j)-Y(k)]/[X(j)-X(k)]</script><p>1.如果上面的不等式成立 说�
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -493,7 +495,7 @@ g[j,k]=[Y(j)-Y(k)]/[X(j)-X(k)]</script><p>1.如果上面的不等式成立 说�
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -530,7 +532,7 @@ g[j,k]=[Y(j)-Y(k)]/[X(j)-X(k)]</script><p>1.如果上面的不等式成立 说�
                       
                     
                     <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   
                 </div>
               
@@ -599,7 +601,7 @@ g[j,k]=[Y(j)-Y(k)]/[X(j)-X(k)]</script><p>1.如果上面的不等式成立 说�
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
