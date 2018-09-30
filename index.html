@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Accueil</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -319,7 +319,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -471,7 +471,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -495,7 +495,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-09-30 23:13:14" itemprop="dateModified" datetime="2018-09-30T23:13:14+08:00">2018-09-30</time>
+                <time title="Updated at: 2018-10-01 01:17:09" itemprop="dateModified" datetime="2018-10-01T01:17:09+08:00">2018-10-01</time>
               
             
           </span>
@@ -570,6 +570,10 @@ A[n]=A[n-1]*2;\\A[n-1]=A[n-2]*2+1; \\A[n]=4*A[n-2]+2</script><p>如果是偶数�
 <p>很容易看出a和b的项数各自符合斐波那契数列 然后可以用矩阵求出各自的项数，再用快速幂求出结果</p>
 <p><strong>注意因为这里的项数太大 所以要使用费马小定理/欧拉降幂</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line">ll x,y;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;ll&gt;vec;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;vec&gt;mat;</span><br><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat&amp; A,mat &amp;B,ll mod)</span></span>&#123;</span><br><span class="line">    mat C(A.size(),vec(B[0].size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;B.size();k++)</span><br><span class="line">        <span class="keyword">if</span>(A[i][k])</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B[<span class="number">0</span>].size();j++)</span><br><span class="line">            C[i][j]=(C[i][j]+A[i][k]*B[k][j]%mod+mod)%mod;</span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">mat <span class="title">Pow</span><span class="params">(mat A,ll n)</span></span>&#123;</span><br><span class="line">    mat B(A.size(),vec(A.size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)B[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;n;n&gt;&gt;=<span class="number">1</span>,A=mul(A,A,mod<span class="number">-1</span>))</span><br><span class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)B=mul(B,A,mod<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">pow_m</span><span class="params">(ll a,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    ll ret=<span class="number">1</span>,tmp=a;</span><br><span class="line">    <span class="keyword">while</span>(n)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)ret=(ret*tmp)%mod;</span><br><span class="line">        tmp=(tmp*tmp)%mod;</span><br><span class="line">        n&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    ll a,b,n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;n)&#123;</span><br><span class="line">        mat A=mat(<span class="number">2</span>,vec(<span class="number">2</span>));</span><br><span class="line">        A[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;A[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;A[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;A[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>)&#123;<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;<span class="keyword">continue</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;<span class="built_in">cout</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;<span class="keyword">continue</span>;&#125;</span><br><span class="line">        mat B=Pow(A,n<span class="number">-2</span>);</span><br><span class="line">        ll aa=B[<span class="number">0</span>][<span class="number">0</span>]%(mod<span class="number">-1</span>);</span><br><span class="line">        <span class="comment">//cout&lt;&lt;"aa="&lt;&lt;aa&lt;&lt;endl;</span></span><br><span class="line">        aa=pow_m(a,aa);</span><br><span class="line">        <span class="comment">//cout&lt;&lt;"aa="&lt;&lt;aa&lt;&lt;endl;</span></span><br><span class="line">        ll bb=(B[<span class="number">0</span>][<span class="number">0</span>]+B[<span class="number">0</span>][<span class="number">1</span>])%(mod<span class="number">-1</span>);</span><br><span class="line">        <span class="comment">//cout&lt;&lt;"bb="&lt;&lt;bb&lt;&lt;endl;</span></span><br><span class="line">        bb=pow_m(b,bb);</span><br><span class="line">        <span class="comment">//cout&lt;&lt;"bb="&lt;&lt;bb&lt;&lt;endl;</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;(aa*bb)%mod&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="S-HDU-4686-Arc-of-Dream"><a href="#S-HDU-4686-Arc-of-Dream" class="headerlink" title="S.HDU - 4686  Arc of Dream"></a>S.<a href="https://vjudge.net/problem/46252/origin" target="_blank" rel="noopener">HDU - 4686 </a> <a href="https://vjudge.net/problem/HDU-4686" target="_blank" rel="noopener">Arc of Dream</a></h3><h4 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h4><p>An Arc of Dream is a curve defined by following function:<br><img src="http://acm.hdu.edu.cn/data/images/C463-1001-1.jpg" alt="img"><br>where<br>a0 = A0<br>ai = ai-1×AX+AY<br>b0 = B0<br>bi = bi-1×BX+BY<br>What is the value of AoD(N) modulo 1,000,000,007?</p>
+<p>题意太好理解了就不解释了</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p><img src="/2018/09/28/kuangbin19/P81001-011253.jpg" alt="kuangbin"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;ll&gt;vec;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;vec&gt;mat;</span><br><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat &amp;A,mat &amp;B)</span></span>&#123;</span><br><span class="line">    mat C(A.size(),vec(B[0].size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;B.size();k++)</span><br><span class="line">        <span class="keyword">if</span>(A[i][k])</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B[<span class="number">0</span>].size();j++)</span><br><span class="line">            C[i][j]=(C[i][j]+A[i][k]*B[k][j]%mod+mod)%mod;</span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">mat <span class="title">Pow</span><span class="params">(mat A,ll n)</span></span>&#123;</span><br><span class="line">    mat B(A.size(),vec(A.size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)B[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;n;n&gt;&gt;=<span class="number">1</span>,A=mul(A,A))</span><br><span class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)B=mul(B,A);</span><br><span class="line">    <span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    ll n,a0,AX,AY,b0,BX,BY;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a0&gt;&gt;AX&gt;&gt;AY;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;b0&gt;&gt;BX&gt;&gt;BY;</span><br><span class="line">        a0%=mod;AX%=mod;AY%=mod;</span><br><span class="line">        b0%=mod;BX%=mod;BY%=mod;</span><br><span class="line">        mat a=mat(<span class="number">5</span>,vec(<span class="number">5</span>));</span><br><span class="line">        a[<span class="number">0</span>][<span class="number">0</span>]=AX*BX%mod;a[<span class="number">0</span>][<span class="number">1</span>]=AX*BY%mod;a[<span class="number">0</span>][<span class="number">2</span>]=AY*BX%mod;a[<span class="number">0</span>][<span class="number">3</span>]=AY*BY%mod;a[<span class="number">0</span>][<span class="number">4</span>]=<span class="number">0</span>;</span><br><span class="line">        a[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>;a[<span class="number">1</span>][<span class="number">1</span>]=AX%mod;a[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">0</span>;a[<span class="number">1</span>][<span class="number">3</span>]=AY%mod;a[<span class="number">1</span>][<span class="number">4</span>]=<span class="number">0</span>;</span><br><span class="line">        a[<span class="number">2</span>][<span class="number">0</span>]=<span class="number">0</span>;a[<span class="number">2</span>][<span class="number">1</span>]=<span class="number">0</span>;a[<span class="number">2</span>][<span class="number">2</span>]=BX%mod;a[<span class="number">2</span>][<span class="number">3</span>]=BY%mod;a[<span class="number">2</span>][<span class="number">4</span>]=<span class="number">0</span>;</span><br><span class="line">        a[<span class="number">3</span>][<span class="number">0</span>]=<span class="number">0</span>;a[<span class="number">3</span>][<span class="number">1</span>]=<span class="number">0</span>;a[<span class="number">3</span>][<span class="number">2</span>]=<span class="number">0</span>;a[<span class="number">3</span>][<span class="number">3</span>]=<span class="number">1</span>;a[<span class="number">3</span>][<span class="number">4</span>]=<span class="number">0</span>;</span><br><span class="line">        a[<span class="number">4</span>][<span class="number">0</span>]=<span class="number">1</span>;a[<span class="number">4</span>][<span class="number">1</span>]=<span class="number">0</span>;a[<span class="number">4</span>][<span class="number">2</span>]=<span class="number">0</span>;a[<span class="number">4</span>][<span class="number">3</span>]=<span class="number">0</span>;a[<span class="number">4</span>][<span class="number">4</span>]=<span class="number">1</span>;</span><br><span class="line">        a=Pow(a,n);</span><br><span class="line">       <span class="comment">/* for(int i=0;i&lt;5;i++)&#123;</span></span><br><span class="line"><span class="comment">            for(int j=0;j&lt;5;j++)&#123;</span></span><br><span class="line"><span class="comment">                cout&lt;&lt;a[i][j]&lt;&lt;'\t';</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">            cout&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line">        mat b=mat(<span class="number">5</span>,vec(<span class="number">1</span>));</span><br><span class="line">        b[<span class="number">0</span>][<span class="number">0</span>]=a0*b0%mod;b[<span class="number">1</span>][<span class="number">0</span>]=a0%mod;b[<span class="number">2</span>][<span class="number">0</span>]=b0%mod;b[<span class="number">3</span>][<span class="number">0</span>]=<span class="number">1</span>;b[<span class="number">4</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        b=mul(a,b);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;b[<span class="number">4</span>][<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="comment">//cout&lt;&lt;((a[4][0]*a0*b0)%mod+(a[4][1]*a0)%mod+(a[4][2]*b0)%mod+(a[4][3])%mod+mod)%mod&lt;&lt;endl;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -662,7 +666,7 @@ A[n]=A[n-1]*2;\\A[n-1]=A[n-2]*2+1; \\A[n]=4*A[n-2]+2</script><p>如果是偶数�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -830,7 +834,7 @@ g[J，K]>g[I，J]\\k<j<i</script><p>那么J是可以淘汰的</p>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1018,7 +1022,7 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script><figure class="highlight cpp"
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1195,7 +1199,7 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script><figure class="highlight cpp"
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1414,7 +1418,7 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script><figure class="highlight cpp"
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1575,7 +1579,7 @@ a[l]*len + a[l+1]*(len-1)+...+a[r-1]*2+a[r],\;\;len = r-l+1</script><figure clas
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1732,7 +1736,7 @@ a[l]*len + a[l+1]*(len-1)+...+a[r-1]*2+a[r],\;\;len = r-l+1</script><figure clas
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1925,7 +1929,7 @@ X=A^a*B^b*C^c</script><p>如果存在一个方超过2答案F(x)=0；</p>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -2153,7 +2157,7 @@ dp[i][j] = max(dp[i + 1][j] + v[i]*(n-j+i),dp[i][j-1]+v[j]*(n-j+i))</script><fig
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">articles</span>
                   </a>
                 </div>
               
@@ -2192,7 +2196,7 @@ dp[i][j] = max(dp[i + 1][j] + v[i]*(n-j+i),dp[i][j-1]+v[j]*(n-j+i))</script><fig
                       
                     
                     <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2245,7 +2249,7 @@ dp[i][j] = max(dp[i + 1][j] + v[i]*(n-j+i),dp[i][j-1]+v[j]*(n-j+i))</script><fig
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2253,7 +2257,7 @@ dp[i][j] = max(dp[i + 1][j] + v[i]*(n-j+i),dp[i][j-1]+v[j]*(n-j+i))</script><fig
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+  <div class="theme-info">Thème – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
 
 
 
