@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Accueil</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -319,14 +319,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-30 00:47:54 / Updated at: 01:39:23" itemprop="dateCreated datePublished" datetime="2018-09-30T00:47:54+08:00">2018-09-30</time>
+              <time title="Created: 2018-09-30 00:47:54 / Modified: 01:39:23" itemprop="dateCreated datePublished" datetime="2018-09-30T00:47:54+08:00">2018-09-30</time>
             
 
             
@@ -471,14 +471,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-28 16:14:24" itemprop="dateCreated datePublished" datetime="2018-09-28T16:14:24+08:00">2018-09-28</time>
+              <time title="Created: 2018-09-28 16:14:24" itemprop="dateCreated datePublished" datetime="2018-09-28T16:14:24+08:00">2018-09-28</time>
             
 
             
@@ -495,7 +495,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-10-01 01:17:09" itemprop="dateModified" datetime="2018-10-01T01:17:09+08:00">2018-10-01</time>
+                <time title="Modified: 2018-10-01 10:13:48" itemprop="dateModified" datetime="2018-10-01T10:13:48+08:00">2018-10-01</time>
               
             
           </span>
@@ -560,6 +560,8 @@ A[n]=A[n-1]*2;\\A[n-1]=A[n-2]*2+1; \\A[n]=4*A[n-2]+2</script><p>如果是偶数�
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>一开始直接模拟，于是很愉快的超时了，发现如果是A×B 是N×N的矩阵1000×1000</p>
 <p><strong>于是一个骚操作出现了</strong>A×B的N的平方的平方 可以才成A×B×A×B×A…×B 于是可以变成A×(B×A)^(n×n-1)×B 这里B×A是6×6的矩阵速度快的一批；长见识了！</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">6</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line">ll x,y;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;ll&gt;vec;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;vec&gt;mat;</span><br><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat&amp; A,mat &amp;B)</span></span>&#123;</span><br><span class="line">    mat C(A.size(),vec(B[0].size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;B.size();k++)</span><br><span class="line">        <span class="keyword">if</span>(A[i][k])</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B[<span class="number">0</span>].size();j++)</span><br><span class="line">            C[i][j]=(C[i][j]+A[i][k]*B[k][j]%mod+mod)%mod;</span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">mat <span class="title">Pow</span><span class="params">(mat A,ll n)</span></span>&#123;</span><br><span class="line">    mat B(A.size(),vec(A.size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)B[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;n;n&gt;&gt;=<span class="number">1</span>,A=mul(A,A))</span><br><span class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)B=mul(B,A);</span><br><span class="line">    <span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    ll n,k;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>&amp;&amp;k==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">        mat a(n,vec(k));</span><br><span class="line">        mat b(k,vec(n));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;k;j++)</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a[i][j];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;b[i][j];</span><br><span class="line">        mat c=mul(b,a);</span><br><span class="line">        ll nn=n*n<span class="number">-1</span>;</span><br><span class="line">        c=Pow(c,nn);</span><br><span class="line">        a=mul(a,c);</span><br><span class="line">        a=mul(a,b);</span><br><span class="line">        ll sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;a[<span class="number">0</span>].size();j++)&#123;</span><br><span class="line">                sum+=a[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="G-UVA-10689-Yet-another-Number-Sequence"><a href="#G-UVA-10689-Yet-another-Number-Sequence" class="headerlink" title="G.UVA - 10689 Yet another Number Sequence"></a>G.<a href="https://vjudge.net/problem/36968/origin" target="_blank" rel="noopener">UVA - 10689</a> <a href="https://vjudge.net/problem/UVA-10689" target="_blank" rel="noopener">Yet another Number Sequence</a></h3><p> 水题不解释了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line"><span class="keyword">while</span>(t--)&#123;</span><br><span class="line">    ll n,m,a,b;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    mod=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(m--)mod*=<span class="number">10</span>;</span><br><span class="line">    mat aa=mat(<span class="number">2</span>,vec(<span class="number">2</span>));</span><br><span class="line">    aa[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;aa[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;aa[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;aa[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>)&#123;<span class="built_in">cout</span>&lt;&lt;a%mod&lt;&lt;<span class="built_in">endl</span>;<span class="keyword">continue</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;<span class="built_in">cout</span>&lt;&lt;b%mod&lt;&lt;<span class="built_in">endl</span>;<span class="keyword">continue</span>;&#125;</span><br><span class="line">    aa=Pow(aa,n<span class="number">-1</span>);</span><br><span class="line">    mat bb=mat(<span class="number">2</span>,vec(<span class="number">1</span>));</span><br><span class="line">    bb[<span class="number">0</span>][<span class="number">0</span>]=b%mod;bb[<span class="number">1</span>][<span class="number">0</span>]=a%mod;</span><br><span class="line">    bb=mul(aa,bb);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;bb[<span class="number">0</span>][<span class="number">0</span>]%mod&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="M-HDU-4565-So-Easy"><a href="#M-HDU-4565-So-Easy" class="headerlink" title="M.HDU - 4565 So Easy!"></a>M.<a href="https://vjudge.net/problem/44687/origin" target="_blank" rel="noopener">HDU - 4565</a> <a href="https://vjudge.net/problem/HDU-4565" target="_blank" rel="noopener">So Easy!</a></h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p><img src="https://odzkskevi.qnssl.com/6335f89f94dfac8b727b6a2cce3393a1?v=1537818000" alt=""></p>
 <p>a,b,n,m都是整数，Sn向上取整 并且(a-1)^2&lt;b&lt;a^2</p>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4><p><img src="/2018/09/28/kuangbin19/P80930-224336.jpg" alt=""></p>
@@ -666,14 +668,14 @@ A[n]=A[n-1]*2;\\A[n-1]=A[n-2]*2+1; \\A[n]=4*A[n-2]+2</script><p>如果是偶数�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-26 22:22:12 / Updated at: 22:55:06" itemprop="dateCreated datePublished" datetime="2018-09-26T22:22:12+08:00">2018-09-26</time>
+              <time title="Created: 2018-09-26 22:22:12 / Modified: 22:55:06" itemprop="dateCreated datePublished" datetime="2018-09-26T22:22:12+08:00">2018-09-26</time>
             
 
             
@@ -834,14 +836,14 @@ g[J，K]>g[I，J]\\k<j<i</script><p>那么J是可以淘汰的</p>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-23 22:28:36" itemprop="dateCreated datePublished" datetime="2018-09-23T22:28:36+08:00">2018-09-23</time>
+              <time title="Created: 2018-09-23 22:28:36" itemprop="dateCreated datePublished" datetime="2018-09-23T22:28:36+08:00">2018-09-23</time>
             
 
             
@@ -858,7 +860,7 @@ g[J，K]>g[I，J]\\k<j<i</script><p>那么J是可以淘汰的</p>
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-09-25 21:13:17" itemprop="dateModified" datetime="2018-09-25T21:13:17+08:00">2018-09-25</time>
+                <time title="Modified: 2018-09-25 21:13:17" itemprop="dateModified" datetime="2018-09-25T21:13:17+08:00">2018-09-25</time>
               
             
           </span>
@@ -1022,14 +1024,14 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script><figure class="highlight cpp"
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-17 10:02:08 / Updated at: 11:44:36" itemprop="dateCreated datePublished" datetime="2018-09-17T10:02:08+08:00">2018-09-17</time>
+              <time title="Created: 2018-09-17 10:02:08 / Modified: 11:44:36" itemprop="dateCreated datePublished" datetime="2018-09-17T10:02:08+08:00">2018-09-17</time>
             
 
             
@@ -1199,14 +1201,14 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script><figure class="highlight cpp"
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-10 21:51:22" itemprop="dateCreated datePublished" datetime="2018-09-10T21:51:22+08:00">2018-09-10</time>
+              <time title="Created: 2018-09-10 21:51:22" itemprop="dateCreated datePublished" datetime="2018-09-10T21:51:22+08:00">2018-09-10</time>
             
 
             
@@ -1223,7 +1225,7 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script><figure class="highlight cpp"
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-09-18 22:55:19" itemprop="dateModified" datetime="2018-09-18T22:55:19+08:00">2018-09-18</time>
+                <time title="Modified: 2018-09-18 22:55:19" itemprop="dateModified" datetime="2018-09-18T22:55:19+08:00">2018-09-18</time>
               
             
           </span>
@@ -1418,14 +1420,14 @@ dp[i][j]=max(dp[i][j],dp[i][k]+dp[k+1][j])</script><figure class="highlight cpp"
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-09 21:56:18 / Updated at: 22:28:19" itemprop="dateCreated datePublished" datetime="2018-09-09T21:56:18+08:00">2018-09-09</time>
+              <time title="Created: 2018-09-09 21:56:18 / Modified: 22:28:19" itemprop="dateCreated datePublished" datetime="2018-09-09T21:56:18+08:00">2018-09-09</time>
             
 
             
@@ -1579,14 +1581,14 @@ a[l]*len + a[l+1]*(len-1)+...+a[r-1]*2+a[r],\;\;len = r-l+1</script><figure clas
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-09 00:00:32 / Updated at: 00:21:19" itemprop="dateCreated datePublished" datetime="2018-09-09T00:00:32+08:00">2018-09-09</time>
+              <time title="Created: 2018-09-09 00:00:32 / Modified: 00:21:19" itemprop="dateCreated datePublished" datetime="2018-09-09T00:00:32+08:00">2018-09-09</time>
             
 
             
@@ -1736,14 +1738,14 @@ a[l]*len + a[l+1]*(len-1)+...+a[r-1]*2+a[r],\;\;len = r-l+1</script><figure clas
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-09-02 21:23:29" itemprop="dateCreated datePublished" datetime="2018-09-02T21:23:29+08:00">2018-09-02</time>
+              <time title="Created: 2018-09-02 21:23:29" itemprop="dateCreated datePublished" datetime="2018-09-02T21:23:29+08:00">2018-09-02</time>
             
 
             
@@ -1760,7 +1762,7 @@ a[l]*len + a[l+1]*(len-1)+...+a[r-1]*2+a[r],\;\;len = r-l+1</script><figure clas
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-09-03 17:14:58" itemprop="dateModified" datetime="2018-09-03T17:14:58+08:00">2018-09-03</time>
+                <time title="Modified: 2018-09-03 17:14:58" itemprop="dateModified" datetime="2018-09-03T17:14:58+08:00">2018-09-03</time>
               
             
           </span>
@@ -1929,14 +1931,14 @@ X=A^a*B^b*C^c</script><p>如果存在一个方超过2答案F(x)=0；</p>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-08-31 20:00:42" itemprop="dateCreated datePublished" datetime="2018-08-31T20:00:42+08:00">2018-08-31</time>
+              <time title="Created: 2018-08-31 20:00:42" itemprop="dateCreated datePublished" datetime="2018-08-31T20:00:42+08:00">2018-08-31</time>
             
 
             
@@ -1953,7 +1955,7 @@ X=A^a*B^b*C^c</script><p>如果存在一个方超过2答案F(x)=0；</p>
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-09-06 17:50:18" itemprop="dateModified" datetime="2018-09-06T17:50:18+08:00">2018-09-06</time>
+                <time title="Modified: 2018-09-06 17:50:18" itemprop="dateModified" datetime="2018-09-06T17:50:18+08:00">2018-09-06</time>
               
             
           </span>
@@ -2157,7 +2159,7 @@ dp[i][j] = max(dp[i + 1][j] + v[i]*(n-j+i),dp[i][j-1]+v[j]*(n-j+i))</script><fig
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">articles</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2257,7 +2259,7 @@ dp[i][j] = max(dp[i + 1][j] + v[i]*(n-j+i),dp[i][j-1]+v[j]*(n-j+i))</script><fig
 
 
 
-  <div class="theme-info">Thème – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
 
 
 
