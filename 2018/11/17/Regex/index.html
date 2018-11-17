@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="总结正则表达式 , 又称规则表达式 , 英文名为 Regular Expression , 在代码中常简写为 regex , regexp 或 RE , 是计算机科学的一个概念 ; 正则表通常被用来检索 , 替换那些符合某个模式 (规则) 的文本 ; 正则表达式是对字符串 (包括普通字符 , 例如 : a 到 z 之间的字母) 和特殊字符 (称为 “元字符” ) 操作的一种逻辑公式 , 就是用事先">
+<meta name="keywords" content="正则表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACM中的正则表达式">
+<meta property="og:url" content="https://luowentaoaa.github.io/2018/11/17/Regex/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="总结正则表达式 , 又称规则表达式 , 英文名为 Regular Expression , 在代码中常简写为 regex , regexp 或 RE , 是计算机科学的一个概念 ; 正则表通常被用来检索 , 替换那些符合某个模式 (规则) 的文本 ; 正则表达式是对字符串 (包括普通字符 , 例如 : a 到 z 之间的字母) 和特殊字符 (称为 “元字符” ) 操作的一种逻辑公式 , 就是用事先">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-17T08:39:15.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ACM中的正则表达式">
+<meta name="twitter:description" content="总结正则表达式 , 又称规则表达式 , 英文名为 Regular Expression , 在代码中常简写为 regex , regexp 或 RE , 是计算机科学的一个概念 ; 正则表通常被用来检索 , 替换那些符合某个模式 (规则) 的文本 ; 正则表达式是对字符串 (包括普通字符 , 例如 : a 到 z 之间的字母) 和特殊字符 (称为 “元字符” ) 操作的一种逻辑公式 , 就是用事先">
+
+
+
+
+
+
+  <link rel="canonical" href="https://luowentaoaa.github.io/2018/11/17/Regex/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ACM中的正则表达式 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2018/11/17/Regex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ACM中的正则表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-17 16:13:08 / Modified: 16:39:15" itemprop="dateCreated datePublished" datetime="2018-11-17T16:13:08+08:00">2018-11-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>正则表达式 , 又称规则表达式 , 英文名为 Regular Expression , 在代码中常简写为 regex , regexp 或 RE , 是计算机科学的一个概念 ; 正则表通常被用来检索 , 替换那些符合某个模式 (规则) 的文本 ;</p>
+<p>正则表达式是对字符串 (包括普通字符 , 例如 : a 到 z 之间的字母) 和特殊字符 (称为 “元字符” ) 操作的一种逻辑公式 , 就是用事先定义好的一些特定字符 , 及这些特定字符的组合 , 组成一个 “规则字符串” , 这个 “规则字符串” 用来表达对字符串的一种过滤逻辑 ; 正则表达式是一种文本模式 , 模式描述在搜索文本时要匹配的一个或多个字符串 ;</p>
+<h4 id="C-对正则表达式的支持"><a href="#C-对正则表达式的支持" class="headerlink" title="C++对正则表达式的支持"></a>C++对正则表达式的支持</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;regex&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="运用规则"><a href="#运用规则" class="headerlink" title="运用规则"></a>运用规则</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">其实运用规则和Java非常相似!!! 几乎可以完全类推! </span><br><span class="line">附上一些规则: </span><br><span class="line">&#123;n&#125;匹配确定的n次 </span><br><span class="line">&#123;n,&#125;至少匹配n次(注:请不要擅自加空格上去) </span><br><span class="line">&#123;n,m&#125;最少n次,最多m次. </span><br><span class="line">*匹配前面的子表达式<span class="number">0</span>次或多次 = &#123;<span class="number">0</span>,&#125; </span><br><span class="line">+匹配前面的子表达式<span class="number">1</span>次或多次 = &#123;<span class="number">1</span>,&#125; </span><br><span class="line">?匹配前面的子表达式<span class="number">1</span>次或两次 = &#123;<span class="number">1</span>,<span class="number">2</span>&#125; </span><br><span class="line">()表示一个整体 </span><br><span class="line">[]表示一位 </span><br><span class="line">&#123;&#125;表示匹配多少次 </span><br><span class="line">.匹配除换行符之外的任意字符 </span><br><span class="line">\w匹配单字字符(a-z,A-Z,<span class="number">0</span><span class="number">-9</span>以及下划线) </span><br><span class="line">\W匹配非单字字符 </span><br><span class="line">\s匹配空白字符(空格,制表符,换行符) </span><br><span class="line">\S匹配非空白字符 </span><br><span class="line">\d匹配数字字符 </span><br><span class="line">\D匹配非数字字符 </span><br><span class="line">^指示从行的开始位置开始匹配(还有声明不在字符集指定范围内) </span><br><span class="line">$指示从行的结束位置开始匹配 </span><br><span class="line">\b匹配单词的开始或结束位置</span><br></pre></td></tr></table></figure>
+<h4 id="代码中运用实例如下"><a href="#代码中运用实例如下" class="headerlink" title="代码中运用实例如下"></a>代码中运用实例如下</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个正则表达式 , 4~23 位数字和字母的组合</span></span><br><span class="line"><span class="function">regex <span class="title">repPattern</span><span class="params">(<span class="string">"[0-9a-zA-Z]&#123;4,23&#125;"</span>,regex_constants::extended)</span></span>;</span><br><span class="line"><span class="comment">// 声明匹配结果变量</span></span><br><span class="line">match_results&lt;<span class="built_in">string</span>::const_iterator&gt; rerResult;</span><br><span class="line"><span class="comment">// 定义待匹配的字符串</span></span><br><span class="line"><span class="built_in">string</span> strValue = <span class="string">"123abc"</span>;</span><br><span class="line"><span class="comment">// 进行匹配</span></span><br><span class="line"><span class="keyword">bool</span> bValid = regex_match(strValue, rerResult, repPattern);</span><br><span class="line"><span class="keyword">if</span> (bValid)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 匹配成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="常用的正则表达式"><a href="#常用的正则表达式" class="headerlink" title="常用的正则表达式"></a>常用的正则表达式</h4><h5 id="检验数字的表达式"><a href="#检验数字的表达式" class="headerlink" title="检验数字的表达式"></a>检验数字的表达式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">数字 : ^[0-9]*$</span><br><span class="line">n 位的数字 : ^\d&#123;n&#125;$</span><br><span class="line">至少 n 位的数字 : ^\d&#123;n,&#125;$</span><br><span class="line">m-n 位的数字 : ^\d&#123;m,n&#125;$</span><br><span class="line">零和非零开头的数字 : ^(0|[1-9][0-9]*)$</span><br><span class="line">非零开头的最多带两位小数的数字 : ^([1-9][0-9]*)+(.[0-9]&#123;1,2&#125;)?$</span><br><span class="line">带 1~2 位小数的正数或负数 : ^(\-)?\d+(\.\d&#123;1,2&#125;)?$</span><br><span class="line">正数 , 负数 , 和小数 : ^(\-|\+)?\d+(\.\d+)?$</span><br><span class="line">有两位小数的正实数 : ^[0-9]+(.[0-9]&#123;2&#125;)?$</span><br><span class="line">有 1~3 位小数的正实数 : ^[0-9]+(.[0-9]&#123;1,3&#125;)?$</span><br><span class="line">非零的正整数 : ^[1-9]\d*$ 或 ^([1-9][0-9]*)&#123;1,3&#125;$ 或 ^\+?[1-9][0-9]*$</span><br><span class="line">非零的负整数 : ^\-[1-9][]0-9″*$ 或 ^-[1-9]\d*$</span><br><span class="line">非负整数 : ^\d+$ 或 ^[1-9]\d*|0$</span><br><span class="line">非正整数 : ^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</span><br><span class="line">非负浮点数 : ^\d+(\.\d+)?$ 或 ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</span><br><span class="line">非正浮点数 : ^((-\d+(\.\d+)?)|(0+(\.0+)?))$ 或 ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</span><br><span class="line">正浮点数 : ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$ 或 ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</span><br><span class="line">负浮点数 : ^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</span><br><span class="line">浮点数 : ^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</span><br></pre></td></tr></table></figure>
+<h5 id="检验字符的表达式"><a href="#检验字符的表达式" class="headerlink" title="检验字符的表达式"></a>检验字符的表达式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">汉字 : ^[\u4e00-\u9fa5]&#123;0,&#125;$</span><br><span class="line">英文和数字 : ^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]&#123;4,40&#125;$</span><br><span class="line">长度为 3~20 的所有字符 : ^.&#123;3,20&#125;$</span><br><span class="line">由 26 个英文字母组成的字符串 : ^[A-Za-z]+$</span><br><span class="line">由 26 个大写英文字母组成的字符串 : ^[A-Z]+$</span><br><span class="line">由 26 个小写英文字母组成的字符串 : ^[a-z]+$</span><br><span class="line">由数字和 26 个英文字母组成的字符串 : ^[A-Za-z0-9]+$</span><br><span class="line">由数字 , 26 个英文字母或者下划线组成的字符串 : ^\w+$ 或 ^\w&#123;3,20&#125;$</span><br><span class="line">中文 , 英文 , 数字包括下划线 : ^[\u4E00-\u9FA5A-Za-z0-9_]+$</span><br><span class="line">中文 , 英文 , 数字但不包括下划线等符号 : ^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]&#123;2,20&#125;$</span><br><span class="line">可以输入含有^%&amp;&apos;,;=?$\&quot;等字符 : [^%&amp;&apos;,;=?$\x22]+</span><br><span class="line">禁止输入含有 ~ 的字符 : [^~\x22]+</span><br></pre></td></tr></table></figure>
+<h5 id="特殊需求表达式"><a href="#特殊需求表达式" class="headerlink" title="特殊需求表达式"></a>特殊需求表达式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Email 地址 : ^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</span><br><span class="line">域名 : [a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;(/.[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;)+/.?</span><br><span class="line">InternetURL : [a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</span><br><span class="line">手机号码 : ^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d&#123;8&#125;$</span><br><span class="line">电话号码(&quot;XXX-XXXXXXX&quot; , &quot;XXXX-XXXXXXXX&quot; , &quot;XXX-XXXXXXX&quot; , &quot;XXX-XXXXXXXX&quot; , &quot;XXXXXXX&quot;和&quot;XXXXXXXX) : ^($$\d&#123;3,4&#125;-)|\d&#123;3.4&#125;-)?\d&#123;7,8&#125;$</span><br><span class="line">国内电话号码 (0511-4405222 , 021-87888822) : \d&#123;3&#125;-\d&#123;8&#125;|\d&#123;4&#125;-\d&#123;7&#125;</span><br><span class="line">身份证号 (15 位 , 18 位数字) : ^\d&#123;15&#125;|\d&#123;18&#125;$</span><br><span class="line">短身份证号码 (数字 , 字母 x 结尾) : ^([0-9])&#123;7,18&#125;(x|X)?$ 或 ^\d&#123;8,18&#125;|[0-9x]&#123;8,18&#125;|[0-9X]&#123;8,18&#125;?$</span><br><span class="line">帐号是否合法(字母开头，允许 5~16 字节，允许字母数字下划线) : ^[a-zA-Z][a-zA-Z0-9_]&#123;4,15&#125;$</span><br><span class="line">密码 (以字母开头，长度在 6~18 之间，只能包含字母 , 数字和下划线) : ^[a-zA-Z]\w&#123;5,17&#125;$</span><br><span class="line">强密码 (必须包含大小写字母和数字的组合，不能使用特殊字符，长度在 8~10 之间) : ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&#123;8,10&#125;$</span><br><span class="line">日期格式 : ^\d&#123;4&#125;-\d&#123;1,2&#125;-\d&#123;1,2&#125;</span><br><span class="line">一年的 12 个月(01～09和1～12) : ^(0?[1-9]|1[0-2])$</span><br><span class="line">一个月的 31 天(01～09和1～31) : ^((0?[1-9])|((1|2)[0-9])|30|31)$</span><br></pre></td></tr></table></figure>
+<h3 id="A-HihoCoder-1871-Heshen’s-Account-Book"><a href="#A-HihoCoder-1871-Heshen’s-Account-Book" class="headerlink" title="A.HihoCoder - 1871 Heshen’s Account Book"></a>A.<a href="https://vjudge.net/problem/2026237/origin" target="_blank" rel="noopener">HihoCoder - 1871</a> <a href="https://vjudge.net/problem/HihoCoder-1871" target="_blank" rel="noopener">Heshen’s Account Book</a></h3> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line"><span class="built_in">string</span> s[<span class="number">250</span>];</span><br><span class="line"><span class="keyword">int</span> tot,n;</span><br><span class="line"><span class="built_in">string</span> ans[maxn];</span><br><span class="line"><span class="keyword">int</span> cnt[maxn];</span><br><span class="line"><span class="function">regex <span class="title">str</span><span class="params">(<span class="string">"0|([1-9][0-9]*)"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(getline(<span class="built_in">cin</span>,s[n]))n++;</span><br><span class="line">    tot=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">while</span>(s[i].size()&amp;&amp;<span class="built_in">isdigit</span>(s[i][<span class="number">0</span>])&amp;&amp;<span class="built_in">isdigit</span>(s[i<span class="number">-1</span>].back()))&#123;</span><br><span class="line">            s[i<span class="number">-1</span>].push_back(s[i][<span class="number">0</span>]);</span><br><span class="line">            s[i].erase(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">stringstream</span> ss;</span><br><span class="line">        ss&lt;&lt;s[i];</span><br><span class="line">        <span class="built_in">string</span> now;</span><br><span class="line">        <span class="keyword">while</span>(ss&gt;&gt;now)&#123;</span><br><span class="line">            <span class="keyword">if</span>(regex_match(now,str))ans[tot++]=now,cnt[i]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i)<span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tot)<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">cout</span>&lt;&lt;cnt[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/正则表达式/" rel="tag"># 正则表达式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/16/Tree_DP/" rel="next" title="树形DP">
+                <i class="fa fa-chevron-left"></i> 树形DP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">luowentaoaa</p>
+              <p class="site-description motion-element" itemprop="description">嘤嘤嘤</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-对正则表达式的支持"><span class="nav-number">1.1.</span> <span class="nav-text">C++对正则表达式的支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运用规则"><span class="nav-number">1.2.</span> <span class="nav-text">运用规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码中运用实例如下"><span class="nav-number">1.3.</span> <span class="nav-text">代码中运用实例如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的正则表达式"><span class="nav-number">1.4.</span> <span class="nav-text">常用的正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#检验数字的表达式"><span class="nav-number">1.4.1.</span> <span class="nav-text">检验数字的表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#检验字符的表达式"><span class="nav-number">1.4.2.</span> <span class="nav-text">检验字符的表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特殊需求表达式"><span class="nav-number">1.4.3.</span> <span class="nav-text">特殊需求表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-HihoCoder-1871-Heshen’s-Account-Book"><span class="nav-number">2.</span> <span class="nav-text">A.HihoCoder - 1871 Heshen’s Account Book</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luowentaoaa</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
