@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="传送门 A. Ehab and another construction problem(水题，暴力)题解虽然是水题但是我还是要讲一下，这个题目的范围一看就知道暴力一下就可以求出答案，但是我一开始看到这题的时候确实懵逼了一会，感觉这题有很明显的规律，后来看了别人的代码终于发现了，就是除了1之外，其他任意的数x都可以用x表示a和b 完美符合条件，这样复杂度只要O（1） 而且暴力就过不去了。 1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round">
+<meta property="og:url" content="https://luowentaoaa.github.io/2018/12/05/Codeforces Round #525 (Div. 2)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="传送门 A. Ehab and another construction problem(水题，暴力)题解虽然是水题但是我还是要讲一下，这个题目的范围一看就知道暴力一下就可以求出答案，但是我一开始看到这题的时候确实懵逼了一会，感觉这题有很明显的规律，后来看了别人的代码终于发现了，就是除了1之外，其他任意的数x都可以用x表示a和b 完美符合条件，这样复杂度只要O（1） 而且暴力就过不去了。 1234">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-05T12:55:46.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces Round">
+<meta name="twitter:description" content="传送门 A. Ehab and another construction problem(水题，暴力)题解虽然是水题但是我还是要讲一下，这个题目的范围一看就知道暴力一下就可以求出答案，但是我一开始看到这题的时候确实懵逼了一会，感觉这题有很明显的规律，后来看了别人的代码终于发现了，就是除了1之外，其他任意的数x都可以用x表示a和b 完美符合条件，这样复杂度只要O（1） 而且暴力就过不去了。 1234">
+
+
+
+
+
+
+  <link rel="canonical" href="https://luowentaoaa.github.io/2018/12/05/Codeforces Round #525 (Div. 2)/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Codeforces Round | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2018/12/05/Codeforces Round #525 (Div. 2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codeforces Round
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-12-05 20:37:24 / Updated at: 20:55:46" itemprop="dateCreated datePublished" datetime="2018-12-05T20:37:24+08:00">2018-12-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://codeforces.com/contest/1082" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
+<h3 id="A-Ehab-and-another-construction-problem-水题，暴力"><a href="#A-Ehab-and-another-construction-problem-水题，暴力" class="headerlink" title="A. Ehab and another construction problem(水题，暴力)"></a>A. <a href="http://codeforces.com/contest/1088/problem/A" target="_blank" rel="noopener">Ehab and another construction problem</a>(水题，暴力)</h3><h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>虽然是水题但是我还是要讲一下，这个题目的范围一看就知道暴力一下就可以求出答案，但是我一开始看到这题的时候确实懵逼了一会，感觉这题有很明显的规律，后来看了别人的代码终于发现了，就是除了1之外，其他任意的数x都可以用x表示a和b 完美符合条件，这样复杂度只要O（1） 而且暴力就过不去了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line"><span class="keyword">if</span>(x==<span class="number">1</span>)<span class="built_in">cout</span>&lt;&lt;<span class="number">-1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="string">" "</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="B-Ehab-and-subtraction-排序，优先队列"><a href="#B-Ehab-and-subtraction-排序，优先队列" class="headerlink" title="B.Ehab and subtraction (排序，优先队列)"></a>B.<a href="http://codeforces.com/contest/1088/problem/B" target="_blank" rel="noopener">Ehab and subtraction</a> (排序，优先队列)</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt; &gt;pq;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">        <span class="keyword">int</span> a;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a;</span><br><span class="line">        pq.push(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(k--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pq.empty())<span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> sum=pq.top();pq.pop();</span><br><span class="line">            <span class="keyword">while</span>(!pq.empty()&amp;&amp;pq.top()==sum)pq.pop();</span><br><span class="line">            <span class="keyword">if</span>(sum-num&lt;=<span class="number">0</span>)<span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;sum-num&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            num=sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-Ehab-and-a-2-operation-task-思维"><a href="#C-Ehab-and-a-2-operation-task-思维" class="headerlink" title="C.Ehab and a 2-operation task (思维)"></a>C.<a href="http://codeforces.com/contest/1088/problem/C" target="_blank" rel="noopener">Ehab and a 2-operation task</a> (思维)</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定一个长度为 n 的数组a[ ]，并且有两种操作：</p>
+<p>　　①将前 i 个数全都加上 x;</p>
+<p>　　②将前 i 个数全都 mod x</p>
+<p>　　要求用不超过 n+1 次操作，使得数组 a[ ] 严格单调递增。</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>注意mod可以把一个大的数变成一个我们想要的一个数（前提，这个数必须比我们想要的那个数大很多)</p>
+<p>可以把n 个数全部加上一个超级大的值,然后 取模 强行组成为递增的数组即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;n+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"1 "</span>&lt;&lt;n&lt;&lt;<span class="string">" 100000"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="number">2</span>&lt;&lt;<span class="string">" "</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>&lt;&lt;(<span class="number">100000</span>+a[i]-(i<span class="number">-1</span>))&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//cout&lt;&lt;(100000+a[i])%(100000+a[i]-(i-1))&lt;&lt;endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D-Ehab-and-another-another-xor-problem-思维-位运算"><a href="#D-Ehab-and-another-another-xor-problem-思维-位运算" class="headerlink" title="D.Ehab and another another xor problem (思维,位运算)"></a>D.<a href="http://codeforces.com/contest/1088/problem/D" target="_blank" rel="noopener">Ehab and another another xor problem</a> (思维,位运算)</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>系统中有两个数(a,b)，请使用62以内次询问来确定出(a,b)</p>
+<p>每次可以询问两个数(c,d)</p>
+<p>若a⊕c&gt;b⊕da⊕c&gt;b⊕d返回11</p>
+<p>若a⊕c=b⊕da⊕c=b⊕d返回00</p>
+<p>若a⊕c&lt;b⊕da⊕c&lt;b⊕d返回−1−1</p>
+<p>保证/需要保证0⩽a,b,c,d,&lt;2^30</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>我是，先判断一下a,b<br>然后a如果大于b<br>判断是不是因为多了最高位<br>然后a和b都亦或最高位<br>如果a小于说明是最高位起作用了 同时不能确定后面的小位谁大谁小<br>如果a还是大于 说明是相同的然后把a亦或一个1 (相当于把1去掉)如果小于就说明原本都是1 不然就是0  同时这样可以知道a还是比b大<br>然后b大于a同理<br>等于就判断是0还是1<br>这样每一位都判断两次，应该是30*2</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line"><span class="keyword">int</span> top=<span class="number">29</span>;</span><br><span class="line"><span class="keyword">int</span> who=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getmax</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(top&lt;<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"? "</span>&lt;&lt;a&lt;&lt;<span class="string">" "</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    fflush(<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;who;</span><br><span class="line">    run();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1000011</span></span><br><span class="line"><span class="comment">1000111</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(top&lt;<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(who==<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"? "</span>&lt;&lt;(a|(<span class="number">1</span>&lt;&lt;top))&lt;&lt;<span class="string">" "</span>&lt;&lt;(b|(<span class="number">1</span>&lt;&lt;top))&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        fflush(<span class="built_in">stdout</span>);</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;who;</span><br><span class="line">        <span class="keyword">if</span>(who==<span class="number">-1</span>)a|=(<span class="number">1</span>&lt;&lt;top),top--,getmax();</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"? "</span>&lt;&lt;(a|(<span class="number">1</span>&lt;&lt;top))&lt;&lt;<span class="string">" "</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            fflush(<span class="built_in">stdout</span>);</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;who;</span><br><span class="line">            <span class="keyword">if</span>(who==<span class="number">-1</span>)a|=(<span class="number">1</span>&lt;&lt;top),b|=(<span class="number">1</span>&lt;&lt;top),top--,who=<span class="number">1</span>,run();</span><br><span class="line">            <span class="keyword">else</span> top--,who=<span class="number">1</span>,run();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(who==<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"? "</span>&lt;&lt;(a|(<span class="number">1</span>&lt;&lt;top))&lt;&lt;<span class="string">" "</span>&lt;&lt;(b|(<span class="number">1</span>&lt;&lt;top))&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        fflush(<span class="built_in">stdout</span>);</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;who;</span><br><span class="line">        <span class="keyword">if</span>(who==<span class="number">1</span>)b|=(<span class="number">1</span>&lt;&lt;top),top--,getmax();</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"? "</span>&lt;&lt;a&lt;&lt;<span class="string">" "</span>&lt;&lt;(b|(<span class="number">1</span>&lt;&lt;top))&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            fflush(<span class="built_in">stdout</span>);</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;who;</span><br><span class="line">            <span class="keyword">if</span>(who==<span class="number">1</span>)a|=(<span class="number">1</span>&lt;&lt;top),b|=(<span class="number">1</span>&lt;&lt;top),top--,who=<span class="number">-1</span>,run();</span><br><span class="line">            <span class="keyword">else</span> top--,who=<span class="number">-1</span>,run();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"? "</span>&lt;&lt;(a|(<span class="number">1</span>&lt;&lt;top))&lt;&lt;<span class="string">" "</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        fflush(<span class="built_in">stdout</span>);</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;who;</span><br><span class="line">        <span class="keyword">if</span>(who==<span class="number">-1</span>)a|=(<span class="number">1</span>&lt;&lt;top),b|=(<span class="number">1</span>&lt;&lt;top),top--,getmax();</span><br><span class="line">        <span class="keyword">else</span> top--,getmax();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    getmax();</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"! "</span>&lt;&lt;a&lt;&lt;<span class="string">" "</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    fflush(<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="E-Ehab-and-a-component-choosing-problem-树形DP，贪心"><a href="#E-Ehab-and-a-component-choosing-problem-树形DP，贪心" class="headerlink" title="E.Ehab and a component choosing problem (树形DP，贪心)"></a>E.<a href="http://codeforces.com/contest/1088/problem/E" target="_blank" rel="noopener">Ehab and a component choosing problem</a> (树形DP，贪心)</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>给出一棵树，每个节点有权值，选出k个联通块，最大化</p>
+<script type="math/tex; mode=display">
+\frac{\sum_{i \in S} a_i}{k}</script><h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4><p>结论：选出的kk个联通块的大小是一样的且都等于最大联通块的大小(参考博客<a href="https://www.cnblogs.com/zwfymqz/p/10069374.html" target="_blank" rel="noopener">https://www.cnblogs.com/zwfymqz/p/10069374.html</a>)</p>
+<p>证明：因为我们是在保证分数最大的情况下才去最大化k，一个很经典的结论是单独选择一个权值最大的联通块得到的分数一定是最大的，然后我们这时我们才去考虑最大化k</p>
+<p>那么思路就很清晰了，先一遍dfs dp出最大联通块，然后再一遍dfs从下往上删就行了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">3e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ve[maxn];</span><br><span class="line">ll value[maxn];</span><br><span class="line">ll dp[maxn];</span><br><span class="line">ll dp2[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    ve[x].push_back(y);</span><br><span class="line">    ve[y].push_back(x);</span><br><span class="line">&#125;</span><br><span class="line">ll ans=-inf;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> pre)</span></span>&#123;</span><br><span class="line">    dp[now]=value[now]*<span class="number">1L</span>L;</span><br><span class="line">    <span class="keyword">int</span> sz=ve[now].size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i:ve[now])&#123;</span><br><span class="line">        <span class="keyword">if</span>(i==pre)<span class="keyword">continue</span>;</span><br><span class="line">        dfs(i,now);</span><br><span class="line">        dp[now]=max(dp[now],dp[now]+dp[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    ans=max(ans,dp[now]);</span><br><span class="line">&#125;</span><br><span class="line">ll num;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> pre)</span></span>&#123;</span><br><span class="line">    dp2[now]=value[now]*<span class="number">1L</span>L;</span><br><span class="line">    <span class="keyword">int</span> sz=ve[now].size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> i:ve[now])&#123;</span><br><span class="line">        <span class="keyword">if</span>(i==pre)<span class="keyword">continue</span>;</span><br><span class="line">        dfs1(i,now);</span><br><span class="line">        dp2[now]=max(dp2[now],dp2[now]+dp2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dp2[now]==ans)num++,dp2[now]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cin</span>&gt;&gt;value[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> a,b;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        add(a,b);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>);dfs1(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="number">1L</span>L*ans*num&lt;&lt;<span class="string">" "</span>&lt;&lt;num&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/30/Educational Codeforces Round 55 (Rated for Div. 2)/" rel="next" title="Educational Codeforces Round 55 (Rated for Div. 2)">
+                <i class="fa fa-chevron-left"></i> Educational Codeforces Round 55 (Rated for Div. 2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">luowentaoaa</p>
+              <p class="site-description motion-element" itemprop="description">嘤嘤嘤</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">Tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Ehab-and-another-construction-problem-水题，暴力"><span class="nav-number">1.</span> <span class="nav-text">A. Ehab and another construction problem(水题，暴力)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题解"><span class="nav-number">1.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Ehab-and-subtraction-排序，优先队列"><span class="nav-number">2.</span> <span class="nav-text">B.Ehab and subtraction (排序，优先队列)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Ehab-and-a-2-operation-task-思维"><span class="nav-number">3.</span> <span class="nav-text">C.Ehab and a 2-operation task (思维)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题解-1"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Ehab-and-another-another-xor-problem-思维-位运算"><span class="nav-number">4.</span> <span class="nav-text">D.Ehab and another another xor problem (思维,位运算)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-1"><span class="nav-number">4.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题解-2"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Ehab-and-a-component-choosing-problem-树形DP，贪心"><span class="nav-number">5.</span> <span class="nav-text">E.Ehab and a component choosing problem (树形DP，贪心)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-2"><span class="nav-number">5.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题解-3"><span class="nav-number">5.2.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luowentaoaa</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
