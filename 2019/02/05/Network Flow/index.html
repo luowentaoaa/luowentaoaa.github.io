@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="学习自https://blog.csdn.net/txl199106/article/details/64441994  一.网络流:流&amp;amp;网络&amp;amp;割1.网络流问题(NetWork Flow Problem):给定指定的一个有向图,其中有两个特殊的点源S(Sources)和汇T(Sinks),每条边有指定的容量(Capacity),求满足条件的从S到T的最大流(MaxFlow). 下面">
+<meta name="keywords" content="网络流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络流学习笔记">
+<meta property="og:url" content="https://luowentaoaa.github.io/2019/02/05/Network Flow/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习自https://blog.csdn.net/txl199106/article/details/64441994  一.网络流:流&amp;amp;网络&amp;amp;割1.网络流问题(NetWork Flow Problem):给定指定的一个有向图,其中有两个特殊的点源S(Sources)和汇T(Sinks),每条边有指定的容量(Capacity),求满足条件的从S到T的最大流(MaxFlow). 下面">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/1.png">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/12.png">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/0.jpg">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/2.jpg">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/sap1.png">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/sap2.png">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/sap3.png">
+<meta property="og:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/sap4.png">
+<meta property="og:updated_time" content="2019-02-05T10:21:25.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络流学习笔记">
+<meta name="twitter:description" content="学习自https://blog.csdn.net/txl199106/article/details/64441994  一.网络流:流&amp;amp;网络&amp;amp;割1.网络流问题(NetWork Flow Problem):给定指定的一个有向图,其中有两个特殊的点源S(Sources)和汇T(Sinks),每条边有指定的容量(Capacity),求满足条件的从S到T的最大流(MaxFlow). 下面">
+<meta name="twitter:image" content="https://luowentaoaa.github.io/2019/02/05/Network%20Flow/1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://luowentaoaa.github.io/2019/02/05/Network Flow/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>网络流学习笔记 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archivi</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/02/05/Network Flow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络流学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Scritto il</span>
+              
+
+              
+                
+              
+
+              <time title="Post creato: 2019-02-05 15:29:17 / Post modificato: 18:21:25" itemprop="dateCreated datePublished" datetime="2019-02-05T15:29:17+08:00">2019-02-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习自<a href="https://blog.csdn.net/txl199106/article/details/64441994" target="_blank" rel="noopener">https://blog.csdn.net/txl199106/article/details/64441994</a> </p>
+<h2 id="一-网络流-流-amp-网络-amp-割"><a href="#一-网络流-流-amp-网络-amp-割" class="headerlink" title="一.网络流:流&amp;网络&amp;割"></a>一.网络流:流&amp;网络&amp;割</h2><h3 id="1-网络流问题-NetWork-Flow-Problem"><a href="#1-网络流问题-NetWork-Flow-Problem" class="headerlink" title="1.网络流问题(NetWork Flow Problem):"></a>1.网络流问题(NetWork Flow Problem):</h3><p>给定指定的一个有向图,其中有两个特殊的点源S(Sources)和汇T(Sinks),每条边有指定的容量(Capacity),求满足条件的从S到T的最大流(MaxFlow).</p>
+<p>下面给出一个通俗点的解释<br>(下文基本避开形式化的证明 基本都用此类描述叙述)<br>好比你家是汇 自来水厂(有需要的同学可以把自来水厂当成银行之类 以下类似)是源<br>然后自来水厂和你家之间修了很多条水管子接在一起 水管子规格不一 有的容量大 有的容量小<br>然后问自来水厂开闸放水 你家收到水的最大流量是多少<br>如果自来水厂停水了 你家那的流量就是0 当然不是最大的流量</p>
+<p>但是你给自来水厂交了100w美金 自来水厂拼命水管里通水 但是你家的流量也就那么多不变了 这时就达到了最大流</p>
+<h3 id="2-三个基本的性质"><a href="#2-三个基本的性质" class="headerlink" title="2.三个基本的性质:"></a>2.三个基本的性质:</h3><p>如果 C代表每条边的容量 F代表每条边的流量<br>一个显然的实事是F小于等于C 不然水管子就爆了，这就是网络流的第一条性质 容量限制(Capacity Constraints):F<x,y> ≤ C<x,y><br>再考虑节点任意一个节点 流入量总是等于流出的量 否则就会蓄水(爆炸危险…)或者平白无故多出水(有地下水涌出?)<br>这是第二条性质 流量守恒(Flow Conservation):Σ F<v,x> = Σ F<x,u><br>当然源和汇不用满足流量守恒 我们不用去关心自来水厂的水是河里的 还是江里的<br>最后一个不是很显然的性质 是斜对称性(Skew Symmetry): F<x,y> = - F<y,x><br>这其实是完善的网络流理论不可缺少的 就好比中学物理里用正负数来定义一维的位移一样<br>百米起点到百米终点的位移是100m的话 那么终点到起点的位移就是-100m<br>同样的 x向y流了F的流 y就向x流了-F的流</y,x></x,y></x,u></v,x></x,y></x,y></p>
+<p>对于任意一个时刻，设f(u,v)实际流量，则整个图G的流网络满足3个性质：</p>
+<ol>
+<li><p>容量限制：对任意u,v∈V，f(u,v)≤c(u,v)。</p>
+</li>
+<li><p>反对称性：对任意u,v∈V，f(u,v) = -f(v,u)。从u到v的流量一定是从v到u的流量的相反值。</p>
+</li>
+<li><p>流守恒性：对任意u，若u不为S或T，一定有∑f(u,v)=0，(u,v)∈E。即u到相邻节点的流量之和为0，因为流入u的流量和u点流出的流量相等，u点本身不会”制造”和”消耗”流量。</p>
+</li>
+</ol>
+<hr>
+<h3 id="3-容量网络-amp-流量网络-amp-残留网络"><a href="#3-容量网络-amp-流量网络-amp-残留网络" class="headerlink" title="3.容量网络&amp;流量网络&amp;残留网络:"></a>3.容量网络&amp;流量网络&amp;残留网络:</h3><p>网络就是有源汇的有向图 关于什么就是指边权的含义是什么<br>容量网络就是关于容量的网络 基本是不改变的(极少数问题需要变动)</p>
+<p>流量网络就是关于流量的网络 在求解问题的过程中<br>通常在不断的改变 但是总是满足上述三个性质<br>调整到最后就是最大流网络 同时也可以得到最大流值</p>
+<p>残留网络往往概括了容量网络和流量网络 是最为常用的<br>残留网络=容量网络-流量网络<br>这个等式是始终成立的 残留值当流量值为负时甚至会大于容量值<br>流量值为什么会为负?有正必有负,记住斜对称性!</p>
+<h3 id="4-割-amp-割集"><a href="#4-割-amp-割集" class="headerlink" title="4.割&amp;割集:"></a>4.割&amp;割集:</h3><p>无向图的割集(Cut Set):C[A,B]是将图G分为A和B两个点集 A和B之间的边的全集<br>网络的割集:C[S,T]是将网络G分为s和t两部分点集 S属于s且T属于t 从S到T的边的全集<br>带权图的割(Cut)就是割集中边或者有向边的权和</p>
+<p>通俗的理解一下:<br>割集好比是一个恐怖分子 把你家和自来水厂之间的水管网络砍断了一些<br>然后自来水厂无论怎么放水 水都只能从水管断口哗哗流走了 你家就停水了<br>割的大小应该是恐怖分子应该关心的事 毕竟细管子好割一些</p>
+<p>而最小割花的力气最小</p>
+<h2 id="二-计算最大流的基本算法"><a href="#二-计算最大流的基本算法" class="headerlink" title="二.计算最大流的基本算法"></a>二.计算最大流的基本算法</h2><p>那么怎么求出一个网络的最大流呢?<br>这里介绍一个最简单的算法:</p>
+<h3 id="Edmonds-Karp算法-即最短路径增广算法-简称EK算法"><a href="#Edmonds-Karp算法-即最短路径增广算法-简称EK算法" class="headerlink" title="Edmonds-Karp算法 即最短路径增广算法 简称EK算法"></a>Edmonds-Karp算法 即最短路径增广算法 简称EK算法</h3><p>EK算法基于一个基本的方法:Ford-Fulkerson方法 即增广路方法 简称FF方法<br>增广路方法是很多网络流算法的基础 一般都在残留网络中实现<br>其思路是每次找出一条从源到汇的能够增加流的路径 调整流值和残留网络 不断调整直到没有增广路为止<br>FF方法的基础是增广路定理(Augmenting Path Theorem):网络达到最大流当且仅当残留网络中没有增广路<br>证明略 这个定理应该能够接受的吧<br>EK算法就是不断的找最短路 找的方法就是每次找一条边数最少的增广 也就是最短路径增广</p>
+<p>这样就产生了三个问题:</p>
+<h3 id="1-最多要增广多少次"><a href="#1-最多要增广多少次" class="headerlink" title="1.最多要增广多少次?"></a>1.最多要增广多少次?</h3><p>可以证明 最多O(VE)次增广 可以达到最大流 证明略</p>
+<h3 id="2-如何找到一条增广路"><a href="#2-如何找到一条增广路" class="headerlink" title="2.如何找到一条增广路?"></a>2.如何找到一条增广路?</h3><p><strong>先明确什么是增广路 增广路是这样一条从s到t的路径 路径上每条边残留容量都为正</strong><br><strong>把残留容量为正的边设为可行的边 那么我们就可以用简单的BFS得到边数最少的增广路</strong></p>
+<h3 id="如何增广"><a href="#如何增广" class="headerlink" title=".如何增广?"></a>.如何增广?</h3><p>BFS得到增广路之后 这条增广路能够增广的流值 是路径上最小残留容量边决定的<br>把这个最小残留容量MinCap值加到最大流值Flow上 同时路径上每条边的残留容量值减去MinCap<br>最后 路径上每条边的反向边残留容量值要加上MinCap 为什么? 下面会具体解释</p>
+<p>这样每次增广的复杂度为O(E) EK算法的总复杂度就是O(VE^2)，事实上 大多数网络的增广次数很少 EK算法能处理绝大多数问题，平均意义下增广路算法都是很快的<br>增广路算法好比是自来水公司不断的往水管网里一条一条的通水<br>上面还遗留了一个反向边的问题: 为什么增广路径上每条边的反向边残留容量值要加上MinCap?</p>
+<hr>
+<p>因为斜对称性! 由于残留网络=容量网络-流量网络<br>容量网络不改变的情况下<br>由于增广好比给增广路上通了一条流 路径说所有边流量加MinCap<br>流量网络中路径上边的流量加MinCap 反向边流量减去MinCap<br>相对应的残留网络就发生相反的改变</p>
+<hr>
+<p>这样我们就完成了EK算法 具体实现可以用邻接表存图 也可以用邻接矩阵存图<br>邻接表存图 由于流量同时存在于边与反向边 为了方便求取反向边 建图把一对互为反向边的边建在一起<br>代码很简单 最好自己实现一下</p>
+<p>看一个具体的增广路算法的例子吧</p>
+<p>=====================================================================</p>
+<h2 id="三-最大流最小割定理"><a href="#三-最大流最小割定理" class="headerlink" title="三.最大流最小割定理"></a>三.最大流最小割定理</h2><p>下面介绍网络流理论中一个最为重要的定理<br>最大流最小割定理(Maximum Flow, Minimum Cut Theorem):网络的最大流等于最小割<br>具体的证明分三部分</p>
+<h3 id="1-任意一个流都小于等于任意一个割"><a href="#1-任意一个流都小于等于任意一个割" class="headerlink" title="1.任意一个流都小于等于任意一个割"></a>1.任意一个流都小于等于任意一个割</h3><p>这个很好理解 自来水公司随便给你家通点水 构成一个流<br>恐怖分子随便砍几刀 砍出一个割<br>由于容量限制 每一根的被砍的水管子流出的水流量都小于管子的容量<br>每一根被砍的水管的水本来都要到你家的 现在流到外面 加起来得到的流量还是等于原来的流<br>管子的容量加起来就是割 所以流小于等于割<br>由于上面的流和割都是任意构造的 所以任意一个流小于任意一个割</p>
+<h3 id="2-构造出一个流等于一个割"><a href="#2-构造出一个流等于一个割" class="headerlink" title="2.构造出一个流等于一个割"></a>2.构造出一个流等于一个割</h3><p>当达到最大流时 根据增广路定理<br>残留网络中s到t已经没有通路了 否则还能继续增广<br>我们把s能到的的点集设为S 不能到的点集为T<br>构造出一个割集C[S,T] S到T的边必然满流 否则就能继续增广<br>这些满流边的流量和就是当前的流即最大流<br>把这些满流边作为割 就构造出了一个和最大流相等的割</p>
+<h3 id="3-最大流等于最小割"><a href="#3-最大流等于最小割" class="headerlink" title="3.最大流等于最小割"></a>3.最大流等于最小割</h3><p>设相等的流和割分别为Fm和Cm<br>则因为任意一个流小于等于任意一个割<br>任意F≤Fm=Cm≤任意C<br>定理说明完成，证明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对于一个网络流图G=(V,E)，其中有源点s和汇点t，那么下面三个条件是等价的：</span><br><span class="line">1. 流f是图G的最大流</span><br><span class="line">2. 残留网络Gf不存在增广路</span><br><span class="line">3. 对于G的某一个割(S,T)，此时f = C(S,T)</span><br></pre></td></tr></table></figure>
+<p>首先证明1 =&gt; 2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们利用反证法，假设流f是图G的最大流，但是残留网络中还存在有增广路p，其流量为fp。则我们有流f&apos;=f+fp&gt;f。这与f是最大流产生矛盾。</span><br></pre></td></tr></table></figure></p>
+<p>接着证明2 =&gt; 3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设残留网络Gf不存在增广路，所以在残留网络Gf中不存在路径从s到达t。我们定义S集合为：当前残留网络中s能够到达的点。同时定义T=V-S。</span><br><span class="line">此时(S,T)构成一个割(S,T)。且对于任意的u∈S,v∈T，有f(u,v)=c(u,v)。若f(u,v)&lt;c(u,v)，则有Gf(u,v)&gt;0，s可以到达v，与v属于T矛盾。</span><br><span class="line">因此有f(S,T)=Σf(u,v)=Σc(u,v)=C(S,T)。</span><br></pre></td></tr></table></figure></p>
+<p>最后证明3 =&gt; 1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由于f的上界为最小割，当f到达割的容量时，显然就已经到达最大值，因此f为最大流。</span><br><span class="line">这样就说明了为什么找不到增广路时，所求得的一定是最大流。</span><br></pre></td></tr></table></figure></p>
+<h2 id="最大流"><a href="#最大流" class="headerlink" title="最大流"></a>最大流</h2><p>最大流相关算法有两种解决思想, 一种是增广路算法思想, 另一种是预流推进算法思想。 下面将分别介绍这两种算法思想。</p>
+<h3 id="增广路算法-Ford-Fulkerson"><a href="#增广路算法-Ford-Fulkerson" class="headerlink" title="增广路算法(Ford-Fulkerson)"></a>增广路算法(Ford-Fulkerson)</h3><p>基本思想</p>
+<p>根据增广路定理, 为了得到最大流, 可以从任何一个可行流开始, 沿着增广路对网络流进行增广, 直到网络中不存在增广路为止,这样的算法称为增广路算法。问题的关键在于如何有效地找到增广路, 并保证算法在有限次增广后一定终止。<br>增广路算法的基本流程是 :</p>
+<p>(1) 取一个可行流 f 作为初始流(如果没有给定初始流,则取零流 f= { 0 }作为初始流);<br>(2) 寻找关于 f 的增广路 P,如果找到,则沿着这条增广路 P 将 f 改进成一个更大的流, 并建立相应的反向弧;<br>(3) 重复第(2)步直到 f 不存在增广路为止。</p>
+<p>图示如下:</p>
+<p><img src="/2019/02/05/Network Flow/1.png" alt=""></p>
+<p><img src="/2019/02/05/Network Flow/12.png" alt=""></p>
+<p>增广路算法的关键是 寻找增广路 和 改进网络流。<br>问题: 为什么要创建反向弧呢?<br>原因: 为程序提供一次反悔的机会 什么意思, 如下图所示:<br>在图中如果程序找到了一条增广路 1 -&gt; 2 -&gt; 4 -&gt; 6, 此时得到一个流量为 2 的流并且无法继续进行增广,<br>但是如果在更新可行流的同时建立反向弧的话, 就可以找到 1 -&gt; 3 -&gt; 4 -&gt; 2 -&gt; 5 -&gt; 6 的可行流, 流量为1, 这样就可以得到最大流为 3.</p>
+<p><img src="/2019/02/05/Network Flow/0.jpg" alt=""></p>
+<h3 id="一般增广路算法-EdmondsKarp"><a href="#一般增广路算法-EdmondsKarp" class="headerlink" title="一般增广路算法(EdmondsKarp)"></a>一般增广路算法(EdmondsKarp)</h3><h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><p>在一般的增广路算法中, 程序的实现过程与增广路求最大流的过程基本一致. 即每一次更新都进行一次找增广路然后更新路径上的流量的过程。但是我们可以从上图中发现一个问题, 就是每次找到的增广路曲曲折折非常长, 此时我们往往走了冤枉路(即：明明我们可以从源点离汇点越走越进的，可是中间的几条边却向离汇点远的方向走了), 此时更新增广路的复杂度就会增加。EK 算法为了规避这个问题使用了 bfs 来寻找增广路, 然后在寻找增广路的时候总是向离汇点越来越近的方向去寻找下一个结点。</p>
+<h4 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h4><p>邻接矩阵</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">300</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_INT = ((<span class="number">1</span> &lt;&lt; <span class="number">31</span>) - <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n;                                      <span class="comment">// 图中点的数目</span></span><br><span class="line"><span class="keyword">int</span> pre[MAXN];                              <span class="comment">// 从 s - t 中的一个可行流中, 节点 i 的前序节点为 Pre[i];</span></span><br><span class="line"><span class="keyword">bool</span> vis[MAXN];                             <span class="comment">// 标记一个点是否被访问过</span></span><br><span class="line"><span class="keyword">int</span> mp[MAXN][MAXN];                         <span class="comment">// 记录图信息</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">    <span class="built_in">memset</span>(pre, <span class="number">-1</span>, <span class="keyword">sizeof</span>(pre));</span><br><span class="line">    pre[s] = s;</span><br><span class="line">    vis[s] = <span class="literal">true</span>;</span><br><span class="line">    que.push(s);</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mp[u][i] &amp;&amp; !vis[i])&#123;</span><br><span class="line">                pre[i] = u;</span><br><span class="line">                vis[i] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span>(i == t) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                que.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EK</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(bfs(s, t))&#123;</span><br><span class="line">        <span class="keyword">int</span> mi = MAX_INT;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pre[i])&#123;</span><br><span class="line">            mi = min(mi, mp[pre[i]][i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pre[i])&#123;</span><br><span class="line">            mp[pre[i]][i] -= mi;</span><br><span class="line">            mp[i][pre[i]] += mi;</span><br><span class="line">        &#125;</span><br><span class="line">        ans += mi;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>邻接表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">430</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_INT = (<span class="number">1</span> &lt;&lt; <span class="number">30</span>);</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v, nxt, w;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v, id;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n, m, ecnt;</span><br><span class="line"><span class="keyword">bool</span> vis[MAXN];</span><br><span class="line"><span class="keyword">int</span> head[MAXN];</span><br><span class="line">Node pre[MAXN];</span><br><span class="line">Edge edge[MAXN];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ecnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(edge, <span class="number">0</span>, <span class="keyword">sizeof</span>(edge));</span><br><span class="line">    <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(head));</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    edge[ecnt].v = v;</span><br><span class="line">    edge[ecnt].w = w;</span><br><span class="line">    edge[ecnt].nxt = head[u];</span><br><span class="line">    head[u] = ecnt++;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">    <span class="built_in">memset</span>(pre, <span class="number">-1</span>, <span class="keyword">sizeof</span>(pre));</span><br><span class="line">    pre[s].v = s;</span><br><span class="line">    vis[s] = <span class="literal">true</span>;</span><br><span class="line">    que.push(s);</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u]; i + <span class="number">1</span>; i = edge[i].nxt)&#123;</span><br><span class="line">            <span class="keyword">int</span> v = edge[i].v;</span><br><span class="line">            <span class="keyword">if</span>(!vis[v] &amp;&amp; edge[i].w)&#123;</span><br><span class="line">                pre[v].v = u;</span><br><span class="line">                pre[v].id = i;</span><br><span class="line">                vis[v] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span>(v == t) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                que.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EK</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(bfs(s, t))&#123;</span><br><span class="line">        <span class="keyword">int</span> mi = MAX_INT;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pre[i].v)&#123;</span><br><span class="line">            mi = min(mi, edge[pre[i].id].w);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pre[i].v)&#123;</span><br><span class="line">            edge[pre[i].id].w -= mi;</span><br><span class="line">            edge[pre[i].id ^ <span class="number">1</span>].w += mi;</span><br><span class="line">        &#125;</span><br><span class="line">        ans += mi;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 加边</span></span><br><span class="line">addEdge(u, v, w);</span><br><span class="line">addEdge(v, u, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line"><span class="keyword">int</span> ans = EK(s, t);</span><br></pre></td></tr></table></figure>
+<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4><p>每进行一次增广需要的时间复杂度为 bfs 的复杂度 + 更新残余网络的复杂度, 大约为 O(m)(m为图中的边的数目), 需要进行多少次增广呢, 假设每次增广只增加1, 则需要增广 nW 次(n为图中顶点的数目, W为图中边上的最大容量), .</p>
+<h3 id="Dinic算法"><a href="#Dinic算法" class="headerlink" title="Dinic算法"></a>Dinic算法</h3><h4 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h4><p>DINIC 在找增广路的时候也是找的最短增广路, 与 EK 算法不同的是 DINIC 算法并不是每次 bfs 只找一个增广路, 他会首先通过一次 bfs 为所有点添加一个标号, 构成一个 <strong>层次图</strong>， 然后在层次图中寻找增广路进行更新。</p>
+<h4 id="算法流程-1"><a href="#算法流程-1" class="headerlink" title="算法流程"></a>算法流程</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>利用 BFS 对原来的图进行分层，即对每个结点进行标号， 这个标号的含义是当前结点距离源点的最短距离(假设每条边的距离都为<span class="number">1</span>)，注意：构建层次图的时候所走的边的残余流量必须大于<span class="number">0</span></span><br><span class="line"><span class="number">2.</span>用 DFS 寻找一条从源点到汇点的增广路, 注意: 此处寻找增广路的时候要按照层次图的顺序, 即如果将边(u, v)纳入这条增广路的话必须满足dis[u]=dis[v]−<span class="number">1</span>, 其中 dis[i]为结点 ii的编号。找到一条路后要根据这条增广路径上的所有边的残余流量的最小值ll更新所有边的残余流量(即正向弧 - l, 反向弧 + l).</span><br><span class="line"><span class="number">3.</span>重复步骤 <span class="number">2</span>, 当找不到一条增广路的时候, 重复步骤 <span class="number">1</span>, 重新建立层次图, 直到从源点不能到达汇点为止。</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/02/05/Network Flow/2.jpg" alt=""></p>
+<h4 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">510</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN_INT = (<span class="number">1</span> &lt;&lt; <span class="number">29</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> dis[MAXN];</span><br><span class="line"><span class="keyword">int</span> mp[MAXN][MAXN];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis, <span class="number">0xff</span>, <span class="keyword">sizeof</span>(dis));</span><br><span class="line">    dis[s] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">    que.push(s);</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> top = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[i] &lt; <span class="number">0</span> &amp;&amp; mp[top][i] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                dis[i] = dis[top] + <span class="number">1</span>;</span><br><span class="line">                que.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dis[n] &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> low)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(x == n) <span class="keyword">return</span> low;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(mp[x][i] &gt; <span class="number">0</span> </span><br><span class="line">            &amp;&amp; dis[i] == dis[x] + <span class="number">1</span></span><br><span class="line">            &amp;&amp; (a = Find(i, min(low, mp[x][i]))))&#123;</span><br><span class="line">            mp[x][i] -= a;</span><br><span class="line">            mp[i][x] += a;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) != EOF)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(mp, <span class="number">0</span>, <span class="keyword">sizeof</span>(mp));</span><br><span class="line">        <span class="keyword">int</span> u, v, w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">            mp[u][v] += w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, tmp;</span><br><span class="line">        <span class="keyword">while</span>(bfs(<span class="number">1</span>))&#123;</span><br><span class="line">            <span class="keyword">while</span>(tmp = Find(<span class="number">1</span>, MAXN_INT))</span><br><span class="line">                ans += tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="当前弧优化和多路增广"><a href="#当前弧优化和多路增广" class="headerlink" title="当前弧优化和多路增广"></a>当前弧优化和多路增广</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">101000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN_INT = (<span class="number">1</span> &lt;&lt; <span class="number">29</span>);</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v, w, nxt;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> s, t;</span><br><span class="line"><span class="keyword">int</span> n, m, ecnt;</span><br><span class="line">Edge edge[MAXN * <span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> head[MAXN], dis[MAXN], curEdge[MAXN];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ecnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dis, <span class="number">-1</span>, <span class="keyword">sizeof</span>(dis));</span><br><span class="line">    <span class="built_in">memset</span>(edge, <span class="number">0</span>, <span class="keyword">sizeof</span>(edge));</span><br><span class="line">    <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(head));</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    edge[ecnt].v = v;</span><br><span class="line">    edge[ecnt].w = w;</span><br><span class="line">    edge[ecnt].nxt = head[u];</span><br><span class="line">    head[u] = ecnt++;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">    dis[t] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">    que.push(t);</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u]; i + <span class="number">1</span>; i = edge[i].nxt)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[edge[i].v] == <span class="number">-1</span> &amp;&amp; edge[i ^ <span class="number">1</span>].w &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                dis[edge[i].v] = dis[u] + <span class="number">1</span>;</span><br><span class="line">                que.push(edge[i].v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dis[s] != <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> flow)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(u == t) <span class="keyword">return</span> flow;</span><br><span class="line">    <span class="keyword">int</span> delta = flow;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> &amp;i = curEdge[u]; i + <span class="number">1</span>; i = edge[i].nxt)&#123;</span><br><span class="line">        <span class="keyword">if</span>(dis[u] == dis[edge[i].v] + <span class="number">1</span> &amp;&amp; edge[i].w)&#123;</span><br><span class="line">            <span class="keyword">int</span> d = dfs(edge[i].v, v, min(delta, edge[i].w));</span><br><span class="line">            edge[i].w -= d, edge[i ^ <span class="number">1</span>].w += d;</span><br><span class="line">            delta -= d;</span><br><span class="line">            <span class="keyword">if</span>(delta == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> flow - delta;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dinic</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(bfs())&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            curEdge[i] = head[i];</span><br><span class="line">        ans += dfs(s, t, MAXN_INT);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) != EOF)&#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">int</span> u, v, w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">            addEdge(u, v, w);</span><br><span class="line">            addEdge(v, u, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dinic());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>$O(V^2E)</p>
+<h3 id="最短增广路算法-SAP"><a href="#最短增广路算法-SAP" class="headerlink" title="最短增广路算法(SAP)"></a>最短增广路算法(SAP)</h3><h4 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h4><p>最短增广路算法是一种运用距离标号使寻找增广路的时间复杂度下降的算法。所谓的距离标号就是某个点到汇点的最少的弧的数量(即当边权为1时某个点的最短路径长度). 设点i的标号为d[i], 那么如果将满足d[i] = d[j] + 1, 且增广时只走允许弧, 那么就可以达到”怎么走都是最短路”的效果. 每个点的初始标号可以在一开始用一次从汇点沿所有反向的BFS求出.</p>
+<h4 id="算法流程-2"><a href="#算法流程-2" class="headerlink" title="算法流程"></a>算法流程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1) 定义节点的标号为到汇点的最短距离;</span><br><span class="line">2) 每次沿可行边进行增广, 可行边即: 假设有两个点 i, j 若 d[i] = 3, d[j] = 4, 则d[j] = d[i] + 1, 也就是从 j 到 i 有一条边.</span><br><span class="line">3) 找到增广路后，将路径上所有边的流量更新.</span><br><span class="line">4) 遍历完当前结点的可行边后更新当前结点的标号为 d[now]=min(d[next]|Flow(now,next)&gt;0)+1，使下次再搜的时候有路可走。</span><br><span class="line">5) 图中不存在增广路后即退出程序，此时得到的流量值就是最大流。</span><br></pre></td></tr></table></figure>
+<p>需要注意的是, 标号的更新过程首先我们要理解更新标号的目的。标号如果需要更新，说明在当前的标号下已经没有增广路可以继续走，这时更新标号就可以使得我们有继续向下走的可能，并且每次找的都是能走到的点中标号最小的那个点，这样也使得每次搜索长度最小.<br>下面的图演示了标号的更新过程:</p>
+<p>1.首先我们假设有个图如下，为了简化没有标箭头也没有写流量:</p>
+<p><img src="/2019/02/05/Network Flow/sap1.png" alt=""></p>
+<p>2.为图标号, 每个点的标号为其到汇点的最短距离(这里把每条边看作1)</p>
+<p><img src="/2019/02/05/Network Flow/sap2.png" alt=""></p>
+<p>3.第一遍遍历时，找到了1-&gt;2-&gt;9这样一条增广路以后，更新边上流量值, 得到下图<br>棕色字体为边上的流量值。这时按照标号再搜一遍,发现从1出发已经找不到增广路了，因为flow(1,2)等于0不可以走，h[1]=2,h[3]=2≠h[1]+1,h[5]=4≠h[1]+1，   所以这时更新1的标号，<br>4.按照 min(h[next]|Flow(now,next)&gt;0)+1，修改后 h[1]=h[3]+1=3.</p>
+<p><img src="/2019/02/05/Network Flow/sap3.png" alt=""></p>
+<p>5.第二遍遍历以后找到了这样一条增广路：1-&gt;3-&gt;4-&gt;9,做完这条路以后又发现无法找到可行边了，这时再更新标号使图中有路可走，如上文所说的那样做，再次修改后h[1]=h[5]+1=5h[1]=h[5]+1=5，就这样搜索并更新直到变成下图</p>
+<p><img src="/2019/02/05/Network Flow/sap4.png" alt=""></p>
+<p>6.这时再更新h[1]发现没有点可以用来更新h[1]了，于是此时h[1]=∞，使程序退出。</p>
+<p><strong>GAP 优化</strong>: 由于可行边定义为：(now,next)|h[now]=h[next]+1，所以若标号出现“断层”即有的标号对应的顶点个数为0，则说明剩余图中不存在增广路，此时便可以直接退出，降低了无效搜索。举个栗子：若结点标号为3的结点个数为0，而标号为4的结点和标号为2的结点都大于 0,那么在搜索至任意一个标号为4的结点时，便无法再继续往下搜索，说明图中就不存在增广路。此时我们可以以将h[1]=n   形式来变相地直接结束搜索</p>
+<h4 id="算法实现-2"><a href="#算法实现-2" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">5010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN_INT = (<span class="number">1</span> &lt;&lt; <span class="number">29</span>);</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v, w, nxt;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">bool</span> isFind;</span><br><span class="line"><span class="keyword">int</span> head[MAXN];</span><br><span class="line">Edge edge[MAXN];</span><br><span class="line"><span class="keyword">int</span> dis[MAXN], gap[MAXN];</span><br><span class="line"><span class="keyword">int</span> n, m, ecnt, aug, maxFlow;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ecnt = maxFlow = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(gap, <span class="number">0</span>, <span class="keyword">sizeof</span>(gap));</span><br><span class="line">    <span class="built_in">memset</span>(dis, <span class="number">0</span>, <span class="keyword">sizeof</span>(dis));</span><br><span class="line">    <span class="built_in">memset</span>(edge, <span class="number">0</span>, <span class="keyword">sizeof</span>(edge));</span><br><span class="line">    <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(head));</span><br><span class="line">    gap[<span class="number">0</span>] = n;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    edge[ecnt].v = v;</span><br><span class="line">    edge[ecnt].w = w;</span><br><span class="line">    edge[ecnt].nxt = head[u];</span><br><span class="line">    head[u] = ecnt++;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dx, augc, minDis;</span><br><span class="line">    <span class="keyword">if</span>(s == n)&#123;</span><br><span class="line">        isFind = <span class="literal">true</span>;</span><br><span class="line">        maxFlow += aug;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    augc = aug;</span><br><span class="line">    minDis = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[i]; i + <span class="number">1</span>; i = edge[i].nxt)&#123;</span><br><span class="line">        <span class="keyword">if</span>(edge[i].w &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[s] == dis[edge[i].v] + <span class="number">1</span>)&#123;</span><br><span class="line">                aug = min(aug, edge[i].w);</span><br><span class="line">                Find(edge[i].v);</span><br><span class="line">                <span class="keyword">if</span>(dis[<span class="number">1</span>] &gt;= n) <span class="keyword">return</span>;</span><br><span class="line">                <span class="keyword">if</span>(isFind)&#123;</span><br><span class="line">                    dx = i;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                aug = augc;</span><br><span class="line">            &#125;</span><br><span class="line">            minDis = min(minDis, dis[edge[i].v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!isFind)&#123;</span><br><span class="line">        gap[dis[s]]--;</span><br><span class="line">        <span class="keyword">if</span>(gap[dis[s]] == <span class="number">0</span>) dis[<span class="number">1</span>] = n;</span><br><span class="line">        dis[s] = minDis + <span class="number">1</span>;</span><br><span class="line">        gap[dis[s]]++;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        edge[dx].w -= aug;</span><br><span class="line">        edge[dx ^ <span class="number">1</span>].w += aug;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) != EOF)&#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">int</span> u, v, w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">            addEdge(u, v, w);</span><br><span class="line">            addEdge(v, u, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(dis[<span class="number">1</span>] &lt; n)&#123;</span><br><span class="line">            isFind = <span class="number">0</span>;</span><br><span class="line">            aug = MAXN_INT;</span><br><span class="line">            Find(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; maxFlow &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="算法复杂度-1"><a href="#算法复杂度-1" class="headerlink" title="算法复杂度"></a>算法复杂度</h4><p>O(V^2 E)</p>
+<h3 id="预流推进算法"><a href="#预流推进算法" class="headerlink" title="预流推进算法"></a>预流推进算法</h3><h4 id="算法思想-2"><a href="#算法思想-2" class="headerlink" title="算法思想"></a>算法思想</h4><p>预流推进算法是从一个预流出发对活跃顶点沿着允许弧进行流量增广,每次增广称为一次推进。在推进过程中,流一定满足流量限制条件,但一般不满足流量平衡条件, 因此只是一个伪流。此外, 如果一个伪流中, 从每个顶点(除源点 V s 、汇点 V t 外)流出的流量之和总是小于等于流入该顶点的流量之和, 称这样的伪流为预流。因此这类算法被称为预流推进算法。</p>
+<h4 id="算法流程-3"><a href="#算法流程-3" class="headerlink" title="算法流程"></a>算法流程</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>首先用一边 BFS 为图中每个顶点一个标号dis[v], 表示该点到v的最短路.</span><br><span class="line"><span class="number">2.</span>将与 S 相连的边设为满流, 并将这时产生的活动结点加入队列Q。</span><br><span class="line"><span class="number">3.</span>选出 Q 的一个活动结点 u 并依次判断残量网咯 G’ 中每条边(u, v), 若 dis[u]=min(dis[v]+<span class="number">1</span>) 则顺着这些边推流, 直到 Q 变成非活动结点(不存在多余流量).</span><br><span class="line"><span class="number">4.</span>如果 u 还是活动结点，则需要对 u 进行重新标号: dis[u]=min(dis[v]+<span class="number">1</span>), 其中边 (u, v) 存在于 G’ 中,然后再将 u 加入队列。</span><br><span class="line"><span class="number">5.</span>重复<span class="number">3</span>, <span class="number">4</span>两个步骤直到队列 Q 为空。</span><br></pre></td></tr></table></figure>
+<h4 id="算法实现-3"><a href="#算法实现-3" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> size = <span class="number">501</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1</span> &lt;&lt; <span class="number">15</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> graph[size][size];</span><br><span class="line"><span class="keyword">int</span> label[size];        <span class="comment">//标号</span></span><br><span class="line"><span class="keyword">bool</span> visited[size];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> st, <span class="keyword">int</span> ed)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(label, <span class="number">-1</span>, <span class="keyword">sizeof</span>(label));</span><br><span class="line">    <span class="built_in">memset</span>(visited, <span class="literal">false</span>, <span class="keyword">sizeof</span>(visited));</span><br><span class="line">    label[st] = <span class="number">0</span>;</span><br><span class="line">    visited[st] = <span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">vector</span> &lt; <span class="keyword">int</span> &gt;plist;</span><br><span class="line">    plist.push_back(st);</span><br><span class="line">    <span class="keyword">while</span> (plist.size()) &#123;</span><br><span class="line">    <span class="keyword">int</span> p = plist[<span class="number">0</span>];</span><br><span class="line">    plist.erase(plist.begin());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (graph[i][p] &gt; <span class="number">0</span> &amp;&amp; !visited[i]) &#123;</span><br><span class="line">        plist.push_back(i);</span><br><span class="line">        visited[i] = <span class="literal">true</span>;</span><br><span class="line">        label[i] = label[p] + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (label[ed] == <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> inflow[size];       <span class="comment">//流入量</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxFlow</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(inflow, <span class="number">0</span>, <span class="keyword">sizeof</span>(inflow));</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//hights</span></span><br><span class="line">    bfs(size - <span class="number">1</span>, <span class="number">0</span>);       <span class="comment">//end point: size - 1, start point: 0</span></span><br><span class="line">    <span class="built_in">memset</span>(visited, <span class="literal">false</span>, <span class="keyword">sizeof</span>(visited));</span><br><span class="line"> </span><br><span class="line"><span class="comment">//prepare()</span></span><br><span class="line">    <span class="built_in">vector</span> &lt; <span class="keyword">int</span> &gt;plist;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (graph[start][i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        inflow[i] = graph[start][i];</span><br><span class="line">        graph[start][i] -= inflow[i];</span><br><span class="line">        graph[i][start] += inflow[i];</span><br><span class="line">        <span class="keyword">if</span> (!visited[i]) &#123;</span><br><span class="line">        plist.push_back(i);</span><br><span class="line">        visited[i] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (plist.size()) &#123;</span><br><span class="line">    <span class="keyword">int</span> p = plist[<span class="number">0</span>];</span><br><span class="line">    plist.erase(plist.begin());</span><br><span class="line">    visited[p] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> minLabel = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (graph[p][i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (label[p] == label[i] + <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> flow = min(inflow[p], graph[p][i]);</span><br><span class="line">            inflow[p] -= flow;</span><br><span class="line">            inflow[i] += flow;</span><br><span class="line">            graph[p][i] -= flow;</span><br><span class="line">            graph[i][p] += flow;</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (!visited[i] &amp;&amp; inflow[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            plist.push_back(i);</span><br><span class="line">            visited[i] = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (inflow[p] &gt; <span class="number">0</span> &amp;&amp; p != end) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (graph[p][i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (minLabel == <span class="number">-1</span> || minLabel &gt; label[i] + <span class="number">1</span>) &#123;</span><br><span class="line">            minLabel = label[i] + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!visited[p] &amp;&amp; minLabel != <span class="number">-1</span> &amp;&amp; minLabel &lt; size)    <span class="comment">//minLabel &lt; size, 这个条件需要加上, 因为经过测试发现有死循环的可能</span></span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (label[i] + <span class="number">1</span> == minLabel &amp;&amp; graph[p][i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            visited[p] = <span class="literal">true</span>;</span><br><span class="line">            label[p] = minLabel;</span><br><span class="line">            plist.push_back(p);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inflow[end];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="算法复杂度-2"><a href="#算法复杂度-2" class="headerlink" title="算法复杂度"></a>算法复杂度</h4><p>如果该算法的Q是标准的FIFO队列，则时间复杂度为(n2m)，最高标号不会超过n（超过时必无到汇的路径），所以n个点每个最多重新标号n次，两次标号之间m条边每条最多推流一次。如果是优先队列，并且标号最高的点优先的话，我们就得到了最高标号预流推进算法，其时间复杂度仅为n2m−−√.</p>
+<h3 id="最小费用最大流"><a href="#最小费用最大流" class="headerlink" title="最小费用最大流"></a>最小费用最大流</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>最小费用最大流是解决这么一种问题: 对于图中的每一条边来说, 除了有一个最大容量的属性以外，还有一个费用属性, 即流过这条边的单位流量的花费。求解的问题为在保证从源点到汇点的流量最大的前提下使得花费最少。</p>
+<h4 id="求解思想"><a href="#求解思想" class="headerlink" title="求解思想"></a>求解思想</h4><p>我们来考虑这么一个问题: 在最短路的一些变形的题目中往往有这种题，每条路不仅仅有一个长度还有一个建设的费用， 最终求从起点到终点在保证路最短的前提下，使得花费的钱最少。当时我们是怎么求解的呢？<br>首先我们知道，最短路的长度是一定的，但是组成一条最短路的边是不一定的，所以我们在搜索这条最短路的时候只要通过调整待选边的优先级来控制搜索的方向就可以满足上述问题的要求。<br>这个问题跟我们现在求解的最小费用最大流问题神似啊，只要我们在寻找增广路的时候调整待选边的优先级来控制寻找方向，这个问题就可以解决了啊。我们直到对于一条增广路来说, 花费满足: cost=minFlow∗∑wi(i∈增广路上的边), 实际上这里的优先级就是每条边的长度认为是其单位流量的花费的最短路。</p>
+<h4 id="求解算法"><a href="#求解算法" class="headerlink" title="求解算法"></a>求解算法</h4><p>基于最大流的三种算法，求解最小费用最大流也具有三种算法，我们来对比一下这三对算法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">最大流 EK 算法: 每次用广搜寻找一条最短的增广路（即包含最少的边），然后沿其增广。</span><br><span class="line">费用流 E’K’ 算法: 每次用spfa计算图的距离标号，然后沿着可行边进行增广。</span><br><span class="line"></span><br><span class="line">最大流 DINIC 算法: 用广搜获得每个点到源点的距离标号，增广时沿距离标号严格减1的路径增广，直到网络中不再存在这么一条路径，那么重新广搜计算距离标号，如果广搜发现整个源点到汇点已经不连通那么退出算法。</span><br><span class="line">费用流 原始对偶 算法: 用 SPFA 获得每个点到源点的最短路，增广时沿着最短路前进的方向增广, 直到网络中不存在一条路径时重新 SPFA 求最短路, 直到没有一条最短路可以到达汇点为止。</span><br><span class="line"></span><br><span class="line">最大流 SAP 算法: 与 dinic 一样基于距离标号，不过这里保存的是到汇点的距离标号。并且考虑每次增广对网络的影响，发现增广只会使点的距离标号变大，并且并不会破坏距离标号 dis[u]&lt;=dis[v]+w[u,v]   的性质，只会使得等号不再成立。找不到可行边就是因为没有一个结点v使得dis[u]==dis[v]+w[u,v]   。那么重新使等号成立的方法也很简单，并不需要重新计算整个图的距离标号，只需要调整距离标号：如果从u点开始寻找增广路没有成功，即没有一个v使得dis[u]==dis[v]+w[u,v]那么在所有（v∈V）中找到距离标号最小的一个v，使dis[u]=dis[v]+w[u,v]  </span><br><span class="line"></span><br><span class="line"> 即可。</span><br><span class="line"></span><br><span class="line">费用流 ZKW 算法: 每次增广，同样不会破坏距离标号dis[u]&lt;=dis[v]+w[u,v] ，只会使得等号不再成立。并且被破坏的点并没有很多（只有在增广路上的点有可能被破坏）。因此并不需要SPFA来重新计算全部的距离标号。如果某一次寻找可行边组成增广路的尝试进行到点u失败，那么在所有的边$（v∈V中找到距离标号最小的一个v，使中找到距离标号最小的一个v，使dis[v] == dis[v] + w[u, v]&amp;成立即可。</span><br></pre></td></tr></table></figure>
+<h4 id="算法实现-4"><a href="#算法实现-4" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXM = <span class="number">1000100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN_INT = (<span class="number">1</span> &lt;&lt; <span class="number">29</span>);</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v, w, c, nxt;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id, v;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">bool</span> vis[MAXN];</span><br><span class="line">Node pre[MAXN];</span><br><span class="line">Edge edge[MAXN];</span><br><span class="line"><span class="keyword">int</span> n, m, ecnt, sumFlow;</span><br><span class="line"><span class="keyword">int</span> head[MAXN], dis[MAXN];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ecnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(edge, <span class="number">0</span>, <span class="keyword">sizeof</span>(edge));</span><br><span class="line">    <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(head));</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> c, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    edge[ecnt].v = v;</span><br><span class="line">    edge[ecnt].w = w;</span><br><span class="line">    edge[ecnt].c = c;</span><br><span class="line">    edge[ecnt].nxt = head[u];</span><br><span class="line">    head[u] = ecnt++;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">    fill(dis, dis + MAXN, MAXN_INT);</span><br><span class="line">    vis[s] = <span class="literal">true</span>;</span><br><span class="line">    dis[s] = <span class="number">0</span>;</span><br><span class="line">    que.push(s);</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u =que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        vis[u] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u]; i + <span class="number">1</span>; i = edge[i].nxt)&#123;</span><br><span class="line">            <span class="keyword">int</span> v = edge[i].v;</span><br><span class="line">            <span class="keyword">if</span>(edge[i].c &amp;&amp; dis[v] &gt; dis[u] + edge[i].c)&#123;</span><br><span class="line">                dis[v] = dis[u] + edge[i].c;</span><br><span class="line">                pre[v].v = u;</span><br><span class="line">                pre[v].id = i;</span><br><span class="line">                <span class="keyword">if</span>(!vis[v])&#123;</span><br><span class="line">                    que.push(v);</span><br><span class="line">                    vis[v] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dis[t] == MAXN_INT) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MCMF</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flow = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> minCost = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(SPFA(s, t, n))&#123;</span><br><span class="line">        <span class="keyword">int</span> minFlow = MAXN_INT + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pre[i].v)&#123;</span><br><span class="line">            minFlow = min(minFlow, edge[pre[i].id].w);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = t; i != s; i = pre[i].v)&#123;</span><br><span class="line">            edge[pre[i].id].w -= minFlow;</span><br><span class="line">            edge[pre[i].id ^ <span class="number">1</span>].w += minFlow;</span><br><span class="line">        &#125;</span><br><span class="line">        minCost += dis[t] * minFlow;</span><br><span class="line">    &#125;</span><br><span class="line">    sumFlow = flow;</span><br><span class="line">    <span class="keyword">return</span> minCost;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) != EOF)&#123;</span><br><span class="line">        <span class="keyword">int</span> u, v, c, w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;u, &amp;v, &amp;c, &amp;w);</span><br><span class="line">            addEdge(u, v, c, w);</span><br><span class="line">            addEdge(v, u, -c, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = MCMF(<span class="number">1</span>, n, n);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络流/" rel="tag"># 网络流</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/04/UVALive - 3126/" rel="next" title="训练指南 UVALive - 3126（DAG最小路径覆盖）">
+                <i class="fa fa-chevron-left"></i> 训练指南 UVALive - 3126（DAG最小路径覆盖）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Indice
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Panoramica
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">luowentaoaa</p>
+              <p class="site-description motion-element" itemprop="description">嘤嘤嘤</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-网络流-流-amp-网络-amp-割"><span class="nav-number">1.</span> <span class="nav-text">一.网络流:流&amp;网络&amp;割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-网络流问题-NetWork-Flow-Problem"><span class="nav-number">1.1.</span> <span class="nav-text">1.网络流问题(NetWork Flow Problem):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-三个基本的性质"><span class="nav-number">1.2.</span> <span class="nav-text">2.三个基本的性质:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-容量网络-amp-流量网络-amp-残留网络"><span class="nav-number">1.3.</span> <span class="nav-text">3.容量网络&amp;流量网络&amp;残留网络:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-割-amp-割集"><span class="nav-number">1.4.</span> <span class="nav-text">4.割&amp;割集:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-计算最大流的基本算法"><span class="nav-number">2.</span> <span class="nav-text">二.计算最大流的基本算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Edmonds-Karp算法-即最短路径增广算法-简称EK算法"><span class="nav-number">2.1.</span> <span class="nav-text">Edmonds-Karp算法 即最短路径增广算法 简称EK算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-最多要增广多少次"><span class="nav-number">2.2.</span> <span class="nav-text">1.最多要增广多少次?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-如何找到一条增广路"><span class="nav-number">2.3.</span> <span class="nav-text">2.如何找到一条增广路?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何增广"><span class="nav-number">2.4.</span> <span class="nav-text">.如何增广?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-最大流最小割定理"><span class="nav-number">3.</span> <span class="nav-text">三.最大流最小割定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-任意一个流都小于等于任意一个割"><span class="nav-number">3.1.</span> <span class="nav-text">1.任意一个流都小于等于任意一个割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-构造出一个流等于一个割"><span class="nav-number">3.2.</span> <span class="nav-text">2.构造出一个流等于一个割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-最大流等于最小割"><span class="nav-number">3.3.</span> <span class="nav-text">3.最大流等于最小割</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大流"><span class="nav-number">4.</span> <span class="nav-text">最大流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增广路算法-Ford-Fulkerson"><span class="nav-number">4.1.</span> <span class="nav-text">增广路算法(Ford-Fulkerson)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般增广路算法-EdmondsKarp"><span class="nav-number">4.2.</span> <span class="nav-text">一般增广路算法(EdmondsKarp)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法流程"><span class="nav-number">4.2.1.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现"><span class="nav-number">4.2.2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法复杂度"><span class="nav-number">4.2.3.</span> <span class="nav-text">算法复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dinic算法"><span class="nav-number">4.3.</span> <span class="nav-text">Dinic算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想"><span class="nav-number">4.3.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法流程-1"><span class="nav-number">4.3.2.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现-1"><span class="nav-number">4.3.3.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当前弧优化和多路增广"><span class="nav-number">4.3.4.</span> <span class="nav-text">当前弧优化和多路增广</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间复杂度"><span class="nav-number">4.3.5.</span> <span class="nav-text">时间复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短增广路算法-SAP"><span class="nav-number">4.4.</span> <span class="nav-text">最短增广路算法(SAP)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想-1"><span class="nav-number">4.4.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法流程-2"><span class="nav-number">4.4.2.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现-2"><span class="nav-number">4.4.3.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法复杂度-1"><span class="nav-number">4.4.4.</span> <span class="nav-text">算法复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预流推进算法"><span class="nav-number">4.5.</span> <span class="nav-text">预流推进算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思想-2"><span class="nav-number">4.5.1.</span> <span class="nav-text">算法思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法流程-3"><span class="nav-number">4.5.2.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现-3"><span class="nav-number">4.5.3.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法复杂度-2"><span class="nav-number">4.5.4.</span> <span class="nav-text">算法复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小费用最大流"><span class="nav-number">4.6.</span> <span class="nav-text">最小费用最大流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">4.6.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解思想"><span class="nav-number">4.6.2.</span> <span class="nav-text">求解思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解算法"><span class="nav-number">4.6.3.</span> <span class="nav-text">求解算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现-4"><span class="nav-number">4.6.4.</span> <span class="nav-text">算法实现</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luowentaoaa</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Tema – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
