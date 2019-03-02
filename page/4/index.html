@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -264,6 +264,155 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/02/02/UVA - 11478/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/02/UVA - 11478/" itemprop="url">
+                  训练指南 UVA - 11478（最短路BellmanFord+ 二分+ 差分约束）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-02-02 16:51:58 / Updated at: 17:13:12" itemprop="dateCreated datePublished" datetime="2019-02-02T16:51:58+08:00">2019-02-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Halum"><a href="#Halum" class="headerlink" title="Halum"></a>Halum</h2><p><a href="https://vjudge.net/problem/34651/origin" target="_blank" rel="noopener">UVA - 11478 </a></p>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>带权有向图，每个点都可以有如下操作：令从ta出发的每一条边增加d，终止于ta的每一条边减小d<br>最后让所有边权的最小值非负且尽量大</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>考虑每条边的约束，di表示i的halum量</p>
+<p>w-dv+du&gt;0</p>
+<p>dv-du&lt;w</p>
+<p>但求解这个差分约束系统只是让这组不等式成立，最长路和最短路控制的都是单个d的最值而不是最小值最大</p>
+<p>那如何最小值最大呢？</p>
+<p>二分答案……</p>
+<p>那么不等式变为dv-du&lt;w-mid，成立的话说明经过操作后边权可以都比mid大</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2700</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> from, to;</span><br><span class="line">    <span class="keyword">int</span> dist;</span><br><span class="line">    Edge() &#123;&#125;</span><br><span class="line">    Edge(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> d) : from(u), to(v), dist(d) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BellmanFord</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Edge&gt;edges;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line">    <span class="keyword">bool</span> inq[maxn]; <span class="comment">/// 是否在队列中</span></span><br><span class="line">    <span class="keyword">int</span> d[maxn];    <span class="comment">/// s到各个点的距离  double 要改成double类型</span></span><br><span class="line">    <span class="keyword">int</span> p[maxn];    <span class="comment">/// 最短路中的上一条弧</span></span><br><span class="line">    <span class="keyword">int</span> cnt[maxn];  <span class="comment">/// 进队次数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;n=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)G[i].clear();</span><br><span class="line">        edges.clear();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> dist)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        edges.emplace_back(from, to, dist);</span><br><span class="line">        m = edges.size();</span><br><span class="line">        G[from].push_back(m - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">bellmanford</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;Q;</span><br><span class="line">        <span class="built_in">memset</span>(inq,<span class="number">0</span>,<span class="keyword">sizeof</span>(inq));</span><br><span class="line">        <span class="built_in">memset</span>(cnt,<span class="number">0</span>,<span class="keyword">sizeof</span>(cnt));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123; d[i] = <span class="number">0</span>; inq[<span class="number">0</span>] = <span class="literal">true</span>; Q.push(i); &#125; <span class="comment">///如果只判负环用这个</span></span><br><span class="line">        <span class="comment">//for(int i=0;i&lt;n;i++)d[i]=inf;</span></span><br><span class="line">        <span class="comment">//d[s]=0;inq[s]=true;Q.push(s);</span></span><br><span class="line">        <span class="keyword">while</span>(!Q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> u=Q.front();</span><br><span class="line">            Q.pop();</span><br><span class="line">            inq[u]=<span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; id:G[u])&#123;</span><br><span class="line">                Edge&amp; e=edges[id];</span><br><span class="line">                <span class="keyword">if</span>(d[u]&lt;inf &amp;&amp; d[e.to]&gt;d[u]+e.dist)&#123;</span><br><span class="line">                    d[e.to]=d[u] + e.dist;</span><br><span class="line">                    p[e.to]=id;</span><br><span class="line">                    <span class="keyword">if</span>(!inq[e.to])&#123;</span><br><span class="line">                        Q.push(e.to);</span><br><span class="line">                        inq[e.to]=<span class="literal">true</span>;</span><br><span class="line">                        <span class="keyword">if</span>(++cnt[e.to]&gt;n)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BellmanFord solver;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;solver.m;i++)</span><br><span class="line">        solver.edges[i].dist-=x;</span><br><span class="line">    <span class="keyword">bool</span> ret=solver.bellmanford(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;solver.m;i++)</span><br><span class="line">        solver.edges[i].dist+=x;</span><br><span class="line">    <span class="keyword">return</span> !ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m)&#123;</span><br><span class="line">        solver.init(n);</span><br><span class="line">        <span class="keyword">int</span> ub=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">            <span class="keyword">int</span> u,v,d;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;d;ub=max(ub,d);</span><br><span class="line">            solver.AddEdge(u<span class="number">-1</span>,v<span class="number">-1</span>,d);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(test(ub+<span class="number">1</span>))<span class="built_in">cout</span>&lt;&lt;<span class="string">"Infinite"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!test(<span class="number">1</span>))<span class="built_in">cout</span>&lt;&lt;<span class="string">"No Solution"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> l=<span class="number">2</span>,r=ub,ans=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">                <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(test(mid))&#123;ans=mid;l=mid+<span class="number">1</span>;&#125;</span><br><span class="line">                <span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +468,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-02-02 13:06:32 / Modified: 13:09:47" itemprop="dateCreated datePublished" datetime="2019-02-02T13:06:32+08:00">2019-02-02</time>
+              <time title="Post created: 2019-02-02 13:06:32 / Updated at: 13:09:47" itemprop="dateCreated datePublished" datetime="2019-02-02T13:06:32+08:00">2019-02-02</time>
             
 
             
@@ -463,14 +612,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-02-01 23:54:23 / Modified: 23:59:53" itemprop="dateCreated datePublished" datetime="2019-02-01T23:54:23+08:00">2019-02-01</time>
+              <time title="Post created: 2019-02-01 23:54:23 / Updated at: 23:59:53" itemprop="dateCreated datePublished" datetime="2019-02-01T23:54:23+08:00">2019-02-01</time>
             
 
             
@@ -607,14 +756,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-02-01 23:01:48 / Modified: 23:11:03" itemprop="dateCreated datePublished" datetime="2019-02-01T23:01:48+08:00">2019-02-01</time>
+              <time title="Post created: 2019-02-01 23:01:48 / Updated at: 23:11:03" itemprop="dateCreated datePublished" datetime="2019-02-01T23:01:48+08:00">2019-02-01</time>
             
 
             
@@ -750,14 +899,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-02-01 22:44:34 / Modified: 22:47:53" itemprop="dateCreated datePublished" datetime="2019-02-01T22:44:34+08:00">2019-02-01</time>
+              <time title="Post created: 2019-02-01 22:44:34 / Updated at: 22:47:53" itemprop="dateCreated datePublished" datetime="2019-02-01T22:44:34+08:00">2019-02-01</time>
             
 
             
@@ -893,14 +1042,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-02-01 18:08:40 / Modified: 18:35:50" itemprop="dateCreated datePublished" datetime="2019-02-01T18:08:40+08:00">2019-02-01</time>
+              <time title="Post created: 2019-02-01 18:08:40 / Updated at: 18:35:50" itemprop="dateCreated datePublished" datetime="2019-02-01T18:08:40+08:00">2019-02-01</time>
             
 
             
@@ -1061,14 +1210,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-02-01 16:40:48 / Modified: 16:55:59" itemprop="dateCreated datePublished" datetime="2019-02-01T16:40:48+08:00">2019-02-01</time>
+              <time title="Post created: 2019-02-01 16:40:48 / Updated at: 16:55:59" itemprop="dateCreated datePublished" datetime="2019-02-01T16:40:48+08:00">2019-02-01</time>
             
 
             
@@ -1215,14 +1364,14 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-01-31 19:31:53 / Modified: 19:48:59" itemprop="dateCreated datePublished" datetime="2019-01-31T19:31:53+08:00">2019-01-31</time>
+              <time title="Post created: 2019-01-31 19:31:53 / Updated at: 19:48:59" itemprop="dateCreated datePublished" datetime="2019-01-31T19:31:53+08:00">2019-01-31</time>
             
 
             
@@ -1358,14 +1507,14 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-01-31 19:09:07 / Modified: 19:41:07" itemprop="dateCreated datePublished" datetime="2019-01-31T19:09:07+08:00">2019-01-31</time>
+              <time title="Post created: 2019-01-31 19:09:07 / Updated at: 19:41:07" itemprop="dateCreated datePublished" datetime="2019-01-31T19:09:07+08:00">2019-01-31</time>
             
 
             
@@ -1502,14 +1651,14 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-01-31 17:38:36 / Modified: 17:40:49" itemprop="dateCreated datePublished" datetime="2019-01-31T17:38:36+08:00">2019-01-31</time>
+              <time title="Post created: 2019-01-31 17:38:36 / Updated at: 17:40:49" itemprop="dateCreated datePublished" datetime="2019-01-31T17:38:36+08:00">2019-01-31</time>
             
 
             
@@ -1553,149 +1702,6 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
 <h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给一张有向图G，求一个结点数最大的结点集，使得该结点中任意两个结点 u 和 v满足：要么 u 可以到达 v， 要么 v 可以到达 u（u 和 v 相互可达也可以）。</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>同一个强连通分量中的点要么都选，要么不选。把强连通分量收缩点后得到SCC图，让每个SCC结点的权等于它的结点数，则题目转化为求SCC图上权最大的路径。所以转化成了dp求DAG上的最长路。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[maxn],g[maxn];</span><br><span class="line"><span class="keyword">int</span> pre[maxn],lowlink[maxn],sccno[maxn],dfs_clock,scc_cnt,sccnum[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;S;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    pre[u]=lowlink[u]=++dfs_clock;</span><br><span class="line">    S.push(u);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=G[u][i];</span><br><span class="line">        <span class="keyword">if</span>(!pre[v])&#123;</span><br><span class="line">            dfs(v);</span><br><span class="line">            lowlink[u]=min(lowlink[u],lowlink[v]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!sccno[v])&#123;</span><br><span class="line">            lowlink[u]=min(lowlink[u],pre[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(lowlink[u]==pre[u])&#123;</span><br><span class="line">        scc_cnt++;</span><br><span class="line">        <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">            <span class="keyword">int</span> x=S.top();S.pop();</span><br><span class="line">            sccno[x]=scc_cnt;</span><br><span class="line">            sccnum[scc_cnt]++;</span><br><span class="line">            <span class="keyword">if</span>(x==u)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find_scc</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    dfs_clock=scc_cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(sccno,<span class="number">0</span>,<span class="keyword">sizeof</span>(sccno));</span><br><span class="line">    <span class="built_in">memset</span>(pre,<span class="number">0</span>,<span class="keyword">sizeof</span>(pre));</span><br><span class="line">    <span class="built_in">memset</span>(sccnum,<span class="number">0</span>,<span class="keyword">sizeof</span>(sccnum));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">if</span>(!pre[i])dfs(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> d[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dp</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> &amp;ans=d[i];</span><br><span class="line">    <span class="keyword">if</span>(ans&gt;=<span class="number">0</span>)<span class="keyword">return</span> ans;</span><br><span class="line">    ans=sccnum[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;g[i].size();j++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=g[i][j];</span><br><span class="line">        ans=max(ans,dp(v)+sccnum[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">   <span class="comment">// freopen("input.txt","r",stdin);</span></span><br><span class="line">    <span class="comment">//freopen("output.txt","w",stdout);</span></span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="keyword">int</span> n,m;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)G[i].clear(),g[i].clear();</span><br><span class="line">        <span class="keyword">int</span> u,v;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">            u--;v--;</span><br><span class="line">            G[u].push_back(v);</span><br><span class="line">        &#125;</span><br><span class="line">        find_scc(n);</span><br><span class="line">        <span class="built_in">memset</span>(d,<span class="number">-1</span>,<span class="keyword">sizeof</span>(d));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> u=<span class="number">0</span>;u&lt;n;u++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> v=G[u][i];</span><br><span class="line">            <span class="keyword">if</span>(sccno[u]!=sccno[v])</span><br><span class="line">                g[sccno[u]].push_back(sccno[v]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=scc_cnt;i++)</span><br><span class="line">            ans=max(ans,dp(i));</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/01/31/UVALive - 4287/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/31/UVALive - 4287/" itemprop="url">
-                  训练指南 UVALive - 4287 （强连通分量+缩点）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-31 16:44:09 / Modified: 16:48:55" itemprop="dateCreated datePublished" datetime="2019-01-31T16:44:09+08:00">2019-01-31</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Proving-Equivalences"><a href="#Proving-Equivalences" class="headerlink" title="Proving Equivalences"></a>Proving Equivalences</h2><p><a href="https://vjudge.net/problem/10294/origin" target="_blank" rel="noopener">UVALive - 4287 </a></p>
-<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>有n个命题，已知其中的m个推导，要证明n个命题全部等价（等价具有传递性），最少还需要做出几次推导。</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>由已知的推导可以建一张无向图，则问题变成了最少需要增加几条边能使图变成强连通图。找出所有的强连通分量，将每一个连通分量视作一个大节点，则整张图变成了一张DAG。设出度为0的大节点个数为a，入度为0的大节点个数为b，则答案就是max(a,b)。为什么是这样呢？因为要使等价证明前进下去，每个大节点的出度和入度都必须不能是0。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[maxn];</span><br><span class="line"><span class="keyword">int</span> pre[maxn],lowlink[maxn],sccno[maxn],dfs_clock,scc_cnt;</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;S;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    pre[u]=lowlink[u]=++dfs_clock;</span><br><span class="line">    S.push(u);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=G[u][i];</span><br><span class="line">        <span class="keyword">if</span>(!pre[v])&#123;</span><br><span class="line">            dfs(v);</span><br><span class="line">            lowlink[u]=min(lowlink[u],lowlink[v]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!sccno[v])&#123;</span><br><span class="line">            lowlink[u]=min(lowlink[u],pre[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(lowlink[u]==pre[u])&#123;</span><br><span class="line">        scc_cnt++;</span><br><span class="line">        <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">            <span class="keyword">int</span> x=S.top();S.pop();</span><br><span class="line">            sccno[x]=scc_cnt;</span><br><span class="line">            <span class="keyword">if</span>(x==u)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find_scc</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    dfs_clock=scc_cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(sccno,<span class="number">0</span>,<span class="keyword">sizeof</span>(sccno));</span><br><span class="line">    <span class="built_in">memset</span>(pre,<span class="number">0</span>,<span class="keyword">sizeof</span>(pre));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">if</span>(!pre[i])dfs(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> in[maxn],out[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="keyword">int</span> n,m;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)G[i].clear();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> u,v;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;u--;v--;</span><br><span class="line">            G[u].push_back(v);</span><br><span class="line">        &#125;</span><br><span class="line">        find_scc(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=scc_cnt;i++)in[i]=out[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> u=<span class="number">0</span>;u&lt;n;u++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[u].size();i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> v=G[u][i];</span><br><span class="line">            <span class="keyword">if</span>(sccno[u]!=sccno[v])in[sccno[v]]=out[sccno[u]]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">0</span>,b=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=scc_cnt;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(in[i])a++;</span><br><span class="line">            <span class="keyword">if</span>(out[i])b++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(scc_cnt==<span class="number">1</span>)<span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;max(a,b)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1781,8 +1787,8 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">69</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -1889,7 +1895,7 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
                       
                     
                     <span class="site-state-item-count">46</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   
                 </div>
               
@@ -1942,7 +1948,7 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
