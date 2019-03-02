@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -264,6 +264,147 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/02/04/UVALive - 3989/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/04/UVALive - 3989/" itemprop="url">
+                  训练指南 UVALive - 3989（稳定婚姻问题）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-04 21:58:17 / Modified: 22:00:06" itemprop="dateCreated datePublished" datetime="2019-02-04T21:58:17+08:00">2019-02-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Ladies’-Choice"><a href="#Ladies’-Choice" class="headerlink" title="Ladies’ Choice"></a>Ladies’ Choice</h2><p><a href="https://vjudge.net/problem/13673/origin" target="_blank" rel="noopener">UVALive - 3989</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1e10</span>;</span><br><span class="line"><span class="keyword">const</span> ll INF = <span class="number">1000000000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-5</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> bug cout&lt;&lt;<span class="meta-string">"bbibibibbbb="</span>&lt;&lt;endl;</span></span><br><span class="line"><span class="keyword">int</span> pref[maxn][maxn],order[maxn][maxn],Next[maxn],future_husband[maxn],future_wife[maxn];</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;Q;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">engage</span><span class="params">(<span class="keyword">int</span> man,<span class="keyword">int</span> woman)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m=future_husband[woman];</span><br><span class="line">    <span class="keyword">if</span>(m)future_wife[m]=<span class="number">0</span>,Q.push(m);</span><br><span class="line">    future_wife[man]=woman;</span><br><span class="line">    future_husband[woman]=man;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">                <span class="built_in">cin</span>&gt;&gt;pref[i][j];</span><br><span class="line">            Next[i]=<span class="number">1</span>;</span><br><span class="line">            future_wife[i]=<span class="number">0</span>;</span><br><span class="line">            Q.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> x;<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">                order[i][x]=j;</span><br><span class="line">            &#125;</span><br><span class="line">            future_husband[i]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!Q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> man=Q.front();Q.pop();</span><br><span class="line">            <span class="keyword">int</span> woman=pref[man][Next[man]++];</span><br><span class="line">            <span class="keyword">if</span>(!future_husband[woman])engage(man,woman);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(order[woman][man]&lt;order[woman][future_husband[woman]])engage(man,woman);</span><br><span class="line">            <span class="keyword">else</span> Q.push(man);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!Q.empty())Q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cout</span>&lt;&lt;future_wife[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">if</span>(t)<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +460,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-04 14:51:42 / Updated at: 19:29:39" itemprop="dateCreated datePublished" datetime="2019-02-04T14:51:42+08:00">2019-02-04</time>
+              <time title="Created: 2019-02-04 14:51:42 / Modified: 19:29:39" itemprop="dateCreated datePublished" datetime="2019-02-04T14:51:42+08:00">2019-02-04</time>
             
 
             
@@ -475,14 +616,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-03 22:32:04 / Updated at: 23:31:59" itemprop="dateCreated datePublished" datetime="2019-02-03T22:32:04+08:00">2019-02-03</time>
+              <time title="Created: 2019-02-03 22:32:04 / Modified: 23:31:59" itemprop="dateCreated datePublished" datetime="2019-02-03T22:32:04+08:00">2019-02-03</time>
             
 
             
@@ -620,14 +761,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-03 21:04:54 / Updated at: 22:05:21" itemprop="dateCreated datePublished" datetime="2019-02-03T21:04:54+08:00">2019-02-03</time>
+              <time title="Created: 2019-02-03 21:04:54 / Modified: 22:05:21" itemprop="dateCreated datePublished" datetime="2019-02-03T21:04:54+08:00">2019-02-03</time>
             
 
             
@@ -778,14 +919,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-03 20:40:25 / Updated at: 20:42:34" itemprop="dateCreated datePublished" datetime="2019-02-03T20:40:25+08:00">2019-02-03</time>
+              <time title="Created: 2019-02-03 20:40:25 / Modified: 20:42:34" itemprop="dateCreated datePublished" datetime="2019-02-03T20:40:25+08:00">2019-02-03</time>
             
 
             
@@ -921,14 +1062,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-02 21:38:25" itemprop="dateCreated datePublished" datetime="2019-02-02T21:38:25+08:00">2019-02-02</time>
+              <time title="Created: 2019-02-02 21:38:25" itemprop="dateCreated datePublished" datetime="2019-02-02T21:38:25+08:00">2019-02-02</time>
             
 
             
@@ -945,7 +1086,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-03 16:57:31" itemprop="dateModified" datetime="2019-02-03T16:57:31+08:00">2019-02-03</time>
+                <time title="Modified: 2019-02-03 16:57:31" itemprop="dateModified" datetime="2019-02-03T16:57:31+08:00">2019-02-03</time>
               
             
           </span>
@@ -1074,14 +1215,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-02 21:37:23 / Updated at: 23:31:14" itemprop="dateCreated datePublished" datetime="2019-02-02T21:37:23+08:00">2019-02-02</time>
+              <time title="Created: 2019-02-02 21:37:23 / Modified: 23:31:14" itemprop="dateCreated datePublished" datetime="2019-02-02T21:37:23+08:00">2019-02-02</time>
             
 
             
@@ -1237,14 +1378,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-02 21:06:30 / Updated at: 21:27:41" itemprop="dateCreated datePublished" datetime="2019-02-02T21:06:30+08:00">2019-02-02</time>
+              <time title="Created: 2019-02-02 21:06:30 / Modified: 21:27:41" itemprop="dateCreated datePublished" datetime="2019-02-02T21:06:30+08:00">2019-02-02</time>
             
 
             
@@ -1380,14 +1521,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-02 19:34:41 / Updated at: 19:38:06" itemprop="dateCreated datePublished" datetime="2019-02-02T19:34:41+08:00">2019-02-02</time>
+              <time title="Created: 2019-02-02 19:34:41 / Modified: 19:38:06" itemprop="dateCreated datePublished" datetime="2019-02-02T19:34:41+08:00">2019-02-02</time>
             
 
             
@@ -1523,14 +1664,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-02-02 16:51:58 / Updated at: 17:13:12" itemprop="dateCreated datePublished" datetime="2019-02-02T16:51:58+08:00">2019-02-02</time>
+              <time title="Created: 2019-02-02 16:51:58 / Modified: 17:13:12" itemprop="dateCreated datePublished" datetime="2019-02-02T16:51:58+08:00">2019-02-02</time>
             
 
             
@@ -1618,150 +1759,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/02/02/UVA - 11090/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/02/UVA - 11090/" itemprop="url">
-                  训练指南 UVA - 11090（最短路BellmanFord+ 二分判负环）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-02-02 13:06:32 / Updated at: 13:09:47" itemprop="dateCreated datePublished" datetime="2019-02-02T13:06:32+08:00">2019-02-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> Going in Cycle!!</p>
-<p><a href="https://vjudge.net/problem/34650/origin" target="_blank" rel="noopener">UVA - 11090 </a></p>
-<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>就最小的环的平均权值</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>分枚举平均值mid，只需判断是否存在平均值小于mid的回路，即判断是否有sum(wi)&lt;mid*k （1≤i≤k），只需判断是否有sum(wi-mid)&lt;0，只需将边权值减去mid后，判断是否存在负环。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1000000000</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> from, to;</span><br><span class="line">    <span class="keyword">double</span> dist;</span><br><span class="line">    Edge() &#123;&#125;</span><br><span class="line">    Edge(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">double</span> d) : from(u), to(v), dist(d) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BellmanFord</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Edge&gt;edges;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line">    <span class="keyword">bool</span> inq[maxn]; <span class="comment">/// 是否在队列中</span></span><br><span class="line">    <span class="keyword">double</span> d[maxn];    <span class="comment">/// s到各个点的距离  double 要改成double类型</span></span><br><span class="line">    <span class="keyword">int</span> p[maxn];    <span class="comment">/// 最短路中的上一条弧</span></span><br><span class="line">    <span class="keyword">int</span> cnt[maxn];  <span class="comment">/// 进队次数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;n=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)G[i].clear();</span><br><span class="line">        edges.clear();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> dist)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        edges.emplace_back(from, to, dist);</span><br><span class="line">        m = edges.size();</span><br><span class="line">        G[from].push_back(m - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">bellmanford</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;Q;</span><br><span class="line">        <span class="built_in">memset</span>(inq,<span class="number">0</span>,<span class="keyword">sizeof</span>(inq));</span><br><span class="line">        <span class="built_in">memset</span>(cnt,<span class="number">0</span>,<span class="keyword">sizeof</span>(cnt));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123; d[i] = <span class="number">0</span>; inq[<span class="number">0</span>] = <span class="literal">true</span>; Q.push(i); &#125; <span class="comment">//如果只判负环用这个</span></span><br><span class="line">        <span class="comment">/*for(int i=0;i&lt;n;i++)d[i]=inf;</span></span><br><span class="line"><span class="comment">        d[s]=0;inq[s]=true;Q.push(s);*/</span></span><br><span class="line">        <span class="keyword">while</span>(!Q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> u=Q.front();</span><br><span class="line">            Q.pop();</span><br><span class="line">            inq[u]=<span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; id:G[u])&#123;</span><br><span class="line">                Edge&amp; e=edges[id];</span><br><span class="line">                <span class="keyword">if</span>(d[u]&lt;inf &amp;&amp; d[e.to]&gt;d[u]+e.dist)&#123;</span><br><span class="line">                    d[e.to]=d[u] + e.dist;</span><br><span class="line">                    p[e.to]=id;</span><br><span class="line">                    <span class="keyword">if</span>(!inq[e.to])&#123;</span><br><span class="line">                        Q.push(e.to);</span><br><span class="line">                        inq[e.to]=<span class="literal">true</span>;</span><br><span class="line">                        <span class="keyword">if</span>(++cnt[e.to]&gt;n)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BellmanFord solver;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">test</span><span class="params">(<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;solver.m;i++)</span><br><span class="line">        solver.edges[i].dist-=x;</span><br><span class="line">    <span class="keyword">bool</span> ret=solver.bellmanford(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;solver.m;i++)</span><br><span class="line">        solver.edges[i].dist+=x;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> kase=<span class="number">1</span>;kase&lt;=t;kase++)&#123;</span><br><span class="line">        <span class="keyword">int</span> n,m;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">        solver.init(n);</span><br><span class="line">        <span class="keyword">int</span> ub=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">            <span class="keyword">int</span> u,v,w;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;u,&amp;v,&amp;w);u--;v--;ub=max(ub,w);</span><br><span class="line">            solver.AddEdge(u,v,w);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case #%d: "</span>, kase);</span><br><span class="line">        <span class="keyword">if</span>(!test(ub+<span class="number">1</span>))<span class="built_in">printf</span>(<span class="string">"No cycle found.\n"</span>);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">double</span> l=<span class="number">0</span>,r=ub;</span><br><span class="line">            <span class="keyword">while</span>(r-l&gt;<span class="number">1e-4</span>)&#123;</span><br><span class="line">                <span class="keyword">double</span> mid=l+(r-l)/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(test(mid))r=mid;</span><br><span class="line">                <span class="keyword">else</span> l=mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>,l);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1809,8 +1806,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">68</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -1917,7 +1914,7 @@
                       
                     
                     <span class="site-state-item-count">46</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -1970,7 +1967,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
