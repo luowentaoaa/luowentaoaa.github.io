@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="传送门 A - Sushi for Two(签到)题意在一个 01 序列中找出长为偶数的连续的一段使得它前一半和后一半内部分别相同，而前一半和后一半不同。 思路纸上模拟了一下然后预处理 赛后发现太麻烦了 12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;bits/stdc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-11T16:17:15.550Z">
+<meta property="og:updated_time" content="2019-03-13T15:10:52.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces Round 545 (Div. 2)">
 <meta name="twitter:description" content="传送门 A - Sushi for Two(签到)题意在一个 01 序列中找出长为偶数的连续的一段使得它前一半和后一半内部分别相同，而前一半和后一半不同。 思路纸上模拟了一下然后预处理 赛后发现太麻烦了 12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;bits/stdc">
@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -315,14 +315,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-03-11 23:50:53" itemprop="dateCreated datePublished" datetime="2019-03-11T23:50:53+08:00">2019-03-11</time>
+              <time title="Post created: 2019-03-11 23:50:53" itemprop="dateCreated datePublished" datetime="2019-03-11T23:50:53+08:00">2019-03-11</time>
             
 
             
@@ -339,7 +339,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-12 00:17:15" itemprop="dateModified" datetime="2019-03-12T00:17:15+08:00">2019-03-12</time>
+                <time title="Updated at: 2019-03-13 23:10:52" itemprop="dateModified" datetime="2019-03-13T23:10:52+08:00">2019-03-13</time>
               
             
           </span>
@@ -398,6 +398,17 @@
 <p>之后系统会告诉你现在哪些点有人，分别是谁</p>
 <p>把所有人移动到终点就输出“done”结束</p>
 <h4 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h4><p>裸的Floyd算法 过程完全一模一样</p>
+<p>首先让两个人一个一次移动一步，一个一次移动两步。</p>
+<p>然后两人会在一个点相遇。次数假设慢的人经过的距离为$s$ 那么快的人距离为$2s$</p>
+<p>$s=m+i*l+k$    1式 </p>
+<p>$2s=m+j*l+k$  2式</p>
+<p>两式相减</p>
+<p>$s=(j-i)l$  3式</p>
+<p>带入1式 </p>
+<script type="math/tex; mode=display">
+s=m+i*l+k\\(j-i)l=m+i*l+k\\(j-2i)l=m+k\\（j-2i）l-k=m</script><p>所以当一个点开始从m走到起点时，另一个点也走到了开始的地方</p>
+<p>我的想法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设出发起点到环起点的距离为m，已经确定有环，环的周长为n，（第一次）相遇点距离环的起点的距离是k。那么当两者相遇时，慢指针（t）移动的总距离i = m + a * n + k，快指针（h）的移动距离为2i，2i = m + b * n + k。其中，a和b分别为t和h在第一次相遇时转过的圈数。让两者相减（快减慢），那么有i = (b - a) * n。即i是圈长度的倍数。</span><br><span class="line"></span><br><span class="line">将一个指针移到出发起点S，另一个指针仍呆在相遇节点M处两者同时移动，每次移动一步。当第一个指针前进了m，即到达环起点时，另一个指针距离链表起点为i + m。考虑到i为圈长度的倍数，可以理解为指针从链表起点出发，走到环起点，然后绕环转了几圈，所以第二个指针也必然在环的起点。即两者相遇点就是环的起点。</span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1e17</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fflush(<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=t;i++)<span class="built_in">scanf</span>(<span class="string">"%*s"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"next 0 1"</span>),get();</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"next 0"</span>),get();</span><br><span class="line">    &#125;<span class="keyword">while</span>(t==<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"next 0 1 2 3 4 5 6 7 8 9"</span>),get();</span><br><span class="line">    &#125;<span class="keyword">while</span>(t==<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"done"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -435,6 +446,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/13/Codeforces Round 546 (Div. 2)/" rel="prev" title="Codeforces Round 546 (Div. 2)">
+                Codeforces Round 546 (Div. 2) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -481,10 +496,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -504,8 +519,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">72</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -614,7 +629,7 @@
                       
                     
                     <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   
                 </div>
               
@@ -683,7 +698,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
