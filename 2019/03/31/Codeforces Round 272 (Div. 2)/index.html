@@ -108,24 +108,24 @@
 
 
 
-  <meta name="description" content="传送门 C - 24 Game (分类讨论 构造)思路首先$n&amp;lt;4$肯定无解 然后$n=4$可以用$123*4=24$ $n=5$可以用$1+24+35=24$ 发现后面如果多出来的项数$x,x+1$可以变成$x+1-x=1$ 然后乘上上面的$24$相当于没贡献 D - Two Sets (并查集)思路对于一个数$x$要么在$A$要么在$B$，如果在$A$并且存在$a-x$那么$a-x$肯定">
+  <meta name="description" content="传送门 A - Dreamoon and Stairs (暴力枚举两步的数量) B - Dreamoon and WiFi (dfs) 思路因为长度只有十所以直接暴力dfs选择,复杂度$2^{10}$ C - Dreamoon and Sums (公式) 思路 \frac{div(x,b)}{mod(x,b)}=k\\ \to div(x,b)=k \times mod(x,b)\\ \to x=">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 268 (Div. 2)">
-<meta property="og:url" content="https://luowentaoaa.github.io/2019/03/26/Codeforces Round 268 (Div. 2)/index.html">
+<meta property="og:title" content="Codeforces Round 272(Div. 2)">
+<meta property="og:url" content="https://luowentaoaa.github.io/2019/03/31/Codeforces Round 272 (Div. 2)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="传送门 C - 24 Game (分类讨论 构造)思路首先$n&amp;lt;4$肯定无解 然后$n=4$可以用$123*4=24$ $n=5$可以用$1+24+35=24$ 发现后面如果多出来的项数$x,x+1$可以变成$x+1-x=1$ 然后乘上上面的$24$相当于没贡献 D - Two Sets (并查集)思路对于一个数$x$要么在$A$要么在$B$，如果在$A$并且存在$a-x$那么$a-x$肯定">
+<meta property="og:description" content="传送门 A - Dreamoon and Stairs (暴力枚举两步的数量) B - Dreamoon and WiFi (dfs) 思路因为长度只有十所以直接暴力dfs选择,复杂度$2^{10}$ C - Dreamoon and Sums (公式) 思路 \frac{div(x,b)}{mod(x,b)}=k\\ \to div(x,b)=k \times mod(x,b)\\ \to x=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-26T15:03:45.193Z">
+<meta property="og:updated_time" content="2019-03-31T05:13:47.894Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codeforces Round 268 (Div. 2)">
-<meta name="twitter:description" content="传送门 C - 24 Game (分类讨论 构造)思路首先$n&amp;lt;4$肯定无解 然后$n=4$可以用$123*4=24$ $n=5$可以用$1+24+35=24$ 发现后面如果多出来的项数$x,x+1$可以变成$x+1-x=1$ 然后乘上上面的$24$相当于没贡献 D - Two Sets (并查集)思路对于一个数$x$要么在$A$要么在$B$，如果在$A$并且存在$a-x$那么$a-x$肯定">
+<meta name="twitter:title" content="Codeforces Round 272(Div. 2)">
+<meta name="twitter:description" content="传送门 A - Dreamoon and Stairs (暴力枚举两步的数量) B - Dreamoon and WiFi (dfs) 思路因为长度只有十所以直接暴力dfs选择,复杂度$2^{10}$ C - Dreamoon and Sums (公式) 思路 \frac{div(x,b)}{mod(x,b)}=k\\ \to div(x,b)=k \times mod(x,b)\\ \to x=">
 
 
 
 
 
 
-  <link rel="canonical" href="https://luowentaoaa.github.io/2019/03/26/Codeforces Round 268 (Div. 2)/"/>
+  <link rel="canonical" href="https://luowentaoaa.github.io/2019/03/31/Codeforces Round 272 (Div. 2)/"/>
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>Codeforces Round 268 (Div. 2) | Hexo</title>
+  <title>Codeforces Round 272(Div. 2) | Hexo</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/03/26/Codeforces Round 268 (Div. 2)/">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/03/31/Codeforces Round 272 (Div. 2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="luowentaoaa">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Codeforces Round 268 (Div. 2)
+          <h1 class="post-title" itemprop="name headline">Codeforces Round 272(Div. 2)
               
             
           </h1>
@@ -322,7 +322,7 @@
                 
               
 
-              <time title="Created: 2019-03-26 22:49:02 / Modified: 23:03:45" itemprop="dateCreated datePublished" datetime="2019-03-26T22:49:02+08:00">2019-03-26</time>
+              <time title="Created: 2019-03-31 12:53:54 / Modified: 13:13:47" itemprop="dateCreated datePublished" datetime="2019-03-31T12:53:54+08:00">2019-03-31</time>
             
 
             
@@ -360,23 +360,21 @@
       
 
       
-        <p><a href="<<https://codeforces.com/contest/469>" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
-<h3 id="C-24-Game-分类讨论-构造"><a href="#C-24-Game-分类讨论-构造" class="headerlink" title="C - 24 Game (分类讨论 构造)"></a><a href="https://codeforces.com/contest/469/problem/C" target="_blank" rel="noopener">C - 24 Game</a> (分类讨论 构造)</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>首先$n&lt;4$肯定无解</p>
-<p>然后$n=4$可以用$1<em>2</em>3*4=24$</p>
-<p>$n=5$可以用$1+2<em>4+3</em>5=24$</p>
-<p>发现后面如果多出来的项数$x,x+1$可以变成$x+1-x=1$ 然后乘上上面的$24$相当于没贡献</p>
-<h3 id="D-Two-Sets-并查集"><a href="#D-Two-Sets-并查集" class="headerlink" title="D - Two Sets (并查集)"></a><a href="https://codeforces.com/contest/469/problem/D" target="_blank" rel="noopener">D - Two Sets</a> (并查集)</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>对于一个数$x$要么在$A$要么在$B$，如果在$A$并且存在$a-x$那么$a-x$肯定要也在A</p>
-<p>在$B$同理，而且不可能出现在两个位置</p>
-<p>所以我们创建一个A集合和B集合，如果最后两个集合合体了那就不合法不然就查询在哪个区间</p>
-<h3 id="E-Hack-it-构造"><a href="#E-Hack-it-构造" class="headerlink" title="E - Hack it! (构造)"></a><a href="https://codeforces.com/contest/469/problem/E" target="_blank" rel="noopener">E - Hack it!</a> (构造)</h3><h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>首先考虑一个数字$x$,若$f(x)=y$那么$f(x+1e18)=f(x)+1=y+1$</p>
-<p>我们设$\sum_{i=0}^{1e18-1}f(i)=p(moda)$</p>
-<p>那么$\sum_{i=1}^{1e18}f(i)=1+\sum_{i=0}^{1e18-1}f(i) =p+1$</p>
-<p>同理证明<strong>$\sum_{i=2}^{1e18+1}f(i)=p+2​$</strong></p>
-<p>$\sum_{i=3}^{1e18+2}f(i)=p+3$</p>
-<p>直到$\sum_{i=a-p}^{1e18+a-p-1}f(i)=p+a-p=0(mod a)$</p>
-<p>所以$l=a-p,r=1e18+a-p-1$</p>
-<p>所以需要求出$P$</p>
-<p>$P=45<em>x</em>10^{x-1} $x是位数</p>
+        <p><a href="<https://codeforces.com/contest/476/problem/E>" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
+<p><a href="https://codeforces.com/contest/476/problem/A" target="_blank" rel="noopener">A - Dreamoon and Stairs</a> (暴力枚举两步的数量)</p>
+<p><a href="https://codeforces.com/contest/476/problem/B" target="_blank" rel="noopener">B - Dreamoon and WiFi</a> (dfs)</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>因为长度只有十所以直接暴力dfs选择,复杂度$2^{10}$</p>
+<p><a href="https://codeforces.com/contest/476/problem/C" target="_blank" rel="noopener">C - Dreamoon and Sums</a> (公式)</p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><script type="math/tex; mode=display">
+\frac{div(x,b)}{mod(x,b)}=k\\ \to div(x,b)=k \times mod(x,b)\\ \to x=k \times mod(x,b)\times b+mod(x,b) \\\to x= mod(x,b)(k\times b+1)</script><p>然后因为$b,$已知$mod(x,b)$在$0-&gt;b-1$之间 $k$在$1-&gt;a$之间</p>
+<h3 id="D-Dreamoon-and-Sets-找规律"><a href="#D-Dreamoon-and-Sets-找规律" class="headerlink" title="D - Dreamoon and Sets (找规律)"></a><a href="https://codeforces.com/contest/476/problem/D" target="_blank" rel="noopener">D - Dreamoon and Sets</a> (找规律)</h3><h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>发现需要满足条件需要最近的四个互质的数枚举发现1,2,3,5符合</p>
+<p>下一组应该是7,8,9,11,</p>
+<p>13,14,15,17</p>
+<p>以此类推</p>
+<h3 id="E-Dreamoon-and-String-Dp"><a href="#E-Dreamoon-and-String-Dp" class="headerlink" title="E - Dreamoon and String (Dp)"></a><a href="https://codeforces.com/contest/476/problem/E" target="_blank" rel="noopener">E - Dreamoon and String</a> (Dp)</h3><h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>$dp[i][j]表示前i个删除了j个的最优值$</p>
+<p>$dp[i][j]=dp[i-1][j] 不删除$</p>
+<p>$dp[i][j]=dp[i-1][j-1]删除了自己$</p>
+<p>$dp[i][j]=dp[i-ned-lenb][j-ned]删除了一些$</p>
 
       
     </div>
@@ -404,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/Codeforces Round 548 (Div. 2)/" rel="next" title="Codeforces Round 548 (Div. 2)">
-                <i class="fa fa-chevron-left"></i> Codeforces Round 548 (Div. 2)
+              <a href="/2019/03/28/Codeforces Round 271(Div. 2)‘/" rel="next" title="Codeforces Round 271(Div. 2)">
+                <i class="fa fa-chevron-left"></i> Codeforces Round 271(Div. 2)
               </a>
             
           </div>
@@ -413,10 +411,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/27/Codeforces Round 269 (Div. 2)/" rel="prev" title="Codeforces Round 269 (Div. 2)">
-                Codeforces Round 269 (Div. 2) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -637,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-24-Game-分类讨论-构造"><span class="nav-number">1.</span> <span class="nav-text">C - 24 Game (分类讨论 构造)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Two-Sets-并查集"><span class="nav-number">2.</span> <span class="nav-text">D - Two Sets (并查集)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">2.1.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Hack-it-构造"><span class="nav-number">3.</span> <span class="nav-text">E - Hack it! (构造)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-2"><span class="nav-number">3.1.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Dreamoon-and-Sets-找规律"><span class="nav-number"></span> <span class="nav-text">D - Dreamoon and Sets (找规律)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-2"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Dreamoon-and-String-Dp"><span class="nav-number"></span> <span class="nav-text">E - Dreamoon and String (Dp)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-3"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li></ol></div>
             
 
           </div>
