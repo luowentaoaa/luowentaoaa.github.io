@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Python 字符串更新你可以截取字符串的一部分并与其他字段拼接，如下实例： 123456\#!/usr/bin/python3 var1 = &amp;apos;Hello World!&amp;apos;print (&amp;quot;已更新字符串 : &amp;quot;, var1[:6] + &amp;apos;Runoob!&amp;apos;)以上实例执行结果已更新字符串 :  Hello Runoob! Python转义字符在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3 字符串">
+<meta property="og:url" content="https://luowentaoaa.github.io/2019/04/28/Python04/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Python 字符串更新你可以截取字符串的一部分并与其他字段拼接，如下实例： 123456\#!/usr/bin/python3 var1 = &amp;apos;Hello World!&amp;apos;print (&amp;quot;已更新字符串 : &amp;quot;, var1[:6] + &amp;apos;Runoob!&amp;apos;)以上实例执行结果已更新字符串 :  Hello Runoob! Python转义字符在">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-26T07:59:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python3 字符串">
+<meta name="twitter:description" content="Python 字符串更新你可以截取字符串的一部分并与其他字段拼接，如下实例： 123456\#!/usr/bin/python3 var1 = &amp;apos;Hello World!&amp;apos;print (&amp;quot;已更新字符串 : &amp;quot;, var1[:6] + &amp;apos;Runoob!&amp;apos;)以上实例执行结果已更新字符串 :  Hello Runoob! Python转义字符在">
+
+
+
+
+
+
+  <link rel="canonical" href="https://luowentaoaa.github.io/2019/04/28/Python04/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python3 字符串 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Python04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python3 字符串
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-02-26 15:59:38" itemprop="dateModified" datetime="2019-02-26T15:59:38+08:00">2019-02-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Python-字符串更新"><a href="#Python-字符串更新" class="headerlink" title="Python 字符串更新"></a>Python 字符串更新</h2><p>你可以截取字符串的一部分并与其他字段拼接，如下实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\#!/usr/bin/python3 </span><br><span class="line">var1 = &apos;Hello World!&apos;</span><br><span class="line">print (&quot;已更新字符串 : &quot;, var1[:6] + &apos;Runoob!&apos;)</span><br><span class="line"></span><br><span class="line">以上实例执行结果</span><br><span class="line">已更新字符串 :  Hello Runoob!</span><br></pre></td></tr></table></figure>
+<h2 id="Python转义字符"><a href="#Python转义字符" class="headerlink" title="Python转义字符"></a>Python转义字符</h2><p>在需要在字符中使用特殊字符时，python用反斜杠()转义字符。如下表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(在行尾时)</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜杠符号</td>
+</tr>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>响铃</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>转义</td>
+</tr>
+<tr>
+<td>\000</td>
+<td>空</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\oyy</td>
+<td>八进制数，yy代表的字符，例如：\o12代表换行</td>
+</tr>
+<tr>
+<td>\xyy</td>
+<td>十六进制数，yy代表的字符，例如：\x0a代表换行</td>
+</tr>
+<tr>
+<td>\other</td>
+<td>其它的字符以普通格式输出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Python字符串运算符"><a href="#Python字符串运算符" class="headerlink" title="Python字符串运算符"></a>Python字符串运算符</h2><p>下表实例变量a值为字符串 “Hello”，b变量值为 “Python”：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>字符串连接</td>
+<td>a + b 输出结果： HelloPython</td>
+</tr>
+<tr>
+<td>*</td>
+<td>重复输出字符串</td>
+<td>a*2 输出结果：HelloHello</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>通过索引获取字符串中字符</td>
+<td>a[1] 输出结果 <strong>e</strong></td>
+</tr>
+<tr>
+<td>[ : ]</td>
+<td>截取字符串中的一部分，遵循<strong>左闭右开</strong>原则，str[0,2] 是不包含第 3 个字符的。</td>
+<td>a[1:4] 输出结果 <strong>ell</strong></td>
+</tr>
+<tr>
+<td>in</td>
+<td>成员运算符 - 如果字符串中包含给定的字符返回 True</td>
+<td><strong>‘H’ in a</strong> 输出结果 True</td>
+</tr>
+<tr>
+<td>not in</td>
+<td>成员运算符 - 如果字符串中不包含给定的字符返回 True</td>
+<td><strong>‘M’ not in a</strong> 输出结果 True</td>
+</tr>
+<tr>
+<td>r/R</td>
+<td>原始字符串 - 原始字符串：所有的字符串都是直接按照字面的意思来使用，没有转义特殊或不能打印的字符。 原始字符串除在字符串的第一个引号前加上字母 <strong>r</strong>（可以大小写）以外，与普通字符串有着几乎完全相同的语法。</td>
+<td><code>print( r&#39;\n&#39; ) print( R&#39;\n&#39; )</code></td>
+</tr>
+<tr>
+<td>%</td>
+<td>格式字符串</td>
+<td>请看下一节内容。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Python字符串格式化"><a href="#Python字符串格式化" class="headerlink" title="Python字符串格式化"></a>Python字符串格式化</h2><p>Python 支持格式化字符串的输出 。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中。</p>
+<p>在 Python 中，字符串格式化使用与 C 中 sprintf 函数一样的语法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">实例(Python <span class="number">3.0</span>+)</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">print ("我叫 %s 今年 %d 岁!" % ('小明', 10))</span><br><span class="line">以上实例输出结果：</span><br><span class="line"></span><br><span class="line">我叫 小明 今年 <span class="number">10</span> 岁!</span><br></pre></td></tr></table></figure>
+<p>python字符串格式化符号:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符   号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%c</td>
+<td>格式化字符及其ASCII码</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>格式化整数</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>格式化无符号整型</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>格式化无符号八进制数</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>格式化无符号十六进制数</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>格式化无符号十六进制数（大写）</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>格式化浮点数字，可指定小数点后的精度</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td>%E</td>
+<td>作用同%e，用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>%f和%e的简写</td>
+</tr>
+<tr>
+<td>%G</td>
+<td>%f 和 %E 的简写</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>用十六进制数格式化变量的地址</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>格式化操作符辅助指令:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>定义宽度或者小数点精度</td>
+</tr>
+<tr>
+<td>-</td>
+<td>用做左对齐</td>
+</tr>
+<tr>
+<td>+</td>
+<td>在正数前面显示加号( + )</td>
+</tr>
+<tr>
+<td><sp></sp></td>
+<td>在正数前面显示空格</td>
+</tr>
+<tr>
+<td>#</td>
+<td>在八进制数前面显示零(‘0’)，在十六进制前面显示’0x’或者’0X’(取决于用的是’x’还是’X’)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>显示的数字前面填充’0’而不是默认的空格</td>
+</tr>
+<tr>
+<td>%</td>
+<td>‘%%’输出一个单一的’%’</td>
+</tr>
+<tr>
+<td>(var)</td>
+<td>映射变量(字典参数)</td>
+</tr>
+<tr>
+<td>m.n.</td>
+<td>m 是显示的最小总宽度,n 是小数点后的位数(如果可用的话)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Python2.6 开始，新增了一种格式化字符串的函数 <a href="http://www.runoob.com/python/att-string-format.html" target="_blank" rel="noopener">str.format()</a>，它增强了字符串格式化的功能。</p>
+<h2 id="Python三引号"><a href="#Python三引号" class="headerlink" title="Python三引号"></a>Python三引号</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">python三引号允许一个字符串跨多行，字符串中可以包含换行符、制表符以及其他特殊字符。实例如下</span><br><span class="line"></span><br><span class="line">实例(Python <span class="number">3.0</span>+)</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">para_str = <span class="string">""</span><span class="string">"这是一个多行字符串的实例</span></span><br><span class="line"><span class="string">多行字符串可以使用制表符</span></span><br><span class="line"><span class="string">TAB ( \t )。</span></span><br><span class="line"><span class="string">也可以使用换行符 [ \n ]。</span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br><span class="line">print (para_str)</span><br><span class="line">以上实例执行结果为：</span><br><span class="line"></span><br><span class="line">这是一个多行字符串的实例</span><br><span class="line">多行字符串可以使用制表符</span><br><span class="line">TAB (    )。</span><br><span class="line">也可以使用换行符 [ </span><br><span class="line"> ]。</span><br><span class="line">三引号让程序员从引号和特殊字符串的泥潭里面解脱出来，自始至终保持一小块字符串的格式是所谓的WYSIWYG（所见即所得）格式的。</span><br><span class="line"></span><br><span class="line">一个典型的用例是，当你需要一块HTML或者SQL时，这时用字符串组合，特殊字符串转义将会非常的繁琐。</span><br><span class="line"></span><br><span class="line">errHTML = <span class="string">'''</span></span><br><span class="line">&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;</span><br><span class="line">Friends CGI Demo&lt;/TITLE&gt;&lt;/HEAD&gt;</span><br><span class="line">&lt;BODY&gt;&lt;H3&gt;ERROR&lt;/H3&gt;</span><br><span class="line">&lt;B&gt;%s&lt;/B&gt;&lt;P&gt;</span><br><span class="line">&lt;FORM&gt;&lt;INPUT TYPE=button VALUE=Back</span><br><span class="line">ONCLICK=<span class="string">"window.history.back()"</span>&gt;&lt;/FORM&gt;</span><br><span class="line">&lt;/BODY&gt;&lt;/HTML&gt;</span><br><span class="line"><span class="string">'''</span></span><br><span class="line">cursor.execute(<span class="string">'''</span></span><br><span class="line">CREATE TABLE users (  </span><br><span class="line">login VARCHAR(<span class="number">8</span>), </span><br><span class="line">uid INTEGER,</span><br><span class="line">prid INTEGER)</span><br><span class="line"><span class="string">'''</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Python-的字符串内建函数"><a href="#Python-的字符串内建函数" class="headerlink" title="Python 的字符串内建函数"></a>Python 的字符串内建函数</h2><p>Python 的字符串常用内建函数如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法及描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="http://www.runoob.com/python3/python3-string-capitalize.html" target="_blank" rel="noopener">capitalize()</a> 将字符串的第一个字符转换为大写</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="http://www.runoob.com/python3/python3-string-center.html" target="_blank" rel="noopener">center(width, fillchar)</a> 返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="http://www.runoob.com/python3/python3-string-count.html" target="_blank" rel="noopener">count(str, beg= 0,end=len(string))</a> 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="http://www.runoob.com/python3/python3-string-decode.html" target="_blank" rel="noopener">bytes.decode(encoding=”utf-8”, errors=”strict”)</a> Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="http://www.runoob.com/python3/python3-string-encode.html" target="_blank" rel="noopener">encode(encoding=’UTF-8’,errors=’strict’)</a> 以 encoding 指定的编码格式编码字符串，如果出错默认报一个ValueError 的异常，除非 errors 指定的是’ignore’或者’replace’</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="http://www.runoob.com/python3/python3-string-endswith.html" target="_blank" rel="noopener">endswith(suffix, beg=0, end=len(string))</a> 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True,否则返回 False.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="http://www.runoob.com/python3/python3-string-expandtabs.html" target="_blank" rel="noopener">expandtabs(tabsize=8)</a> 把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8 。</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="http://www.runoob.com/python3/python3-string-find.html" target="_blank" rel="noopener">find(str, beg=0 end=len(string))</a> 检测 str 是否包含在字符串中，如果指定范围 beg 和 end ，则检查是否包含在指定范围内，如果包含返回开始的索引值，否则返回-1</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="http://www.runoob.com/python3/python3-string-index.html" target="_blank" rel="noopener">index(str, beg=0, end=len(string))</a> 跟find()方法一样，只不过如果str不在字符串中会报一个异常.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="http://www.runoob.com/python3/python3-string-isalnum.html" target="_blank" rel="noopener">isalnum()</a> 如果字符串至少有一个字符并且所有字符都是字母或数字则返 回 True,否则返回 False</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="http://www.runoob.com/python3/python3-string-isalpha.html" target="_blank" rel="noopener">isalpha()</a> 如果字符串至少有一个字符并且所有字符都是字母则返回 True, 否则返回 False</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="http://www.runoob.com/python3/python3-string-isdigit.html" target="_blank" rel="noopener">isdigit()</a> 如果字符串只包含数字则返回 True 否则返回 False..</td>
+</tr>
+<tr>
+<td>13</td>
+<td><a href="http://www.runoob.com/python3/python3-string-islower.html" target="_blank" rel="noopener">islower()</a> 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>14</td>
+<td><a href="http://www.runoob.com/python3/python3-string-isnumeric.html" target="_blank" rel="noopener">isnumeric()</a> 如果字符串中只包含数字字符，则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>15</td>
+<td><a href="http://www.runoob.com/python3/python3-string-isspace.html" target="_blank" rel="noopener">isspace()</a> 如果字符串中只包含空白，则返回 True，否则返回 False.</td>
+</tr>
+<tr>
+<td>16</td>
+<td><a href="http://www.runoob.com/python3/python3-string-istitle.html" target="_blank" rel="noopener">istitle()</a> 如果字符串是标题化的(见 title())则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>17</td>
+<td><a href="http://www.runoob.com/python3/python3-string-isupper.html" target="_blank" rel="noopener">isupper()</a> 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>18</td>
+<td><a href="http://www.runoob.com/python3/python3-string-join.html" target="_blank" rel="noopener">join(seq)</a> 以指定字符串作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串</td>
+</tr>
+<tr>
+<td>19</td>
+<td><a href="http://www.runoob.com/python3/python3-string-len.html" target="_blank" rel="noopener">len(string)</a> 返回字符串长度</td>
+</tr>
+<tr>
+<td>20</td>
+<td><a href="http://www.runoob.com/python3/python3-string-ljust.html" target="_blank" rel="noopener">ljust(width[, fillchar])</a> 返回一个原字符串左对齐,并使用 fillchar 填充至长度 width 的新字符串，fillchar 默认为空格。</td>
+</tr>
+<tr>
+<td>21</td>
+<td><a href="http://www.runoob.com/python3/python3-string-lower.html" target="_blank" rel="noopener">lower()</a> 转换字符串中所有大写字符为小写.</td>
+</tr>
+<tr>
+<td>22</td>
+<td><a href="http://www.runoob.com/python3/python3-string-lstrip.html" target="_blank" rel="noopener">lstrip()</a> 截掉字符串左边的空格或指定字符。</td>
+</tr>
+<tr>
+<td>23</td>
+<td><a href="http://www.runoob.com/python3/python3-string-maketrans.html" target="_blank" rel="noopener">maketrans()</a> 创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。</td>
+</tr>
+<tr>
+<td>24</td>
+<td><a href="http://www.runoob.com/python3/python3-string-max.html" target="_blank" rel="noopener">max(str)</a> 返回字符串 str 中最大的字母。</td>
+</tr>
+<tr>
+<td>25</td>
+<td><a href="http://www.runoob.com/python3/python3-string-min.html" target="_blank" rel="noopener">min(str)</a> 返回字符串 str 中最小的字母。</td>
+</tr>
+<tr>
+<td>26</td>
+<td><a href="http://www.runoob.com/python3/python3-string-replace.html" target="_blank" rel="noopener">replace(old, new [, max])</a> 把 将字符串中的 str1 替换成 str2,如果 max 指定，则替换不超过 max 次。</td>
+</tr>
+<tr>
+<td>27</td>
+<td><a href="http://www.runoob.com/python3/python3-string-rfind.html" target="_blank" rel="noopener">rfind(str, beg=0,end=len(string))</a> 类似于 find()函数，不过是从右边开始查找.</td>
+</tr>
+<tr>
+<td>28</td>
+<td><a href="http://www.runoob.com/python3/python3-string-rindex.html" target="_blank" rel="noopener">rindex( str, beg=0, end=len(string))</a> 类似于 index()，不过是从右边开始.</td>
+</tr>
+<tr>
+<td>29</td>
+<td><a href="http://www.runoob.com/python3/python3-string-rjust.html" target="_blank" rel="noopener">rjust(width,[, fillchar])</a> 返回一个原字符串右对齐,并使用fillchar(默认空格）填充至长度 width 的新字符串</td>
+</tr>
+<tr>
+<td>30</td>
+<td><a href="http://www.runoob.com/python3/python3-string-rstrip.html" target="_blank" rel="noopener">rstrip()</a> 删除字符串字符串末尾的空格.</td>
+</tr>
+<tr>
+<td>31</td>
+<td><a href="http://www.runoob.com/python3/python3-string-split.html" target="_blank" rel="noopener">split(str=””, num=string.count(str))</a> num=string.count(str)) 以 str 为分隔符截取字符串，如果 num 有指定值，则仅截取 num+1 个子字符串</td>
+</tr>
+<tr>
+<td>32</td>
+<td><a href="http://www.runoob.com/python3/python3-string-splitlines.html" target="_blank" rel="noopener">splitlines([keepends])</a> 按照行(‘\r’, ‘\r\n’, \n’)分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。</td>
+</tr>
+<tr>
+<td>33</td>
+<td><a href="http://www.runoob.com/python3/python3-string-startswith.html" target="_blank" rel="noopener">startswith(substr, beg=0,end=len(string))</a> 检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。如果beg 和 end 指定值，则在指定范围内检查。</td>
+</tr>
+<tr>
+<td>34</td>
+<td><a href="http://www.runoob.com/python3/python3-string-strip.html" target="_blank" rel="noopener">strip([chars])</a> 在字符串上执行 lstrip()和 rstrip()</td>
+</tr>
+<tr>
+<td>35</td>
+<td><a href="http://www.runoob.com/python3/python3-string-swapcase.html" target="_blank" rel="noopener">swapcase()</a> 将字符串中大写转换为小写，小写转换为大写</td>
+</tr>
+<tr>
+<td>36</td>
+<td><a href="http://www.runoob.com/python3/python3-string-title.html" target="_blank" rel="noopener">title()</a> 返回”标题化”的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</td>
+</tr>
+<tr>
+<td>37</td>
+<td><a href="http://www.runoob.com/python3/python3-string-translate.html" target="_blank" rel="noopener">translate(table, deletechars=””)</a> 根据 str 给出的表(包含 256 个字符)转换 string 的字符, 要过滤掉的字符放到 deletechars 参数中</td>
+</tr>
+<tr>
+<td>38</td>
+<td><a href="http://www.runoob.com/python3/python3-string-upper.html" target="_blank" rel="noopener">upper()</a> 转换字符串中的小写字母为大写</td>
+</tr>
+<tr>
+<td>39</td>
+<td><a href="http://www.runoob.com/python3/python3-string-zfill.html" target="_blank" rel="noopener">zfill (width)</a> 返回长度为 width 的字符串，原字符串右对齐，前面填充0</td>
+</tr>
+<tr>
+<td>40</td>
+<td><a href="http://www.runoob.com/python3/python3-string-isdecimal.html" target="_blank" rel="noopener">isdecimal()</a> 检查字符串是否只包含十进制字符，如果是返回 true，否则返回 false。</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/28/Python03/" rel="next" title="Python3 数字">
+                <i class="fa fa-chevron-left"></i> Python3 数字
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/28/Python05/" rel="prev" title="Python3 列表">
+                Python3 列表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">luowentaoaa</p>
+              <p class="site-description motion-element" itemprop="description">嘤嘤嘤</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">112</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">Tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-字符串更新"><span class="nav-number">1.</span> <span class="nav-text">Python 字符串更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python转义字符"><span class="nav-number">2.</span> <span class="nav-text">Python转义字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python字符串运算符"><span class="nav-number">3.</span> <span class="nav-text">Python字符串运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python字符串格式化"><span class="nav-number">4.</span> <span class="nav-text">Python字符串格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python三引号"><span class="nav-number">5.</span> <span class="nav-text">Python三引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-的字符串内建函数"><span class="nav-number">6.</span> <span class="nav-text">Python 的字符串内建函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luowentaoaa</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
