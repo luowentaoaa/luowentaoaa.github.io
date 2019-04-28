@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="首先，回文树有何功能？ 假设我们有一个串S，S下标从0开始，则回文树能做到如下几点： 1.求串S前缀0~i内本质不同回文串的个数（两个串长度不同或者长度相同且至少有一个字符不同便是本质不同） 2.求串S内每一个本质不同回文串出现的次数 3.求串S内回文串的个数（其实就是1和2结合起来） 4.求以下标i结尾的回文串的个数 模板：123456789101112131415161718192021222">
+<meta name="keywords" content="回文树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回文树学习笔记">
+<meta property="og:url" content="https://luowentaoaa.github.io/2019/04/24/Palindromic_Tree/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先，回文树有何功能？ 假设我们有一个串S，S下标从0开始，则回文树能做到如下几点： 1.求串S前缀0~i内本质不同回文串的个数（两个串长度不同或者长度相同且至少有一个字符不同便是本质不同） 2.求串S内每一个本质不同回文串出现的次数 3.求串S内回文串的个数（其实就是1和2结合起来） 4.求以下标i结尾的回文串的个数 模板：123456789101112131415161718192021222">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-09T17:11:31.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="回文树学习笔记">
+<meta name="twitter:description" content="首先，回文树有何功能？ 假设我们有一个串S，S下标从0开始，则回文树能做到如下几点： 1.求串S前缀0~i内本质不同回文串的个数（两个串长度不同或者长度相同且至少有一个字符不同便是本质不同） 2.求串S内每一个本质不同回文串出现的次数 3.求串S内回文串的个数（其实就是1和2结合起来） 4.求以下标i结尾的回文串的个数 模板：123456789101112131415161718192021222">
+
+
+
+
+
+
+  <link rel="canonical" href="https://luowentaoaa.github.io/2019/04/24/Palindromic_Tree/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>回文树学习笔记 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/24/Palindromic_Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">回文树学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-10-10 01:11:31" itemprop="dateModified" datetime="2018-10-10T01:11:31+08:00">2018-10-10</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先，回文树有何功能？<br> 假设我们有一个串S，S下标从0开始，则回文树能做到如下几点：</p>
+<p><strong>1.求串S前缀0~i内本质不同回文串的个数（两个串长度不同或者长度相同且至少有一个字符不同便是本质不同）</strong><br> <strong>2.求串S内每一个本质不同回文串出现的次数</strong><br> <strong>3.求串S内回文串的个数（其实就是1和2结合起来）</strong><br> <strong>4.求以下标i结尾的回文串的个数</strong></p>
+<h3 id="模板："><a href="#模板：" class="headerlink" title="模板："></a>模板：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100005</span> ;  </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">26</span> ;  </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Palindromic_Tree</span> &#123;</span>  </span><br><span class="line">    <span class="comment">//cnt最后count一下之后是那个节点代表的回文串出现的次数</span></span><br><span class="line">    <span class="keyword">int</span> next[MAXN][N] ;<span class="comment">//next指针，next指针和字典树类似，指向的串为当前串两端加上同一个字符构成  </span></span><br><span class="line">    <span class="keyword">int</span> fail[MAXN] ;<span class="comment">//fail指针，失配后跳转到fail指针指向的节点  </span></span><br><span class="line">    <span class="keyword">int</span> cnt[MAXN] ; <span class="comment">//表示节点i表示的本质不同的串的个数（建树时求出的不是完全的，最后count()函数跑一遍以后才是正确的） </span></span><br><span class="line">    <span class="keyword">int</span> num[MAXN] ; <span class="comment">//表示以节点i表示的最长回文串的最右端点为回文串结尾的回文串个数</span></span><br><span class="line">    <span class="keyword">int</span> len[MAXN] ;<span class="comment">//len[i]表示节点i表示的回文串的长度（一个节点表示一个回文串）</span></span><br><span class="line">    <span class="keyword">int</span> S[MAXN] ;<span class="comment">//存放添加的字符  </span></span><br><span class="line">    <span class="keyword">int</span> last ;<span class="comment">//指向新添加一个字母后所形成的最长回文串表示的节点。</span></span><br><span class="line">    <span class="keyword">int</span> n ;<span class="comment">//表示添加的字符个数。</span></span><br><span class="line">    <span class="keyword">int</span> p ;<span class="comment">//表示添加的节点个数。</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">newnode</span> <span class="params">( <span class="keyword">int</span> l )</span> </span>&#123;<span class="comment">//新建节点  </span></span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; N ; ++ i ) next[p][i] = <span class="number">0</span> ;  </span><br><span class="line">        cnt[p] = <span class="number">0</span> ;  </span><br><span class="line">        num[p] = <span class="number">0</span> ;  </span><br><span class="line">        len[p] = l ;  </span><br><span class="line">        <span class="keyword">return</span> p ++ ;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span> <span class="params">()</span> </span>&#123;<span class="comment">//初始化  </span></span><br><span class="line">        p = <span class="number">0</span> ;  </span><br><span class="line">        newnode (  <span class="number">0</span> ) ;  </span><br><span class="line">        newnode ( <span class="number">-1</span> ) ;  </span><br><span class="line">        last = <span class="number">0</span> ;  </span><br><span class="line">        n = <span class="number">0</span> ;  </span><br><span class="line">        S[n] = <span class="number">-1</span> ;<span class="comment">//开头放一个字符集中没有的字符，减少特判  </span></span><br><span class="line">        fail[<span class="number">0</span>] = <span class="number">1</span> ;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_fail</span> <span class="params">( <span class="keyword">int</span> x )</span> </span>&#123;<span class="comment">//和KMP一样，失配后找一个尽量最长的  </span></span><br><span class="line">        <span class="keyword">while</span> ( S[n - len[x] - <span class="number">1</span>] != S[n] ) x = fail[x] ;  </span><br><span class="line">        <span class="keyword">return</span> x ;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span> <span class="params">( <span class="keyword">int</span> c )</span> </span>&#123;  </span><br><span class="line">        c -= <span class="string">'a'</span> ;  </span><br><span class="line">        S[++ n] = c ;  </span><br><span class="line">        <span class="keyword">int</span> cur = get_fail ( last ) ;<span class="comment">//通过上一个回文串找这个回文串的匹配位置  </span></span><br><span class="line">        <span class="keyword">if</span> ( !next[cur][c] ) &#123;<span class="comment">//如果这个回文串没有出现过，说明出现了一个新的本质不同的回文串  </span></span><br><span class="line">            <span class="keyword">int</span> now = newnode ( len[cur] + <span class="number">2</span> ) ;<span class="comment">//新建节点  </span></span><br><span class="line">            fail[now] = next[get_fail ( fail[cur] )][c] ;<span class="comment">//和AC自动机一样建立fail指针，以便失配后跳转  </span></span><br><span class="line">            next[cur][c] = now ;  </span><br><span class="line">            num[now] = num[fail[now]] + <span class="number">1</span> ;  </span><br><span class="line">        &#125;  </span><br><span class="line">        last = next[cur][c] ;  </span><br><span class="line">        cnt[last] ++ ;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">count</span> <span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = p - <span class="number">1</span> ; i &gt;= <span class="number">0</span> ; -- i ) cnt[fail[i]] += cnt[i] ;  </span><br><span class="line">        <span class="comment">//父亲累加儿子的cnt，因为如果fail[v]=u，则u一定是v的子回文串！  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure>
+<h3 id="例题1-BZOJ3676"><a href="#例题1-BZOJ3676" class="headerlink" title="例题1.BZOJ3676"></a>例题1.<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3676" target="_blank" rel="noopener">BZOJ3676</a></h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>求一个字符串中所有回文子串的出现次数与长度乘积的最大值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">3e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">26</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PalTree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> next[maxn][N];<span class="comment">///指向的串威当前串两端加上同一个字符构成</span></span><br><span class="line">    <span class="keyword">int</span> fail[maxn];<span class="comment">///fail指针，失配后跳转的fail指针指向的结点</span></span><br><span class="line">    <span class="keyword">int</span> cnt[maxn];<span class="comment">///表示结点i表示的本质不同的串的个数（不全的最后count（）跑一边才是正确的</span></span><br><span class="line">    <span class="keyword">int</span> num[maxn];<span class="comment">///表示以结点i表示的最长最长回文串的最右端点为为回文结尾的回文串个数</span></span><br><span class="line">    <span class="keyword">int</span> len[maxn];<span class="comment">///len[i]表示结点i表示的回文串长度</span></span><br><span class="line">    <span class="keyword">int</span> S[maxn];<span class="comment">///存放添加的字符</span></span><br><span class="line">    <span class="keyword">int</span> last;<span class="comment">///指向新添加一个字母后形成的最长回文串表示的结点</span></span><br><span class="line">    <span class="keyword">int</span> n;<span class="comment">///表示添加的字符个数</span></span><br><span class="line">    <span class="keyword">int</span> p;<span class="comment">///表示添加的结点个数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">newnode</span><span class="params">(<span class="keyword">int</span> l)</span></span>&#123;<span class="comment">///新建结点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)next[p][i]=<span class="number">0</span>;</span><br><span class="line">        cnt[p]=<span class="number">0</span>;</span><br><span class="line">        num[p]=<span class="number">0</span>;</span><br><span class="line">        len[p]=l;</span><br><span class="line">        <span class="keyword">return</span> p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        p=<span class="number">0</span>;</span><br><span class="line">        newnode(<span class="number">0</span>);</span><br><span class="line">        newnode(<span class="number">-1</span>);</span><br><span class="line">        last=<span class="number">0</span>;</span><br><span class="line">        n=<span class="number">0</span>;</span><br><span class="line">        S[n]=<span class="number">-1</span>;</span><br><span class="line">        fail[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_fail</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(S[n-len[x]<span class="number">-1</span>]!=S[n])x=fail[x];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        c-=<span class="string">'a'</span>;</span><br><span class="line">        S[++n]=c;</span><br><span class="line">        <span class="keyword">int</span> cur=get_fail(last);<span class="comment">///通过上一个回文串找到这个回文串的匹配位置</span></span><br><span class="line">        <span class="keyword">if</span>(!next[cur][c])&#123;<span class="comment">///如果这个串没出现过，说明出现了一个新的本质不同的回文串</span></span><br><span class="line">            <span class="keyword">int</span> now=newnode(len[cur]+<span class="number">2</span>);</span><br><span class="line">            fail[now]=next[get_fail(fail[cur])][c];</span><br><span class="line">            next[cur][c]=now;</span><br><span class="line">            num[now]=num[fail[now]]+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        last=next[cur][c];</span><br><span class="line">        cnt[last]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">count</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=p<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)cnt[fail[i]]+=cnt[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;pat;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);<span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">    pat.init();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        pat.add(s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    pat.count();</span><br><span class="line">    ll ret=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;pat.p;i++)&#123;</span><br><span class="line">        ret=max(ll(<span class="number">1L</span>L*pat.len[i]*pat.cnt[i]),ret);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ret&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例题2-UVA7041"><a href="#例题2-UVA7041" class="headerlink" title="例题2 UVA7041"></a>例题2 <a href="https://vjudge.net/problem/UVALive-7041" target="_blank" rel="noopener">UVA7041</a></h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>给出两个仅包含小写字符的字符串 A 和 B ；<br>求：对于 A 中的每个回文子串，B 中和该子串相同的子串个数的总和。</p>
+<p>从0和1两个根节点DFS下去，如果两个相同的节点同时存在就统计答案。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">4e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">26</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PalTree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> next[maxn][N];<span class="comment">///指向的串威当前串两端加上同一个字符构成</span></span><br><span class="line">    <span class="keyword">int</span> fail[maxn];<span class="comment">///fail指针，失配后跳转的fail指针指向的结点</span></span><br><span class="line">    <span class="keyword">int</span> cnt[maxn];<span class="comment">///表示结点i表示的本质不同的串的个数（不全的最后count（）跑一边才是正确的</span></span><br><span class="line">    <span class="keyword">int</span> num[maxn];<span class="comment">///表示以结点i表示的最长最长回文串的最右端点为为回文结尾的回文串个数</span></span><br><span class="line">    <span class="keyword">int</span> len[maxn];<span class="comment">///len[i]表示结点i表示的回文串长度</span></span><br><span class="line">    <span class="keyword">int</span> S[maxn];<span class="comment">///存放添加的字符</span></span><br><span class="line">    <span class="keyword">int</span> last;<span class="comment">///指向新添加一个字母后形成的最长回文串表示的结点</span></span><br><span class="line">    <span class="keyword">int</span> n;<span class="comment">///表示添加的字符个数</span></span><br><span class="line">    <span class="keyword">int</span> p;<span class="comment">///表示添加的结点个数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">newnode</span><span class="params">(<span class="keyword">int</span> l)</span></span>&#123;<span class="comment">///新建结点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)next[p][i]=<span class="number">0</span>;</span><br><span class="line">        cnt[p]=<span class="number">0</span>;</span><br><span class="line">        num[p]=<span class="number">0</span>;</span><br><span class="line">        len[p]=l;</span><br><span class="line">        <span class="keyword">return</span> p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        p=<span class="number">0</span>;</span><br><span class="line">        newnode(<span class="number">0</span>);</span><br><span class="line">        newnode(<span class="number">-1</span>);</span><br><span class="line">        last=<span class="number">0</span>;</span><br><span class="line">        n=<span class="number">0</span>;</span><br><span class="line">        S[n]=<span class="number">-1</span>;</span><br><span class="line">        fail[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_fail</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(S[n-len[x]<span class="number">-1</span>]!=S[n])x=fail[x];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        c-=<span class="string">'a'</span>;</span><br><span class="line">        S[++n]=c;</span><br><span class="line">        <span class="keyword">int</span> cur=get_fail(last);<span class="comment">///通过上一个回文串找到这个回文串的匹配位置</span></span><br><span class="line">        <span class="keyword">if</span>(!next[cur][c])&#123;<span class="comment">///如果这个串没出现过，说明出现了一个新的本质不同的回文串</span></span><br><span class="line">            <span class="keyword">int</span> now=newnode(len[cur]+<span class="number">2</span>);</span><br><span class="line">            fail[now]=next[get_fail(fail[cur])][c];</span><br><span class="line">            next[cur][c]=now;</span><br><span class="line">            num[now]=num[fail[now]]+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        last=next[cur][c];</span><br><span class="line">        cnt[last]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">count</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=p<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)cnt[fail[i]]+=cnt[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;pat1,pat2;</span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    ll ret=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)<span class="keyword">if</span>(pat1.next[a][i]!=<span class="number">0</span>&amp;&amp;pat2.next[b][i]!=<span class="number">0</span>)</span><br><span class="line">        ret+=(ll)pat1.cnt[pat1.next[a][i]]*pat2.cnt[pat2.next[b][i]]</span><br><span class="line">        +dfs(pat1.next[a][i],pat2.next[b][i]);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span> s1[maxn],s2[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);<span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> t,cas=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;s1&gt;&gt;s2;</span><br><span class="line">        pat1.init();</span><br><span class="line">        pat2.init();</span><br><span class="line">        <span class="keyword">int</span> len1=<span class="built_in">strlen</span>(s1);</span><br><span class="line">        <span class="keyword">int</span> len2=<span class="built_in">strlen</span>(s2);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len1;i++)pat1.add(s1[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len2;i++)pat2.add(s2[i]);</span><br><span class="line">        pat1.count();pat2.count();</span><br><span class="line">        ll ret=dfs(<span class="number">0</span>,<span class="number">0</span>)+dfs(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Case #"</span>&lt;&lt;++cas&lt;&lt;<span class="string">": "</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ret&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例题3ACM-ICPC-2018-南京赛区网络预赛-Skr"><a href="#例题3ACM-ICPC-2018-南京赛区网络预赛-Skr" class="headerlink" title="例题3ACM-ICPC 2018 南京赛区网络预赛 Skr"></a>例题3<a href="https://nanti.jisuanke.com/?kw=ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B" target="_blank" rel="noopener">ACM-ICPC 2018 南京赛区网络预赛</a> Skr</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>给出一个数字串，求其本质不同的回文子串的和。</p>
+<p>在回文树建立的过程中自带去重，所以只需要跑一遍记录答案就好了。</p>
+<p>奇根下直接连接的节点所代表的的都是单个字符的回文串，其他都是在两边加上同一个字符，用这个规律去生成数字求和就好了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pp pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">while</span>(b)&#123;<span class="keyword">int</span> t=a%b;a=b;b=t;&#125;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10</span>;</span><br><span class="line"><span class="function">ll <span class="title">modpow</span><span class="params">(ll a,ll b)</span></span>&#123;</span><br><span class="line">    ll ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)ans=(ans*a)%mod;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        a=(a*a)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PalTree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> next[maxn][N];<span class="comment">///指向的串威当前串两端加上同一个字符构成</span></span><br><span class="line">    <span class="keyword">int</span> fail[maxn];<span class="comment">///fail指针，失配后跳转的fail指针指向的结点</span></span><br><span class="line">    <span class="keyword">int</span> cnt[maxn];<span class="comment">///表示结点i表示的本质不同的串的个数（不全的最后count（）跑一边才是正确的</span></span><br><span class="line">    <span class="keyword">int</span> num[maxn];<span class="comment">///表示以结点i表示的最长最长回文串的最右端点为为回文结尾的回文串个数</span></span><br><span class="line">    <span class="keyword">int</span> len[maxn];<span class="comment">///len[i]表示结点i表示的回文串长度</span></span><br><span class="line">    <span class="keyword">int</span> S[maxn];<span class="comment">///存放添加的字符</span></span><br><span class="line">    <span class="keyword">int</span> last;<span class="comment">///指向新添加一个字母后形成的最长回文串表示的结点</span></span><br><span class="line">    <span class="keyword">int</span> n;<span class="comment">///表示添加的字符个数</span></span><br><span class="line">    <span class="keyword">int</span> p;<span class="comment">///表示添加的结点个数</span></span><br><span class="line">    ll sum[maxn];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">newnode</span><span class="params">(<span class="keyword">int</span> l)</span></span>&#123;<span class="comment">///新建结点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)next[p][i]=<span class="number">0</span>;</span><br><span class="line">        cnt[p]=<span class="number">0</span>;</span><br><span class="line">        num[p]=<span class="number">0</span>;</span><br><span class="line">        len[p]=l;</span><br><span class="line">        sum[p]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        p=<span class="number">0</span>;</span><br><span class="line">        newnode(<span class="number">0</span>);</span><br><span class="line">        newnode(<span class="number">-1</span>);</span><br><span class="line">        last=<span class="number">0</span>;</span><br><span class="line">        n=<span class="number">0</span>;</span><br><span class="line">        S[n]=<span class="number">-1</span>;</span><br><span class="line">        fail[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_fail</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(S[n-len[x]<span class="number">-1</span>]!=S[n])x=fail[x];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        c-=<span class="string">'0'</span>;</span><br><span class="line">        S[++n]=c;</span><br><span class="line">        <span class="keyword">int</span> cur=get_fail(last);<span class="comment">///通过上一个回文串找到这个回文串的匹配位置</span></span><br><span class="line">        <span class="keyword">if</span>(!next[cur][c])&#123;<span class="comment">///如果这个串没出现过，说明出现了一个新的本质不同的回文串</span></span><br><span class="line">            <span class="keyword">int</span> now=newnode(len[cur]+<span class="number">2</span>);</span><br><span class="line">            fail[now]=next[get_fail(fail[cur])][c];</span><br><span class="line">            next[cur][c]=now;</span><br><span class="line">            num[now]=num[fail[now]]+<span class="number">1</span>;</span><br><span class="line">            sum[now]=(sum[cur]*<span class="number">10</span>*<span class="number">1L</span>L)%mod;</span><br><span class="line">            sum[now]=(sum[now]+c)%mod;</span><br><span class="line">            <span class="keyword">if</span>(len[cur]&gt;=<span class="number">0</span>)sum[now]=(sum[now]+(c*modpow(<span class="number">10</span>*<span class="number">1L</span>L,len[now]<span class="number">-1</span>))%mod)%mod;</span><br><span class="line">        &#125;</span><br><span class="line">        last=next[cur][c];</span><br><span class="line">        cnt[last]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">count</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=p<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)cnt[fail[i]]+=cnt[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;pat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);<span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">    pat.init();</span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)pat.add(s[i]);</span><br><span class="line">    ll anw=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;pat.p;i++)anw=(anw+pat.sum[i])%mod;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;anw&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例题4-HIHO-1602-本质不同的回文子串的数量"><a href="#例题4-HIHO-1602-本质不同的回文子串的数量" class="headerlink" title="例题4 HIHO#1602 : 本质不同的回文子串的数量"></a>例题4 <a href="http://hihocoder.com/problemset/problem/1602" target="_blank" rel="noopener">HIHO#1602 : 本质不同的回文子串的数量</a></h3><p>给定一个字符串S，请统计S的所有子串中，有多少个本质不同的回文字符串？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">pat.init();</span><br><span class="line"><span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)pat.add(s[i]);</span><br><span class="line">ll anw=<span class="number">0</span>;</span><br><span class="line">pat.count();</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;pat.p<span class="number">-2</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/回文树/" rel="tag"># 回文树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/24/nowcoder392/" rel="next" title="牛客小白月赛12">
+                <i class="fa fa-chevron-left"></i> 牛客小白月赛12
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/24/Regex/" rel="prev" title="ACM中的正则表达式">
+                ACM中的正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">luowentaoaa</p>
+              <p class="site-description motion-element" itemprop="description">嘤嘤嘤</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">Tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#模板："><span class="nav-number">1.</span> <span class="nav-text">模板：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题1-BZOJ3676"><span class="nav-number">2.</span> <span class="nav-text">例题1.BZOJ3676</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题2-UVA7041"><span class="nav-number">3.</span> <span class="nav-text">例题2 UVA7041</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-1"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题3ACM-ICPC-2018-南京赛区网络预赛-Skr"><span class="nav-number">4.</span> <span class="nav-text">例题3ACM-ICPC 2018 南京赛区网络预赛 Skr</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-2"><span class="nav-number">4.1.</span> <span class="nav-text">题意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题4-HIHO-1602-本质不同的回文子串的数量"><span class="nav-number">5.</span> <span class="nav-text">例题4 HIHO#1602 : 本质不同的回文子串的数量</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luowentaoaa</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
