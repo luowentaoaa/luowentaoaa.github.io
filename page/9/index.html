@@ -280,6 +280,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/24/Codeforces Round 545 (Div. 2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/24/Codeforces Round 545 (Div. 2)/" itemprop="url">
+                  Codeforces Round 545 (Div. 2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-03-13 23:10:52" itemprop="dateModified" datetime="2019-03-13T23:10:52+08:00">2019-03-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://codeforces.com/contest/1138" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
+<h3 id="A-Sushi-for-Two-签到"><a href="#A-Sushi-for-Two-签到" class="headerlink" title="A - Sushi for Two(签到)"></a><a href="https://codeforces.com/contest/1138/problem/A" target="_blank" rel="noopener">A - Sushi for Two</a>(签到)</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>在一个 <code>01</code> 序列中找出长为偶数的连续的一段使得它前一半和后一半内部分别相同，而前一半和后一半不同。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>纸上模拟了一下然后预处理 赛后发现太麻烦了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">3e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="keyword">int</span> one[maxn];</span><br><span class="line"><span class="keyword">int</span> zero[maxn];</span><br><span class="line"><span class="keyword">int</span> num[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        <span class="keyword">if</span>(a[i]==<span class="number">1</span>)one[i]++;</span><br><span class="line">        <span class="keyword">else</span> zero[i]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(one[i])one[i]=one[i<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(zero[i])zero[i]=zero[i<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">     <span class="comment">//   cout&lt;&lt;one[i]&lt;&lt;" "&lt;&lt;zero[i]&lt;&lt;endl;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(one[i])one[i]=max(one[i],one[i+<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span>(zero[i])zero[i]=max(zero[i],zero[i+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//  cout&lt;&lt;endl;</span></span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">     <span class="comment">//   cout&lt;&lt;one[i]&lt;&lt;" "&lt;&lt;zero[i]&lt;&lt;endl;</span></span><br><span class="line">        ans=max(ans,min(one[i<span class="number">-1</span>],zero[i]));</span><br><span class="line">        ans=max(ans,min(zero[i<span class="number">-1</span>],one[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans*<span class="number">2</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="B-Circus-数学，推公式"><a href="#B-Circus-数学，推公式" class="headerlink" title="B - Circus (数学，推公式)"></a><a href="https://codeforces.com/contest/1138/problem/B" target="_blank" rel="noopener">B - Circus</a> (数学，推公式)</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>有 n个人，需要把它们分成两组，每组恰好 2/n 个人。每个人可能会技能 11或技能 2，一个人可能会其中一种、两种都会或什么都不会。</p>
+<p>要求第一组中会技能 1的人数恰好等于第二组中会技能 2 的人数，输出方案</p>
+<p>2&lt;=n&lt;=5000</p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>比赛在纸上写了两张纸都没写出来的题</p>
+<p>参考<a href="https://www.cnblogs.com/wjyyy/p/cf1138.html" target="_blank" rel="noopener">https://www.cnblogs.com/wjyyy/p/cf1138.html</a> </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1e17</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">char</span> s[maxn],t[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,s+<span class="number">1</span>,t+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        v[s[i]-<span class="string">'0'</span>+(t[i]-<span class="string">'0'</span>)*<span class="number">2</span>].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> a=v[<span class="number">0</span>].size(),b=v[<span class="number">1</span>].size(),c=v[<span class="number">2</span>].size(),d=v[<span class="number">3</span>].size(),h=n/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=d;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(d-i+c&gt;h||i+b&gt;h)<span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;d-i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(b&lt;d<span class="number">-2</span>*i)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[<span class="number">3</span>][j]);</span><br><span class="line">            h-=i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;d<span class="number">-2</span>*i;j++)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[<span class="number">1</span>][j]);</span><br><span class="line">            h-=d<span class="number">-2</span>*i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;c;j++)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[<span class="number">2</span>][j]);</span><br><span class="line">            h-=c;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;h;j++)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[<span class="number">0</span>][j]);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(c&lt;<span class="number">2</span>*i-d)<span class="keyword">continue</span>;</span><br><span class="line">            c-=<span class="number">2</span>*i-d;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[<span class="number">3</span>][j]);</span><br><span class="line">            h-=i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;c;++j)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[<span class="number">2</span>][j]);</span><br><span class="line">            h-=c;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;h;++j)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,v[<span class="number">0</span>][j]);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"-1"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-Skyscrapers-离散化-贪心"><a href="#C-Skyscrapers-离散化-贪心" class="headerlink" title="C - Skyscrapers (离散化+贪心)"></a><a href="https://codeforces.com/contest/1138/problem/C" target="_blank" rel="noopener">C - Skyscrapers</a> (离散化+贪心)</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>有一个 n×m的矩阵 aijaij。</p>
+<p>对于每个 (i,j)1≤i≤n1≤i≤n），你把第 i行和第 j 列单独抽出，这样就有 n+m−1 个数被你抽出。</p>
+<p>你可以对这些数重新标号为正整数，但是要满足第 i行所有数的大小关系不变，第 j列所有数的大小关系不变（两个限制相互独立）。</p>
+<p>满足这个限制下，你希望最大的标号尽量小，对每个 (i,j) 求出这个最小的最大标号。</p>
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>因为行大小关系不变，列大小关系不变，我们考虑分别离散化每行每列，并统计每个数在行内和列内的排名。</p>
+<p>然后贪心取个最大的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">3e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ve;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1500</span>][<span class="number">1500</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;h[<span class="number">1500</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;l[<span class="number">1500</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a[i][j];</span><br><span class="line">            h[i].push_back(a[i][j]);</span><br><span class="line">            l[j].push_back(a[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        sort(h[i].begin(),h[i].end());</span><br><span class="line">        h[i].erase(unique(h[i].begin(),h[i].end()),h[i].end());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        sort(l[i].begin(),l[i].end());</span><br><span class="line">        l[i].erase(unique(l[i].begin(),l[i].end()),l[i].end());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> A=h[i].size(),aa=lower_bound(h[i].begin(),h[i].end(),a[i][j])-h[i].begin()+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> B=l[j].size(),b=lower_bound(l[j].begin(),l[j].end(),a[i][j])-l[j].begin()+<span class="number">1</span>;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;(aa&lt;b?max(B,b+A-aa):max(A,aa+B-b))&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D-Camp-Schedule-KMP-贪心"><a href="#D-Camp-Schedule-KMP-贪心" class="headerlink" title="D - Camp Schedule (KMP 贪心)"></a><a href="https://codeforces.com/contest/1138/problem/D" target="_blank" rel="noopener">D - Camp Schedule</a> (KMP 贪心)</h3><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p>有两个 01 串 s 和 t，要求重新排列 s 使得 t 在重新排列后的 s 中出现次数尽量多（位置相交的出现也算）。</p>
+<h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>一眼KMP 求出T的next数组，然后贪心重叠匹配 关键是可以位置相交</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="keyword">char</span> t[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">kmp_pre</span><span class="params">(<span class="keyword">char</span> x[],<span class="keyword">int</span> m,<span class="keyword">int</span> next[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    j=next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">    i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;m)&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">-1</span>!=j&amp;&amp;x[i]!=x[j])j=next[j];</span><br><span class="line">        next[++i]=++j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> mynext[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kmp</span><span class="params">(<span class="keyword">char</span> x[],<span class="keyword">int</span> m,<span class="keyword">char</span> y[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    kmp_pre(x,m,mynext);</span><br><span class="line">    i=j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;n)&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">-1</span>!=j&amp;&amp;y[i]!=y[j])j=mynext[j];</span><br><span class="line">        i++;j++;</span><br><span class="line">        <span class="keyword">if</span>(j&gt;=m)&#123;</span><br><span class="line">            ans++;</span><br><span class="line">            j=mynext[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">int</span> lens=<span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> a0=<span class="number">0</span>,a1=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lens;i++)<span class="keyword">if</span>(s[i]==<span class="string">'0'</span>)a0++;<span class="keyword">else</span> a1++;</span><br><span class="line">    <span class="keyword">int</span> lent=<span class="built_in">strlen</span>(t);</span><br><span class="line">    kmp_pre(t,lent,mynext);</span><br><span class="line">    <span class="keyword">int</span> num=mynext[lent];</span><br><span class="line">    <span class="comment">//int num=kmp(t,lent,t,lent);</span></span><br><span class="line">    <span class="built_in">string</span> p=<span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span> n1=<span class="number">0</span>,n0=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=num;i&lt;lent;i++)&#123;</span><br><span class="line">        p+=t[i];</span><br><span class="line">        <span class="keyword">if</span>(t[i]==<span class="string">'0'</span>)n0++;</span><br><span class="line">        <span class="keyword">else</span> n1++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> b1=<span class="number">0</span>,b0=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;lent;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(t[i]==<span class="string">'0'</span>)b0++;</span><br><span class="line">        <span class="keyword">else</span> b1++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a0&lt;b0||a1&lt;b1)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    str+=t;</span><br><span class="line">    a1-=b1;a0-=b0;</span><br><span class="line">    <span class="keyword">while</span>(a1&gt;=n1&amp;&amp;a0&gt;=n0)&#123;</span><br><span class="line">        str+=p;</span><br><span class="line">        a1-=n1,a0-=n0;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(a1--)&#123;</span><br><span class="line">        str+=<span class="string">"1"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(a0--)&#123;</span><br><span class="line">        str+=<span class="string">"0"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;str&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="F-Cooperative-Game-Floyd判环，龟兔赛跑算法"><a href="#F-Cooperative-Game-Floyd判环，龟兔赛跑算法" class="headerlink" title="F - Cooperative Game (Floyd判环，龟兔赛跑算法)"></a><a href="https://codeforces.com/contest/1138/problem/F" target="_blank" rel="noopener">F - Cooperative Game</a> (Floyd判环，龟兔赛跑算法)</h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>一个条路  连着一个环，路和环的连接点定义为终点</p>
+<p>十个人 每次可以移动一些人向前单项移动（参考链表）</p>
+<p>交互题，每次选择一个人的编号让他想前移动</p>
+<p>之后系统会告诉你现在哪些点有人，分别是谁</p>
+<p>把所有人移动到终点就输出“done”结束</p>
+<h4 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h4><p>裸的Floyd算法 过程完全一模一样</p>
+<p>首先让两个人一个一次移动一步，一个一次移动两步。</p>
+<p>然后两人会在一个点相遇。次数假设慢的人经过的距离为$s$ 那么快的人距离为$2s$</p>
+<p>$s=m+i*l+k$    1式 </p>
+<p>$2s=m+j*l+k$  2式</p>
+<p>两式相减</p>
+<p>$s=(j-i)l$  3式</p>
+<p>带入1式 </p>
+<script type="math/tex; mode=display">
+s=m+i*l+k\\(j-i)l=m+i*l+k\\(j-2i)l=m+k\\（j-2i）l-k=m</script><p>所以当一个点开始从m走到起点时，另一个点也走到了开始的地方</p>
+<p>我的想法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假设出发起点到环起点的距离为m，已经确定有环，环的周长为n，（第一次）相遇点距离环的起点的距离是k。那么当两者相遇时，慢指针（t）移动的总距离i = m + a * n + k，快指针（h）的移动距离为2i，2i = m + b * n + k。其中，a和b分别为t和h在第一次相遇时转过的圈数。让两者相减（快减慢），那么有i = (b - a) * n。即i是圈长度的倍数。</span><br><span class="line"></span><br><span class="line">将一个指针移到出发起点S，另一个指针仍呆在相遇节点M处两者同时移动，每次移动一步。当第一个指针前进了m，即到达环起点时，另一个指针距离链表起点为i + m。考虑到i为圈长度的倍数，可以理解为指针从链表起点出发，走到环起点，然后绕环转了几圈，所以第二个指针也必然在环的起点。即两者相遇点就是环的起点。</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1e17</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fflush(<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=t;i++)<span class="built_in">scanf</span>(<span class="string">"%*s"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"next 0 1"</span>),get();</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"next 0"</span>),get();</span><br><span class="line">    &#125;<span class="keyword">while</span>(t==<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"next 0 1 2 3 4 5 6 7 8 9"</span>),get();</span><br><span class="line">    &#125;<span class="keyword">while</span>(t==<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"done"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/24/Codeforces Round 541 (Div. 2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1828,171 +2017,6 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/24/Codeforces Round 271(Div. 2)‘/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/24/Codeforces Round 271(Div. 2)‘/" itemprop="url">
-                  Codeforces Round 271(Div. 2)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-29 01:02:23" itemprop="dateModified" datetime="2019-03-29T01:02:23+08:00">2019-03-29</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="<https://codeforces.com/contest/474>" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
-<h3 id="C-Captain-Marmot-几何-点旋转"><a href="#C-Captain-Marmot-几何-点旋转" class="headerlink" title="C.Captain Marmot (几何,点旋转)"></a>C.<a href="https://codeforces.com/contest/474/problem/C" target="_blank" rel="noopener">Captain Marmot</a> (几何,点旋转)</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>其中顺时针旋转为负，逆时针旋转为正，角度angle是弧度值，如旋转30度转换为弧度为： $angle = pi/180 * 30$。</p>
-<p>4、度与角度的转换<br>   根据圆为$360 º$，弧度为$2π$，即 $360º = 2π$ </p>
-<p>   4.1 角度转弧度：$2π / 360  = π / 180 ≈ 0.0174rad$, 即: $度数 <em> (π / 180） = 弧度$<br>   例如：将30º转为弧度rad<br> $  30º </em> (π / 180）= 0.523320 rad $</p>
-<p>   4.2 弧度转角度: $360 / 2π  = 180 / π ≈ 57.3º$,  即: $ 弧度 <em> (180 / π） = 度数$<br>   例如：将$0.523320rad$转为度º<br>   $0.523320rad </em> (180 / π) = 29.9992352688º $</p>
-<p>若o不是原点，则可先将a点坐标转换为相对坐标计算，计算结果再加上o点坐标。</p>
-<p>参与计算的a点坐标实际应为 a - 0,最终计算公式如下：</p>
-<p>$b.x = ( a.x - o.x)<em>cos(angle) - (a.y - o.y)</em>sin(angle) + o.x$</p>
-<p>$b.y = (a.x - o.x)<em>sin(angle) + (a.y - o.y)</em>cos(angle) + o.y$</p>
-<h3 id="Flowers-DP"><a href="#Flowers-DP" class="headerlink" title="Flowers  (DP)"></a><a href="https://codeforces.com/contest/474/problem/D" target="_blank" rel="noopener">Flowers</a>  (DP)</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>少于k的肯定全是1因为都只能放红色。</p>
-<p>大于K的可以放红色$dp[i-1]$ 或者连续的k个白色$dp[i-k]$</p>
-<h3 id="E-Pillars-DP-线段树-离散化"><a href="#E-Pillars-DP-线段树-离散化" class="headerlink" title="E - Pillars (DP+线段树+离散化)"></a><a href="https://codeforces.com/contest/474/problem/E" target="_blank" rel="noopener">E - Pillars</a> (DP+线段树+离散化)</h3><h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>很明显的DP，但是数值太大，所以考虑离散化 然线段树取区间最大值</p>
-<h3 id="F-Ant-colony-线段树区间gcd-线段树求最小值的个数"><a href="#F-Ant-colony-线段树区间gcd-线段树求最小值的个数" class="headerlink" title="F - Ant colony (线段树区间gcd,线段树求最小值的个数)"></a><a href="https://codeforces.com/contest/474/problem/F" target="_blank" rel="noopener">F - Ant colony</a> (线段树区间gcd,线段树求最小值的个数)</h3><h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>题意就是查询区间GCD 然后求出区间gcd的个数，后面的操作也可以主席树写</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> bug cout&lt;&lt;<span class="meta-string">"here"</span>&lt;&lt;endl;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span>&#123;</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> ls (o&lt;&lt;1)</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> rs ((o&lt;&lt;1)|1)</span></span><br><span class="line">    <span class="keyword">int</span> gcd[maxn&lt;&lt;<span class="number">2</span>],mi[maxn&lt;&lt;<span class="number">2</span>],num[maxn&lt;&lt;<span class="number">2</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push_up</span><span class="params">(<span class="keyword">int</span> o)</span></span>&#123;</span><br><span class="line">        gcd[o]=__gcd(gcd[ls],gcd[rs]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">            mi[o]=gcd[o]=a[l];</span><br><span class="line">            num[o]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">        build(ls,l,mid);</span><br><span class="line">        build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">        push_up(o);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> ql,<span class="keyword">int</span> qr)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(ql&lt;=l&amp;&amp;qr&gt;=r)&#123;</span><br><span class="line">            <span class="keyword">return</span> gcd[o];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> gc=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(ql&lt;=mid)gc=__gcd(gc,query(ls,l,mid,ql,qr));</span><br><span class="line">        <span class="keyword">if</span>(qr&gt;mid)gc=__gcd(query(rs,mid+<span class="number">1</span>,r,ql,qr),gc);</span><br><span class="line">        <span class="keyword">return</span> gc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;tree;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum[maxn*<span class="number">40</span>],rt[maxn*<span class="number">40</span>];</span><br><span class="line"><span class="keyword">int</span> lss[maxn*<span class="number">40</span>],rss[maxn*<span class="number">40</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> &amp;o,<span class="keyword">int</span> pre,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    o=++cnt;</span><br><span class="line">    lss[o]=lss[pre];rss[o]=rss[pre];</span><br><span class="line">    sum[o]=sum[pre];</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;sum[o]++;<span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(val&lt;=mid)update(lss[o],lss[pre],l,mid,val);</span><br><span class="line">    <span class="keyword">else</span> update(rss[o],rss[pre],mid+<span class="number">1</span>,r,val);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        <span class="keyword">return</span> sum[o];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(val&lt;=mid)<span class="keyword">return</span> query(lss[o],l,mid,val);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> query(rss[o],mid+<span class="number">1</span>,r,val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        update(rt[i],rt[i<span class="number">-1</span>],<span class="number">1</span>,<span class="number">1e9</span>,a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tree.build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="keyword">int</span> l,r;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r;</span><br><span class="line">        <span class="keyword">int</span> gc=tree.query(<span class="number">1</span>,<span class="number">1</span>,n,l,r);</span><br><span class="line">        <span class="keyword">int</span> num=query(rt[r],<span class="number">1</span>,<span class="number">1e9</span>,gc);</span><br><span class="line">        <span class="keyword">int</span> num1=query(rt[l<span class="number">-1</span>],<span class="number">1</span>,<span class="number">1e9</span>,gc);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;r-l+<span class="number">1</span>-num+num1&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2040,7 +2064,7 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">112</span>
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -2155,7 +2179,11 @@ dp[d+1][j]=min(dp[d+1][j],dp[i][j]+w[i]);//不去打扰</script><p>然后这题�
                     
                       
                     
-                    <span class="site-state-item-count">50</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">Tags</span>
                   
                 </div>
