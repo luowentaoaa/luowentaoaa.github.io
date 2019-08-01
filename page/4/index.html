@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -264,6 +264,175 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/24/第十四届“商汤杯”北航程序设计竞赛/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/24/第十四届“商汤杯”北航程序设计竞赛/" itemprop="url">
+                  第十四届“商汤杯”北航程序设计竞赛
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-23 02:13:18" itemprop="dateModified" datetime="2019-03-23T02:13:18+08:00">2019-03-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="B-升级超梦-dfs"><a href="#B-升级超梦-dfs" class="headerlink" title="B 升级超梦 (dfs)"></a><code>B</code> 升级超梦 (dfs)</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>题目比较简单，每一回合只有两个情况 要么用经验 要么用糖果</p>
+<p>所以我们直接搜索一下n个糖果和m个exp的情况</p>
+<p>即$dp[n][exp]=max(dp[n][exp-need],dp[n-1][exp])$</p>
+<h3 id="D-Bella-姐姐发辣条-二分"><a href="#D-Bella-姐姐发辣条-二分" class="headerlink" title="D Bella 姐姐发辣条 (二分)"></a><code>D</code> Bella 姐姐发辣条 (二分)</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>我们发现只要最后一个人的辣条数确定了那全部人的辣条就确定了。</p>
+<p>而且总答案随着最后一个人的辣条数减少而减少 。所以符合二分性</p>
+<h3 id="E-禁忌的共鸣-数论-最小生成树"><a href="#E-禁忌的共鸣-数论-最小生成树" class="headerlink" title="E 禁忌的共鸣 (数论+最小生成树)"></a><code>E</code> 禁忌的共鸣 (数论+最小生成树)</h3><h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>首先需要看出题目要求的是一个最大生成树</p>
+<p>如果两个结点之间相连肯定答案是他们是GCD也就是他们的因子值</p>
+<p>所以我们预处理每个数的因子，然后从最大的因子开始建立生成树</p>
+<h3 id="F-zzh-与同余方程-数论"><a href="#F-zzh-与同余方程-数论" class="headerlink" title="F zzh 与同余方程 (数论)"></a><code>F</code> zzh 与同余方程 (数论)</h3><h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>首先$b-a=km$ 带入$(i+1)^{i+1}=(i+1)^i$ 可以得到$(i+1)^{i+1}-(i+1)^i=(i+1)^{i} \times(i)$</p>
+<p>题目要求的就是$\sum (i+1)^i\times(i)$  设$f[n]=(i+1)^i$ $g[n]=i$</p>
+<p>我们可以很轻松预处理出$i+1$的因子然后发现$(i+1)^i$ 和$i+1$之间有种关系</p>
+<p>假设$i+1=prime1^a \times prime2^b \times prime3^c \dots$ 那么$(i+1)^i=(prime1^a \times prime2^b \times prime3^c)^i$</p>
+<p>所以根据求因子公式$ (a+1)<em>(b+1)</em>(c+1)$得出$(a\times t+1)<em>(b\times t +1)</em>(c \times t + 1)$</p>
+<p>因为因子数是积性函数 并且$i和i+1$互质</p>
+<p>所以答案就很显然了。</p>
+<h3 id="H-Draw-顺小王子-爆搜-模拟"><a href="#H-Draw-顺小王子-爆搜-模拟" class="headerlink" title="H Draw 顺小王子 (爆搜+模拟)"></a><code>H</code> Draw 顺小王子 (爆搜+模拟)</h3><h4 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h4><p>暴力搜索的复杂度为$49^2 \times T\times13$</p>
+<p>所以绰绰有余，主要是这题模拟的细节处理</p>
+<h3 id="K-wjj-的自动售货机-线段树区间取模"><a href="#K-wjj-的自动售货机-线段树区间取模" class="headerlink" title="K wjj 的自动售货机 (线段树区间取模)"></a><code>K</code> wjj 的自动售货机 (线段树区间取模)</h3><h4 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h4><p>第一眼线段树，区间取模和求和都明显了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +488,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -343,7 +512,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-03-31 23:36:49" itemprop="dateModified" datetime="2019-03-31T23:36:49+08:00">2019-03-31</time>
+                <time title="Modified: 2019-03-31 23:36:49" itemprop="dateModified" datetime="2019-03-31T23:36:49+08:00">2019-03-31</time>
               
             
           </span>
@@ -498,14 +667,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -522,7 +691,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-03-17 00:54:08" itemprop="dateModified" datetime="2019-03-17T00:54:08+08:00">2019-03-17</time>
+                <time title="Modified: 2019-03-17 00:54:08" itemprop="dateModified" datetime="2019-03-17T00:54:08+08:00">2019-03-17</time>
               
             
           </span>
@@ -679,14 +848,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -703,7 +872,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-02 19:38:06" itemprop="dateModified" datetime="2019-02-02T19:38:06+08:00">2019-02-02</time>
+                <time title="Modified: 2019-02-02 19:38:06" itemprop="dateModified" datetime="2019-02-02T19:38:06+08:00">2019-02-02</time>
               
             
           </span>
@@ -834,14 +1003,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -858,7 +1027,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-01-31 01:44:48" itemprop="dateModified" datetime="2019-01-31T01:44:48+08:00">2019-01-31</time>
+                <time title="Modified: 2019-01-31 01:44:48" itemprop="dateModified" datetime="2019-01-31T01:44:48+08:00">2019-01-31</time>
               
             
           </span>
@@ -989,14 +1158,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -1013,7 +1182,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-01-31 16:48:55" itemprop="dateModified" datetime="2019-01-31T16:48:55+08:00">2019-01-31</time>
+                <time title="Modified: 2019-01-31 16:48:55" itemprop="dateModified" datetime="2019-01-31T16:48:55+08:00">2019-01-31</time>
               
             
           </span>
@@ -1144,14 +1313,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -1168,7 +1337,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-01 23:59:53" itemprop="dateModified" datetime="2019-02-01T23:59:53+08:00">2019-02-01</time>
+                <time title="Modified: 2019-02-01 23:59:53" itemprop="dateModified" datetime="2019-02-01T23:59:53+08:00">2019-02-01</time>
               
             
           </span>
@@ -1300,14 +1469,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -1324,7 +1493,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-03 20:42:34" itemprop="dateModified" datetime="2019-02-03T20:42:34+08:00">2019-02-03</time>
+                <time title="Modified: 2019-02-03 20:42:34" itemprop="dateModified" datetime="2019-02-03T20:42:34+08:00">2019-02-03</time>
               
             
           </span>
@@ -1455,14 +1624,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -1479,7 +1648,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-04 22:00:06" itemprop="dateModified" datetime="2019-02-04T22:00:06+08:00">2019-02-04</time>
+                <time title="Modified: 2019-02-04 22:00:06" itemprop="dateModified" datetime="2019-02-04T22:00:06+08:00">2019-02-04</time>
               
             
           </span>
@@ -1608,14 +1777,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
             
 
             
@@ -1632,7 +1801,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-01-31 19:48:59" itemprop="dateModified" datetime="2019-01-31T19:48:59+08:00">2019-01-31</time>
+                <time title="Modified: 2019-01-31 19:48:59" itemprop="dateModified" datetime="2019-01-31T19:48:59+08:00">2019-01-31</time>
               
             
           </span>
@@ -1671,161 +1840,6 @@
 <h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>有A,B,C三个人物要分配个N个宇航员，每个宇航员恰好要分配一个任务，设平均年龄为X，只有年龄大于或等于X的宇航员才能分配任务A。只有年龄严格小于X的宇航员才能分配任务B。而任务C没有限制。有M对宇航员相互讨厌，因此不能分配到同一任务。编程找出一个满足上述所有要求的任务分配方案。</p>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>如果憎恶就代表不能一起去C，如果年龄相同就代表不能一起去A/B；</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TwoSAT</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn*<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">bool</span> mark[maxn*<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> S[maxn*<span class="number">2</span>],c;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mark[x^<span class="number">1</span>])<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(mark[x])<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        mark[x]=<span class="literal">true</span>;</span><br><span class="line">        S[c++]=x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[x].size();i++)</span><br><span class="line">            <span class="keyword">if</span>(!dfs(G[x][i]))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;n=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n*<span class="number">2</span>;i++)G[i].clear();</span><br><span class="line">        <span class="built_in">memset</span>(mark,<span class="number">0</span>,<span class="keyword">sizeof</span>(mark));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/// x=xval or y= yval;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add_caluse</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> xval,<span class="keyword">int</span> y,<span class="keyword">int</span> yval)</span></span>&#123;</span><br><span class="line">        x=x*<span class="number">2</span>+xval;</span><br><span class="line">        y=y*<span class="number">2</span>+yval;</span><br><span class="line">        G[x^<span class="number">1</span>].push_back(y);<span class="comment">///如果x为真 那么y必须为假;</span></span><br><span class="line">        G[y^<span class="number">1</span>].push_back(x);<span class="comment">///如果y为真 那么x必须为假;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n*<span class="number">2</span>;i+=<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span>(!mark[i]&amp;&amp;!mark[i+<span class="number">1</span>])&#123;</span><br><span class="line">            c=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!dfs(i))&#123;</span><br><span class="line">                <span class="keyword">while</span>(c&gt;<span class="number">0</span>)mark[S[--c]]=<span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span>(!dfs(i+<span class="number">1</span>))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n,a[maxn],m;</span><br><span class="line">TwoSAT solver;</span><br><span class="line"><span class="keyword">int</span> tol;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">is_young</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a[x]*n&lt;tol;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&amp;&amp;n&amp;&amp;m)&#123;</span><br><span class="line">        tol=<span class="number">0</span>;</span><br><span class="line">        solver.init(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">            tol+=a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> a,b;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b;a--;b--;</span><br><span class="line">            solver.add_caluse(a,<span class="number">1</span>,b,<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(is_young(a)==is_young(b))</span><br><span class="line">                solver.add_caluse(a,<span class="number">0</span>,b,<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!solver.solve())<span class="built_in">cout</span>&lt;&lt;<span class="string">"No solution."</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">            <span class="keyword">if</span>(solver.mark[i*<span class="number">2</span>])<span class="built_in">cout</span>&lt;&lt;<span class="string">"C"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(is_young(i))<span class="built_in">cout</span>&lt;&lt;<span class="string">"B"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"A"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/24/UVALive - 3523/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/24/UVALive - 3523/" itemprop="url">
-                  训练指南 UVALive - 3523 （双连通分量 + 二分图染色）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-04-24 01:31:26" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:26+08:00">2019-04-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-01-31 01:44:21" itemprop="dateModified" datetime="2019-01-31T01:44:21+08:00">2019-01-31</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Knights-of-the-Round-Table"><a href="#Knights-of-the-Round-Table" class="headerlink" title="Knights of the Round Table"></a>Knights of the Round Table</h2><p><a href="https://vjudge.net/problem/18122/origin" target="_blank" rel="noopener">UVALive - 3523 </a></p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>圆桌骑士。有的骑士之间是相互憎恨的，不能连坐，需要安排奇数个骑士围着桌子坐着，大于3个，求哪些骑士不可能安排到座位。</p>
-<p>根据给定的关系，如果两个骑士之间没有憎恨关系，那么连边。最终就是求有多少个点无法位于奇圈之内。根据二分图可以知道二分图的都是偶数圈；所以只要先把联通分量求出来然后判断是否是二分图就行</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e3</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> A[maxn][maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> u,v;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">///割顶 bccno 无意义</span></span><br><span class="line"><span class="keyword">int</span> pre[maxn],iscut[maxn],bccno[maxn],dfs_clock,bcc_cut;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[maxn],bcc[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;Edge&gt;S;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> lowu = pre[u] = ++dfs_clock;</span><br><span class="line">    <span class="keyword">int</span> child = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v =G[u][i];</span><br><span class="line">        Edge e = (Edge)&#123;u,v&#125;;</span><br><span class="line">        <span class="keyword">if</span>(!pre[v])&#123; <span class="comment">///没有访问过</span></span><br><span class="line">            S.push(e);</span><br><span class="line">            child++;</span><br><span class="line">            <span class="keyword">int</span> lowv = dfs(v, u);</span><br><span class="line">            lowu=min(lowu, lowv);                <span class="comment">///用后代更新</span></span><br><span class="line">            <span class="keyword">if</span>(lowv &gt;= pre[u])&#123;</span><br><span class="line">                iscut[u]=<span class="literal">true</span>;</span><br><span class="line">                bcc_cut++;bcc[bcc_cut].clear();   <span class="comment">///注意 bcc从1开始</span></span><br><span class="line">                <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">                    Edge x=S.top();S.pop();</span><br><span class="line">                    <span class="keyword">if</span>(bccno[x.u] != bcc_cut)&#123;bcc[bcc_cut].push_back(x.u);bccno[x.u]=bcc_cut;&#125;</span><br><span class="line">                    <span class="keyword">if</span>(bccno[x.v] != bcc_cut)&#123;bcc[bcc_cut].push_back(x.v);bccno[x.v]=bcc_cut;&#125;</span><br><span class="line">                    <span class="keyword">if</span>(x.u==u&amp;&amp;x.v==v)<span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pre[v] &lt; pre[u] &amp;&amp; v !=fa)&#123;</span><br><span class="line">            S.push(e);</span><br><span class="line">            lowu = min(lowu,pre[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(fa &lt; <span class="number">0</span> &amp;&amp; child == <span class="number">1</span>) iscut[u] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> lowu;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find_bcc</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(pre, <span class="number">0</span>, <span class="keyword">sizeof</span>(pre));</span><br><span class="line">    <span class="built_in">memset</span>(iscut, <span class="number">0</span>, <span class="keyword">sizeof</span>(iscut));</span><br><span class="line">    <span class="built_in">memset</span>(bccno, <span class="number">0</span>, <span class="keyword">sizeof</span>(bccno));</span><br><span class="line">    dfs_clock = bcc_cut = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n;i++)</span><br><span class="line">        <span class="keyword">if</span>(!pre[i])dfs(i,<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> odd[maxn], color[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bipartite</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G[u].size(); i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v =G[u][i]; <span class="keyword">if</span>(bccno[v] != b) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(color[v] == color[u])<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!color[v])&#123;</span><br><span class="line">            color[v] = <span class="number">3</span> - color[u];</span><br><span class="line">            <span class="keyword">if</span>(!bipartite(v,b))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> kase=<span class="number">0</span>,n,m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&amp;&amp;n)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) G[i].clear();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">memset</span>(A,<span class="number">0</span>,<span class="keyword">sizeof</span>(A));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> u,v;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">            u--;v--;</span><br><span class="line">            A[u][v]=A[v][u]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> u=<span class="number">0</span>;u&lt;n;u++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> v=u+<span class="number">1</span>;v&lt;n;v++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!A[u][v])&#123;</span><br><span class="line">                    G[u].push_back(v);</span><br><span class="line">                    G[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        find_bcc(n);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">memset</span>(odd, <span class="number">0</span>, <span class="keyword">sizeof</span>(odd));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= bcc_cut; i++)&#123;</span><br><span class="line">            <span class="built_in">memset</span>(color, <span class="number">0</span>, <span class="keyword">sizeof</span>(color));</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; bcc[i].size(); j++) bccno[bcc[i][j]]=i;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> u=bcc[i][<span class="number">0</span>];</span><br><span class="line">            color[u]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(!bipartite(u,i))</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; bcc[i].size(); j++)odd[bcc[i][j]]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)<span class="keyword">if</span>(odd[i])ans--;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1911,8 +1925,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">118</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2033,7 +2047,7 @@
                       
                     
                     <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2086,7 +2100,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2275,6 +2289,27 @@
     });
 </script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+ype="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   

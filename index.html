@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -264,6 +264,152 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/08/02/2019牛客暑期多校训练营（第五场）G - subsequeue 1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/2019牛客暑期多校训练营（第五场）G - subsequeue 1/" itemprop="url">
+                  2019牛客暑期多校训练营（第五场）G - subsequeue 1 (一题我真的不会的题)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-02 00:39:27 / Modified: 00:49:51" itemprop="dateCreated datePublished" datetime="2019-08-02T00:39:27+08:00">2019-08-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给你两个由数字组成的字符串$S$,$T$  长度为$1e3$，问你S中有多少个子序列的值大于字符串T；</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先在比赛的时候一眼确定是$N^2$ 复杂度的DP，但是想了两三个小时却没想到怎么转移，各种构造$dp[i][j]$的含义。可是无功而返。</p>
+<p>比赛结束后发现大家都用到了组合数。发现大家这题都用分两类来讨论做题。这时候才焕然大悟。</p>
+<p>原来比T大的字符串可以分成两类根本不用瞎几把转移。</p>
+<p>于是这题的解法很快就想到了，如果是大于的情况，那么只要第一个字符不是0，那么后面的几个字符串就随便取就行了。</p>
+<p>大于的结束了接下来就是相等的情况。如果相等 那么肯定要考虑是从$S$串的哪个作为起点来构造子序列。并且这个S串的起点，的下一个点从哪里转移。这些都是可以DP的。于是我们基本的状态确定了，我们首先要确定目前构造到S串的哪个位置了。同时这个位置对于着T串的哪个位置，这样我们就可以开始转移。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">4e3</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line">ll dp[maxn][maxn];</span><br><span class="line">ll C[maxn][maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(ll &amp;a,ll b)</span></span>&#123;</span><br><span class="line">    a+=b;</span><br><span class="line">    <span class="keyword">if</span>(a&gt;=mod)a-=mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span> s[maxn],t[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    C[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">3000</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j==<span class="number">0</span>||j==i)C[i][j]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> add(C[i][j],C[i<span class="number">-1</span>][j<span class="number">-1</span>]+C[i<span class="number">-1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="keyword">int</span> n,m;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;s+<span class="number">1</span>&gt;&gt;t+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n+<span class="number">10</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=m+<span class="number">10</span>;j++)dp[i][j]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ll ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]==<span class="string">'0'</span>)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=m;j&lt;=n;j++)&#123;</span><br><span class="line">                add(ans,C[n-i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">///dp[i][j]= 从后往前到当前S串第j的字符位置匹配到T串的第I个字符并且大于的个数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=m;i;i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=n;j;j--)&#123;</span><br><span class="line">                dp[j][i]=dp[j+<span class="number">1</span>][i];  <span class="comment">///因为包括了没有第j个字符的情况，所以如果第j+1个字符符合条件也可以</span></span><br><span class="line">                <span class="keyword">if</span>(t[i]==s[j])add(dp[j][i],dp[j+<span class="number">1</span>][i+<span class="number">1</span>]);</span><br><span class="line">                <span class="comment">/// 如果两个字符相同 那么答案就是少取这第J个字符同时还大于的数量</span></span><br><span class="line">                <span class="keyword">if</span>(t[i]&lt;s[j])add(dp[j][i],C[n-j][m-i]);</span><br><span class="line">                <span class="comment">///如果大于  那么答案就是后面的几个随便取几个就行了。</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;(ans+dp[<span class="number">1</span>][<span class="number">1</span>])%mod&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +465,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-07-31 17:18:08 / Updated at: 17:22:24" itemprop="dateCreated datePublished" datetime="2019-07-31T17:18:08+08:00">2019-07-31</time>
+              <time title="Created: 2019-07-31 17:18:08 / Modified: 17:22:24" itemprop="dateCreated datePublished" datetime="2019-07-31T17:18:08+08:00">2019-07-31</time>
             
 
             
@@ -462,14 +608,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-07-29 23:41:41 / Updated at: 23:45:51" itemprop="dateCreated datePublished" datetime="2019-07-29T23:41:41+08:00">2019-07-29</time>
+              <time title="Created: 2019-07-29 23:41:41 / Modified: 23:45:51" itemprop="dateCreated datePublished" datetime="2019-07-29T23:41:41+08:00">2019-07-29</time>
             
 
             
@@ -606,14 +752,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-07-23 16:49:59 / Updated at: 17:10:20" itemprop="dateCreated datePublished" datetime="2019-07-23T16:49:59+08:00">2019-07-23</time>
+              <time title="Created: 2019-07-23 16:49:59 / Modified: 17:10:20" itemprop="dateCreated datePublished" datetime="2019-07-23T16:49:59+08:00">2019-07-23</time>
             
 
             
@@ -747,14 +893,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-07-22 20:29:05 / Updated at: 21:05:13" itemprop="dateCreated datePublished" datetime="2019-07-22T20:29:05+08:00">2019-07-22</time>
+              <time title="Created: 2019-07-22 20:29:05 / Modified: 21:05:13" itemprop="dateCreated datePublished" datetime="2019-07-22T20:29:05+08:00">2019-07-22</time>
             
 
             
@@ -890,14 +1036,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-06-09 14:09:29 / Updated at: 15:10:26" itemprop="dateCreated datePublished" datetime="2019-06-09T14:09:29+08:00">2019-06-09</time>
+              <time title="Created: 2019-06-09 14:09:29 / Modified: 15:10:26" itemprop="dateCreated datePublished" datetime="2019-06-09T14:09:29+08:00">2019-06-09</time>
             
 
             
@@ -1063,14 +1209,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1087,7 +1233,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 16:48:26" itemprop="dateModified" datetime="2019-02-26T16:48:26+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 16:48:26" itemprop="dateModified" datetime="2019-02-26T16:48:26+08:00">2019-02-26</time>
               
             
           </span>
@@ -1326,14 +1472,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1350,7 +1496,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 16:34:54" itemprop="dateModified" datetime="2019-02-26T16:34:54+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 16:34:54" itemprop="dateModified" datetime="2019-02-26T16:34:54+08:00">2019-02-26</time>
               
             
           </span>
@@ -1599,14 +1745,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1623,7 +1769,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 16:22:24" itemprop="dateModified" datetime="2019-02-26T16:22:24+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 16:22:24" itemprop="dateModified" datetime="2019-02-26T16:22:24+08:00">2019-02-26</time>
               
             
           </span>
@@ -1754,14 +1900,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1778,7 +1924,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 16:21:50" itemprop="dateModified" datetime="2019-02-26T16:21:50+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 16:21:50" itemprop="dateModified" datetime="2019-02-26T16:21:50+08:00">2019-02-26</time>
               
             
           </span>
@@ -1977,582 +2123,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Python04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/Python04/" itemprop="url">
-                  Python3 字符串
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-02-26 15:59:38" itemprop="dateModified" datetime="2019-02-26T15:59:38+08:00">2019-02-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Python-字符串更新"><a href="#Python-字符串更新" class="headerlink" title="Python 字符串更新"></a>Python 字符串更新</h2><p>你可以截取字符串的一部分并与其他字段拼接，如下实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\#!/usr/bin/python3 </span><br><span class="line">var1 = &apos;Hello World!&apos;</span><br><span class="line">print (&quot;已更新字符串 : &quot;, var1[:6] + &apos;Runoob!&apos;)</span><br><span class="line"></span><br><span class="line">以上实例执行结果</span><br><span class="line">已更新字符串 :  Hello Runoob!</span><br></pre></td></tr></table></figure>
-<h2 id="Python转义字符"><a href="#Python转义字符" class="headerlink" title="Python转义字符"></a>Python转义字符</h2><p>在需要在字符中使用特殊字符时，python用反斜杠()转义字符。如下表：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>转义字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(在行尾时)</td>
-<td>续行符</td>
-</tr>
-<tr>
-<td>\\</td>
-<td>反斜杠符号</td>
-</tr>
-<tr>
-<td>\’</td>
-<td>单引号</td>
-</tr>
-<tr>
-<td>\”</td>
-<td>双引号</td>
-</tr>
-<tr>
-<td>\a</td>
-<td>响铃</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>退格(Backspace)</td>
-</tr>
-<tr>
-<td>\e</td>
-<td>转义</td>
-</tr>
-<tr>
-<td>\000</td>
-<td>空</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>换行</td>
-</tr>
-<tr>
-<td>\v</td>
-<td>纵向制表符</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>横向制表符</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>回车</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>换页</td>
-</tr>
-<tr>
-<td>\oyy</td>
-<td>八进制数，yy代表的字符，例如：\o12代表换行</td>
-</tr>
-<tr>
-<td>\xyy</td>
-<td>十六进制数，yy代表的字符，例如：\x0a代表换行</td>
-</tr>
-<tr>
-<td>\other</td>
-<td>其它的字符以普通格式输出</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="Python字符串运算符"><a href="#Python字符串运算符" class="headerlink" title="Python字符串运算符"></a>Python字符串运算符</h2><p>下表实例变量a值为字符串 “Hello”，b变量值为 “Python”：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>操作符</th>
-<th>描述</th>
-<th>实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>+</td>
-<td>字符串连接</td>
-<td>a + b 输出结果： HelloPython</td>
-</tr>
-<tr>
-<td>*</td>
-<td>重复输出字符串</td>
-<td>a*2 输出结果：HelloHello</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>通过索引获取字符串中字符</td>
-<td>a[1] 输出结果 <strong>e</strong></td>
-</tr>
-<tr>
-<td>[ : ]</td>
-<td>截取字符串中的一部分，遵循<strong>左闭右开</strong>原则，str[0,2] 是不包含第 3 个字符的。</td>
-<td>a[1:4] 输出结果 <strong>ell</strong></td>
-</tr>
-<tr>
-<td>in</td>
-<td>成员运算符 - 如果字符串中包含给定的字符返回 True</td>
-<td><strong>‘H’ in a</strong> 输出结果 True</td>
-</tr>
-<tr>
-<td>not in</td>
-<td>成员运算符 - 如果字符串中不包含给定的字符返回 True</td>
-<td><strong>‘M’ not in a</strong> 输出结果 True</td>
-</tr>
-<tr>
-<td>r/R</td>
-<td>原始字符串 - 原始字符串：所有的字符串都是直接按照字面的意思来使用，没有转义特殊或不能打印的字符。 原始字符串除在字符串的第一个引号前加上字母 <strong>r</strong>（可以大小写）以外，与普通字符串有着几乎完全相同的语法。</td>
-<td><code>print( r&#39;\n&#39; ) print( R&#39;\n&#39; )</code></td>
-</tr>
-<tr>
-<td>%</td>
-<td>格式字符串</td>
-<td>请看下一节内容。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="Python字符串格式化"><a href="#Python字符串格式化" class="headerlink" title="Python字符串格式化"></a>Python字符串格式化</h2><p>Python 支持格式化字符串的输出 。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中。</p>
-<p>在 Python 中，字符串格式化使用与 C 中 sprintf 函数一样的语法。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">实例(Python <span class="number">3.0</span>+)</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">print ("我叫 %s 今年 %d 岁!" % ('小明', 10))</span><br><span class="line">以上实例输出结果：</span><br><span class="line"></span><br><span class="line">我叫 小明 今年 <span class="number">10</span> 岁!</span><br></pre></td></tr></table></figure>
-<p>python字符串格式化符号:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>符   号</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>%c</td>
-<td>格式化字符及其ASCII码</td>
-</tr>
-<tr>
-<td>%s</td>
-<td>格式化字符串</td>
-</tr>
-<tr>
-<td>%d</td>
-<td>格式化整数</td>
-</tr>
-<tr>
-<td>%u</td>
-<td>格式化无符号整型</td>
-</tr>
-<tr>
-<td>%o</td>
-<td>格式化无符号八进制数</td>
-</tr>
-<tr>
-<td>%x</td>
-<td>格式化无符号十六进制数</td>
-</tr>
-<tr>
-<td>%X</td>
-<td>格式化无符号十六进制数（大写）</td>
-</tr>
-<tr>
-<td>%f</td>
-<td>格式化浮点数字，可指定小数点后的精度</td>
-</tr>
-<tr>
-<td>%e</td>
-<td>用科学计数法格式化浮点数</td>
-</tr>
-<tr>
-<td>%E</td>
-<td>作用同%e，用科学计数法格式化浮点数</td>
-</tr>
-<tr>
-<td>%g</td>
-<td>%f和%e的简写</td>
-</tr>
-<tr>
-<td>%G</td>
-<td>%f 和 %E 的简写</td>
-</tr>
-<tr>
-<td>%p</td>
-<td>用十六进制数格式化变量的地址</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>格式化操作符辅助指令:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>定义宽度或者小数点精度</td>
-</tr>
-<tr>
-<td>-</td>
-<td>用做左对齐</td>
-</tr>
-<tr>
-<td>+</td>
-<td>在正数前面显示加号( + )</td>
-</tr>
-<tr>
-<td><sp></sp></td>
-<td>在正数前面显示空格</td>
-</tr>
-<tr>
-<td>#</td>
-<td>在八进制数前面显示零(‘0’)，在十六进制前面显示’0x’或者’0X’(取决于用的是’x’还是’X’)</td>
-</tr>
-<tr>
-<td>0</td>
-<td>显示的数字前面填充’0’而不是默认的空格</td>
-</tr>
-<tr>
-<td>%</td>
-<td>‘%%’输出一个单一的’%’</td>
-</tr>
-<tr>
-<td>(var)</td>
-<td>映射变量(字典参数)</td>
-</tr>
-<tr>
-<td>m.n.</td>
-<td>m 是显示的最小总宽度,n 是小数点后的位数(如果可用的话)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Python2.6 开始，新增了一种格式化字符串的函数 <a href="http://www.runoob.com/python/att-string-format.html" target="_blank" rel="noopener">str.format()</a>，它增强了字符串格式化的功能。</p>
-<h2 id="Python三引号"><a href="#Python三引号" class="headerlink" title="Python三引号"></a>Python三引号</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">python三引号允许一个字符串跨多行，字符串中可以包含换行符、制表符以及其他特殊字符。实例如下</span><br><span class="line"></span><br><span class="line">实例(Python <span class="number">3.0</span>+)</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">para_str = <span class="string">""</span><span class="string">"这是一个多行字符串的实例</span></span><br><span class="line"><span class="string">多行字符串可以使用制表符</span></span><br><span class="line"><span class="string">TAB ( \t )。</span></span><br><span class="line"><span class="string">也可以使用换行符 [ \n ]。</span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br><span class="line">print (para_str)</span><br><span class="line">以上实例执行结果为：</span><br><span class="line"></span><br><span class="line">这是一个多行字符串的实例</span><br><span class="line">多行字符串可以使用制表符</span><br><span class="line">TAB (    )。</span><br><span class="line">也可以使用换行符 [ </span><br><span class="line"> ]。</span><br><span class="line">三引号让程序员从引号和特殊字符串的泥潭里面解脱出来，自始至终保持一小块字符串的格式是所谓的WYSIWYG（所见即所得）格式的。</span><br><span class="line"></span><br><span class="line">一个典型的用例是，当你需要一块HTML或者SQL时，这时用字符串组合，特殊字符串转义将会非常的繁琐。</span><br><span class="line"></span><br><span class="line">errHTML = <span class="string">'''</span></span><br><span class="line">&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;</span><br><span class="line">Friends CGI Demo&lt;/TITLE&gt;&lt;/HEAD&gt;</span><br><span class="line">&lt;BODY&gt;&lt;H3&gt;ERROR&lt;/H3&gt;</span><br><span class="line">&lt;B&gt;%s&lt;/B&gt;&lt;P&gt;</span><br><span class="line">&lt;FORM&gt;&lt;INPUT TYPE=button VALUE=Back</span><br><span class="line">ONCLICK=<span class="string">"window.history.back()"</span>&gt;&lt;/FORM&gt;</span><br><span class="line">&lt;/BODY&gt;&lt;/HTML&gt;</span><br><span class="line"><span class="string">'''</span></span><br><span class="line">cursor.execute(<span class="string">'''</span></span><br><span class="line">CREATE TABLE users (  </span><br><span class="line">login VARCHAR(<span class="number">8</span>), </span><br><span class="line">uid INTEGER,</span><br><span class="line">prid INTEGER)</span><br><span class="line"><span class="string">'''</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="Python-的字符串内建函数"><a href="#Python-的字符串内建函数" class="headerlink" title="Python 的字符串内建函数"></a>Python 的字符串内建函数</h2><p>Python 的字符串常用内建函数如下：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>方法及描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><a href="http://www.runoob.com/python3/python3-string-capitalize.html" target="_blank" rel="noopener">capitalize()</a> 将字符串的第一个字符转换为大写</td>
-</tr>
-<tr>
-<td>2</td>
-<td><a href="http://www.runoob.com/python3/python3-string-center.html" target="_blank" rel="noopener">center(width, fillchar)</a> 返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。</td>
-</tr>
-<tr>
-<td>3</td>
-<td><a href="http://www.runoob.com/python3/python3-string-count.html" target="_blank" rel="noopener">count(str, beg= 0,end=len(string))</a> 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</td>
-</tr>
-<tr>
-<td>4</td>
-<td><a href="http://www.runoob.com/python3/python3-string-decode.html" target="_blank" rel="noopener">bytes.decode(encoding=”utf-8”, errors=”strict”)</a> Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。</td>
-</tr>
-<tr>
-<td>5</td>
-<td><a href="http://www.runoob.com/python3/python3-string-encode.html" target="_blank" rel="noopener">encode(encoding=’UTF-8’,errors=’strict’)</a> 以 encoding 指定的编码格式编码字符串，如果出错默认报一个ValueError 的异常，除非 errors 指定的是’ignore’或者’replace’</td>
-</tr>
-<tr>
-<td>6</td>
-<td><a href="http://www.runoob.com/python3/python3-string-endswith.html" target="_blank" rel="noopener">endswith(suffix, beg=0, end=len(string))</a> 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True,否则返回 False.</td>
-</tr>
-<tr>
-<td>7</td>
-<td><a href="http://www.runoob.com/python3/python3-string-expandtabs.html" target="_blank" rel="noopener">expandtabs(tabsize=8)</a> 把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8 。</td>
-</tr>
-<tr>
-<td>8</td>
-<td><a href="http://www.runoob.com/python3/python3-string-find.html" target="_blank" rel="noopener">find(str, beg=0 end=len(string))</a> 检测 str 是否包含在字符串中，如果指定范围 beg 和 end ，则检查是否包含在指定范围内，如果包含返回开始的索引值，否则返回-1</td>
-</tr>
-<tr>
-<td>9</td>
-<td><a href="http://www.runoob.com/python3/python3-string-index.html" target="_blank" rel="noopener">index(str, beg=0, end=len(string))</a> 跟find()方法一样，只不过如果str不在字符串中会报一个异常.</td>
-</tr>
-<tr>
-<td>10</td>
-<td><a href="http://www.runoob.com/python3/python3-string-isalnum.html" target="_blank" rel="noopener">isalnum()</a> 如果字符串至少有一个字符并且所有字符都是字母或数字则返 回 True,否则返回 False</td>
-</tr>
-<tr>
-<td>11</td>
-<td><a href="http://www.runoob.com/python3/python3-string-isalpha.html" target="_blank" rel="noopener">isalpha()</a> 如果字符串至少有一个字符并且所有字符都是字母则返回 True, 否则返回 False</td>
-</tr>
-<tr>
-<td>12</td>
-<td><a href="http://www.runoob.com/python3/python3-string-isdigit.html" target="_blank" rel="noopener">isdigit()</a> 如果字符串只包含数字则返回 True 否则返回 False..</td>
-</tr>
-<tr>
-<td>13</td>
-<td><a href="http://www.runoob.com/python3/python3-string-islower.html" target="_blank" rel="noopener">islower()</a> 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True，否则返回 False</td>
-</tr>
-<tr>
-<td>14</td>
-<td><a href="http://www.runoob.com/python3/python3-string-isnumeric.html" target="_blank" rel="noopener">isnumeric()</a> 如果字符串中只包含数字字符，则返回 True，否则返回 False</td>
-</tr>
-<tr>
-<td>15</td>
-<td><a href="http://www.runoob.com/python3/python3-string-isspace.html" target="_blank" rel="noopener">isspace()</a> 如果字符串中只包含空白，则返回 True，否则返回 False.</td>
-</tr>
-<tr>
-<td>16</td>
-<td><a href="http://www.runoob.com/python3/python3-string-istitle.html" target="_blank" rel="noopener">istitle()</a> 如果字符串是标题化的(见 title())则返回 True，否则返回 False</td>
-</tr>
-<tr>
-<td>17</td>
-<td><a href="http://www.runoob.com/python3/python3-string-isupper.html" target="_blank" rel="noopener">isupper()</a> 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True，否则返回 False</td>
-</tr>
-<tr>
-<td>18</td>
-<td><a href="http://www.runoob.com/python3/python3-string-join.html" target="_blank" rel="noopener">join(seq)</a> 以指定字符串作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串</td>
-</tr>
-<tr>
-<td>19</td>
-<td><a href="http://www.runoob.com/python3/python3-string-len.html" target="_blank" rel="noopener">len(string)</a> 返回字符串长度</td>
-</tr>
-<tr>
-<td>20</td>
-<td><a href="http://www.runoob.com/python3/python3-string-ljust.html" target="_blank" rel="noopener">ljust(width[, fillchar])</a> 返回一个原字符串左对齐,并使用 fillchar 填充至长度 width 的新字符串，fillchar 默认为空格。</td>
-</tr>
-<tr>
-<td>21</td>
-<td><a href="http://www.runoob.com/python3/python3-string-lower.html" target="_blank" rel="noopener">lower()</a> 转换字符串中所有大写字符为小写.</td>
-</tr>
-<tr>
-<td>22</td>
-<td><a href="http://www.runoob.com/python3/python3-string-lstrip.html" target="_blank" rel="noopener">lstrip()</a> 截掉字符串左边的空格或指定字符。</td>
-</tr>
-<tr>
-<td>23</td>
-<td><a href="http://www.runoob.com/python3/python3-string-maketrans.html" target="_blank" rel="noopener">maketrans()</a> 创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。</td>
-</tr>
-<tr>
-<td>24</td>
-<td><a href="http://www.runoob.com/python3/python3-string-max.html" target="_blank" rel="noopener">max(str)</a> 返回字符串 str 中最大的字母。</td>
-</tr>
-<tr>
-<td>25</td>
-<td><a href="http://www.runoob.com/python3/python3-string-min.html" target="_blank" rel="noopener">min(str)</a> 返回字符串 str 中最小的字母。</td>
-</tr>
-<tr>
-<td>26</td>
-<td><a href="http://www.runoob.com/python3/python3-string-replace.html" target="_blank" rel="noopener">replace(old, new [, max])</a> 把 将字符串中的 str1 替换成 str2,如果 max 指定，则替换不超过 max 次。</td>
-</tr>
-<tr>
-<td>27</td>
-<td><a href="http://www.runoob.com/python3/python3-string-rfind.html" target="_blank" rel="noopener">rfind(str, beg=0,end=len(string))</a> 类似于 find()函数，不过是从右边开始查找.</td>
-</tr>
-<tr>
-<td>28</td>
-<td><a href="http://www.runoob.com/python3/python3-string-rindex.html" target="_blank" rel="noopener">rindex( str, beg=0, end=len(string))</a> 类似于 index()，不过是从右边开始.</td>
-</tr>
-<tr>
-<td>29</td>
-<td><a href="http://www.runoob.com/python3/python3-string-rjust.html" target="_blank" rel="noopener">rjust(width,[, fillchar])</a> 返回一个原字符串右对齐,并使用fillchar(默认空格）填充至长度 width 的新字符串</td>
-</tr>
-<tr>
-<td>30</td>
-<td><a href="http://www.runoob.com/python3/python3-string-rstrip.html" target="_blank" rel="noopener">rstrip()</a> 删除字符串字符串末尾的空格.</td>
-</tr>
-<tr>
-<td>31</td>
-<td><a href="http://www.runoob.com/python3/python3-string-split.html" target="_blank" rel="noopener">split(str=””, num=string.count(str))</a> num=string.count(str)) 以 str 为分隔符截取字符串，如果 num 有指定值，则仅截取 num+1 个子字符串</td>
-</tr>
-<tr>
-<td>32</td>
-<td><a href="http://www.runoob.com/python3/python3-string-splitlines.html" target="_blank" rel="noopener">splitlines([keepends])</a> 按照行(‘\r’, ‘\r\n’, \n’)分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。</td>
-</tr>
-<tr>
-<td>33</td>
-<td><a href="http://www.runoob.com/python3/python3-string-startswith.html" target="_blank" rel="noopener">startswith(substr, beg=0,end=len(string))</a> 检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。如果beg 和 end 指定值，则在指定范围内检查。</td>
-</tr>
-<tr>
-<td>34</td>
-<td><a href="http://www.runoob.com/python3/python3-string-strip.html" target="_blank" rel="noopener">strip([chars])</a> 在字符串上执行 lstrip()和 rstrip()</td>
-</tr>
-<tr>
-<td>35</td>
-<td><a href="http://www.runoob.com/python3/python3-string-swapcase.html" target="_blank" rel="noopener">swapcase()</a> 将字符串中大写转换为小写，小写转换为大写</td>
-</tr>
-<tr>
-<td>36</td>
-<td><a href="http://www.runoob.com/python3/python3-string-title.html" target="_blank" rel="noopener">title()</a> 返回”标题化”的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</td>
-</tr>
-<tr>
-<td>37</td>
-<td><a href="http://www.runoob.com/python3/python3-string-translate.html" target="_blank" rel="noopener">translate(table, deletechars=””)</a> 根据 str 给出的表(包含 256 个字符)转换 string 的字符, 要过滤掉的字符放到 deletechars 参数中</td>
-</tr>
-<tr>
-<td>38</td>
-<td><a href="http://www.runoob.com/python3/python3-string-upper.html" target="_blank" rel="noopener">upper()</a> 转换字符串中的小写字母为大写</td>
-</tr>
-<tr>
-<td>39</td>
-<td><a href="http://www.runoob.com/python3/python3-string-zfill.html" target="_blank" rel="noopener">zfill (width)</a> 返回长度为 width 的字符串，原字符串右对齐，前面填充0</td>
-</tr>
-<tr>
-<td>40</td>
-<td><a href="http://www.runoob.com/python3/python3-string-isdecimal.html" target="_blank" rel="noopener">isdecimal()</a> 检查字符串是否只包含十进制字符，如果是返回 true，否则返回 false。</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2600,8 +2170,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">118</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2722,7 +2292,7 @@
                       
                     
                     <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2775,7 +2345,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2964,6 +2534,27 @@
     });
 </script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+ype="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
