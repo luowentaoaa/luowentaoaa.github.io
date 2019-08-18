@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -264,6 +264,283 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Python05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/28/Python05/" itemprop="url">
+                  Python3 列表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-26 16:21:50" itemprop="dateModified" datetime="2019-02-26T16:21:50+08:00">2019-02-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Python列表脚本操作符"><a href="#Python列表脚本操作符" class="headerlink" title="Python列表脚本操作符"></a>Python列表脚本操作符</h2><p>列表对 + 和 <em> 的操作符与字符串相似。+ 号用于组合列表，</em> 号用于重复列表。</p>
+<p>如下所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Python 表达式</th>
+<th>结果</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len([1, 2, 3])</td>
+<td>3</td>
+<td>长度</td>
+</tr>
+<tr>
+<td>[1, 2, 3] + [4, 5, 6]</td>
+<td>[1, 2, 3, 4, 5, 6]</td>
+<td>组合</td>
+</tr>
+<tr>
+<td>[‘Hi!’] * 4</td>
+<td>[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
+<td>重复</td>
+</tr>
+<tr>
+<td>3 in [1, 2, 3]</td>
+<td>True</td>
+<td>元素是否存在于列表中</td>
+</tr>
+<tr>
+<td>for x in [1, 2, 3]: print(x, end=” “)</td>
+<td>1 2 3</td>
+<td>迭代</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Python列表函数-amp-方法"><a href="#Python列表函数-amp-方法" class="headerlink" title="Python列表函数&amp;方法"></a>Python列表函数&amp;方法</h2><p>Python包含以下函数:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-len.html" target="_blank" rel="noopener">len(list)</a> 列表元素个数</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-max.html" target="_blank" rel="noopener">max(list)</a> 返回列表元素最大值</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-min.html" target="_blank" rel="noopener">min(list)</a> 返回列表元素最小值</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-list.html" target="_blank" rel="noopener">list(seq)</a> 将元组转换为列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Python包含以下方法:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-append.html" target="_blank" rel="noopener">list.append(obj)</a> 在列表末尾添加新的对象</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-count.html" target="_blank" rel="noopener">list.count(obj)</a> 统计某个元素在列表中出现的次数</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-extend.html" target="_blank" rel="noopener">list.extend(seq)</a> 在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-index.html" target="_blank" rel="noopener">list.index(obj)</a> 从列表中找出某个值第一个匹配项的索引位置</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-insert.html" target="_blank" rel="noopener">list.insert(index, obj)</a> 将对象插入列表</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-pop.html" target="_blank" rel="noopener">list.pop([index=-1])</a> 移除列表中的一个元素（默认最后一个元素），并且返回该元素的值</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-remove.html" target="_blank" rel="noopener">list.remove(obj)</a> 移除列表中某个值的第一个匹配项</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-reverse.html" target="_blank" rel="noopener">list.reverse()</a> 反向列表中元素</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-sort.html" target="_blank" rel="noopener">list.sort( key=None, reverse=False)</a> 对原列表进行排序</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-clear.html" target="_blank" rel="noopener">list.clear()</a> 清空列表</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="http://www.runoob.com/python3/python3-att-list-copy.html" target="_blank" rel="noopener">list.copy()</a> 复制列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +596,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -343,7 +620,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 15:59:38" itemprop="dateModified" datetime="2019-02-26T15:59:38+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 15:59:38" itemprop="dateModified" datetime="2019-02-26T15:59:38+08:00">2019-02-26</time>
               
             
           </span>
@@ -895,14 +1172,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -919,7 +1196,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 15:42:48" itemprop="dateModified" datetime="2019-02-26T15:42:48+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 15:42:48" itemprop="dateModified" datetime="2019-02-26T15:42:48+08:00">2019-02-26</time>
               
             
           </span>
@@ -1234,14 +1511,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1258,7 +1535,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 15:23:36" itemprop="dateModified" datetime="2019-02-26T15:23:36+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 15:23:36" itemprop="dateModified" datetime="2019-02-26T15:23:36+08:00">2019-02-26</time>
               
             
           </span>
@@ -1715,14 +1992,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1739,7 +2016,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-26 15:02:34" itemprop="dateModified" datetime="2019-02-26T15:02:34+08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 15:02:34" itemprop="dateModified" datetime="2019-02-26T15:02:34+08:00">2019-02-26</time>
               
             
           </span>
@@ -1873,14 +2150,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1897,7 +2174,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-25 15:53:32" itemprop="dateModified" datetime="2019-02-25T15:53:32+08:00">2019-02-25</time>
+                <time title="Modified: 2019-02-25 15:53:32" itemprop="dateModified" datetime="2019-02-25T15:53:32+08:00">2019-02-25</time>
               
             
           </span>
@@ -2026,14 +2303,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -2050,7 +2327,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-28 14:34:28" itemprop="dateModified" datetime="2019-02-28T14:34:28+08:00">2019-02-28</time>
+                <time title="Modified: 2019-02-28 14:34:28" itemprop="dateModified" datetime="2019-02-28T14:34:28+08:00">2019-02-28</time>
               
             
           </span>
@@ -2237,14 +2514,14 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -2261,7 +2538,7 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-03-10 18:16:16" itemprop="dateModified" datetime="2019-03-10T18:16:16+08:00">2019-03-10</time>
+                <time title="Modified: 2019-03-10 18:16:16" itemprop="dateModified" datetime="2019-03-10T18:16:16+08:00">2019-03-10</time>
               
             
           </span>
@@ -2398,14 +2675,14 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -2422,7 +2699,7 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-03-28 19:59:42" itemprop="dateModified" datetime="2019-03-28T19:59:42+08:00">2019-03-28</time>
+                <time title="Modified: 2019-03-28 19:59:42" itemprop="dateModified" datetime="2019-03-28T19:59:42+08:00">2019-03-28</time>
               
             
           </span>
@@ -2560,14 +2837,14 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -2584,7 +2861,7 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-03-25 18:15:38" itemprop="dateModified" datetime="2019-03-25T18:15:38+08:00">2019-03-25</time>
+                <time title="Modified: 2019-03-25 18:15:38" itemprop="dateModified" datetime="2019-03-25T18:15:38+08:00">2019-03-25</time>
               
             
           </span>
@@ -2624,176 +2901,6 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
 <p>很明显,维护一个$num$数组储存$i-m$及其之前的各组答案的最大值即可</p>
 <h3 id="D-Fedor-and-Essay-建图spfa"><a href="#D-Fedor-and-Essay-建图spfa" class="headerlink" title="D - Fedor and Essay (建图spfa)"></a><a href="https://codeforces.com/contest/467/problem/D" target="_blank" rel="noopener">D - Fedor and Essay</a> (建图spfa)</h3><h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>根据长度和K的数量作为权值，根据关心建图，然后跑一个bfs(spfa)</p>
 <h3 id="E-Alex-and-Complicated-Task-https-codeforces-com-contest-467-problem-E-贪心"><a href="#E-Alex-and-Complicated-Task-https-codeforces-com-contest-467-problem-E-贪心" class="headerlink" title="[E - Alex and Complicated Task]https://codeforces.com/contest/467/problem/E) (贪心)"></a>[E - Alex and Complicated Task]<a href="https://codeforces.com/contest/467/problem/E" target="_blank" rel="noopener">https://codeforces.com/contest/467/problem/E</a>) (贪心)</h3><h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>因为题目限制，所以我们可以用个栈和map维护第三个数和第二个数的前后位置</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Codeforces Round 265 (Div. 2)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/Codeforces Round 265 (Div. 2)/" itemprop="url">
-                  Codeforces Round 265(Div. 2)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-19 18:00:22" itemprop="dateModified" datetime="2019-03-19T18:00:22+08:00">2019-03-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://codeforces.com/contest/465" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
-<h3 id="A-inc-ARG-签到"><a href="#A-inc-ARG-签到" class="headerlink" title="[A - inc ARG(签到)"></a>[<a href="https://codeforces.com/contest/465/problem/A" target="_blank" rel="noopener">A - inc ARG</a>(签到)</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给你一个二进制数，问你加1之后有多少位会变化</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;s;</span><br><span class="line">    <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]==<span class="string">'1'</span>)num++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;min(num+<span class="number">1</span>,n)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="B-Inbox-100500-（水）"><a href="#B-Inbox-100500-（水）" class="headerlink" title="B - Inbox (100500) （水）"></a><a href="https://codeforces.com/contest/465/problem/B" target="_blank" rel="noopener">B - Inbox (100500)</a> （水）</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>一个电子邮箱，两种状态一种目录状态可以去在这里去任意一个信件，一种是浏览模式可以进到信件里面，如果这个信件是未读的就会变成已读，在浏览模式里面可以选择进入下一份相邻信件的浏览模式。每次点击可以进入目录模式or浏览模式or进入下一个相邻信件</p>
-<p>问你最少多少次可以吧所有信件变成已读</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1300</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n,num=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> first=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>((a[i]==<span class="number">1</span>&amp;&amp;a[i<span class="number">-1</span>]==<span class="number">1</span>)||(!first&amp;&amp;a[i]==<span class="number">1</span>))num++,first=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[i]==<span class="number">1</span>&amp;&amp;a[i<span class="number">-1</span>]==<span class="number">0</span>)num+=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;num&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="C-No-to-Palindromes-暴力模拟"><a href="#C-No-to-Palindromes-暴力模拟" class="headerlink" title="C - No to Palindromes! (暴力模拟)"></a><a href="https://codeforces.com/contest/465/problem/C" target="_blank" rel="noopener">C - No to Palindromes!</a> (暴力模拟)</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>给你一个不是回文的字符串，只能用不超过‘K的字符。问你这个字符串还大的字典序并且不是回文的字符串是什么</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>首先如果改变的那一位的相邻两位不一样和隔一位不一样就不可能有回文</p>
-<p>直接从后面暴力枚举状态</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1300</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="keyword">int</span> n,p;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(pos&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[pos]==s[pos<span class="number">-1</span>])<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pos&gt;=<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[pos]==s[pos<span class="number">-2</span>])<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;p;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">    <span class="keyword">int</span> pos=n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">       <span class="comment">// cout&lt;&lt;"pos="&lt;&lt;pos&lt;&lt;endl;</span></span><br><span class="line">       <span class="comment">// cout&lt;&lt;"s="&lt;&lt;s&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">if</span>(pos==n)<span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>,<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(pos==<span class="number">-1</span>)<span class="built_in">cout</span>&lt;&lt;<span class="string">"NO"</span>&lt;&lt;<span class="built_in">endl</span>,<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(s[pos]-<span class="string">'a'</span>+<span class="number">1</span>==p)&#123;</span><br><span class="line">            s[pos]=<span class="string">'a'</span><span class="number">-1</span>;pos--;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            s[pos]=(s[pos]-<span class="string">'a'</span>+<span class="number">1</span>)%p+<span class="string">'a'</span>;</span><br><span class="line">            <span class="keyword">if</span>(check(pos))&#123;</span><br><span class="line">                pos++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="D-Restore-Cube-模拟，深搜"><a href="#D-Restore-Cube-模拟，深搜" class="headerlink" title="D - Restore Cube (模拟，深搜)"></a><a href="https://codeforces.com/contest/465/problem/D" target="_blank" rel="noopener">D - Restore Cube</a> (模拟，深搜)</h3><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p>给你一个八面体，八面体的每个顶点的坐标x,y,z被打乱了，问你是否原来的是一个正方体</p>
-<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>直接暴力枚举复杂度是6^8 然后判断是否符合正方体的性质即可</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1300</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;ll&gt;v[<span class="number">8</span>];</span><br><span class="line"><span class="function">ll <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1L</span>L*x*x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">dist</span><span class="params">(<span class="built_in">vector</span>&lt;ll&gt; a,<span class="built_in">vector</span>&lt;ll&gt; b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(a[<span class="number">0</span>]-b[<span class="number">0</span>])+get(a[<span class="number">1</span>]-b[<span class="number">1</span>])+get(a[<span class="number">2</span>]-b[<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prin</span><span class="params">(<span class="built_in">vector</span>&lt;ll&gt; a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)<span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">diff</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;<span class="number">8</span>;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i]==v[j])<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> id,<span class="built_in">set</span>&lt;ll&gt; a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.size()&gt;<span class="number">3</span>)<span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">if</span>(id==<span class="number">8</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a.size()==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"YES"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)prin(v[i]);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="built_in">set</span>&lt;ll&gt;now=a;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;id;i++)now.insert(dist(v[i],v[id]));</span><br><span class="line">        dfs(id+<span class="number">1</span>,now);</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(v[id].begin(),v[id].end()));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)&#123;</span><br><span class="line">            ll a;<span class="built_in">cin</span>&gt;&gt;a;</span><br><span class="line">            v[i].push_back(a);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(v[i].begin(),v[i].end());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">set</span>&lt;ll&gt;s;</span><br><span class="line">    dfs(<span class="number">0</span>,s);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"NO"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="E-Substitutes-in-Number-模拟-费马小定理"><a href="#E-Substitutes-in-Number-模拟-费马小定理" class="headerlink" title="E - Substitutes in Number (模拟 费马小定理)"></a><a href="https://codeforces.com/contest/465/problem/E" target="_blank" rel="noopener">E - Substitutes in Number</a> (模拟 费马小定理)</h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>给出一个数字字符串，每次操作把一个数字替换成一个数字字符串，</p>
-<p>之后把整个数字字符串变成十进制输出</p>
-<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>暴力肯定爆炸字符串长度是指数上升的。</p>
-<p>一开始 要获得字符串中一个数字的价值是  原值*10+val 所以原本一个数字的贡献是  其中的$\times$ 和val 发现替换也就是在替换这个val和$\times$</p>
-<p>我们从后模拟被替换的字符串的价值和$\times$ 就行了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> bug cout&lt;&lt;<span class="meta-string">"hello"</span>&lt;&lt;endl;</span></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function">ll <span class="title">ksm</span><span class="params">(ll a,ll b)</span></span>&#123;</span><br><span class="line">    ll ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)ans=(ans*a)%mod;</span><br><span class="line">        a=(a*a)%mod;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line">ll val[<span class="number">20</span>],len[<span class="number">20</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span>&#123;</span><br><span class="line">        id=s[<span class="number">0</span>]-<span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;s.size();i++)&#123;</span><br><span class="line">            v.push_back(s[i]-<span class="string">'0'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ll l=<span class="number">0</span>,va=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.size();i++)&#123;</span><br><span class="line">            l+=len[v[i]];</span><br><span class="line">            va*=ksm(<span class="number">10L</span>L,len[v[i]]);</span><br><span class="line">            va%=mod;</span><br><span class="line">            va+=val[v[i]];</span><br><span class="line">            va%=mod;</span><br><span class="line">            l%=mod<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        val[id]=va;len[id]=l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;my[maxn];</span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)val[i]=i,len[i]=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;str;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;my[i].s;</span><br><span class="line">        my[i].build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i;i--)&#123;</span><br><span class="line">        my[i].update();</span><br><span class="line">    &#125;</span><br><span class="line">    ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.size();i++)&#123;</span><br><span class="line">        ans*=ksm(<span class="number">10</span>,len[str[i]-<span class="string">'0'</span>]);</span><br><span class="line">        ans%=mod;</span><br><span class="line">        ans+=val[str[i]-<span class="string">'0'</span>];</span><br><span class="line">        ans%=mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2879,8 +2986,8 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">118</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">119</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -3001,7 +3108,7 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
                       
                     
                     <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -3054,7 +3161,7 @@ c_{n+2}=a_{n+2}+b_{n+2}=(a_n+a_{n+1})+(b_n+b_{n+1})=(a_n+b_n)+(a_{n+1}+b_{n+1})=
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
