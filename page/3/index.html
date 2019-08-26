@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archivi</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
   </li>
 
       
@@ -264,6 +264,168 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Codeforces Round 271 (Div. 2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/28/Codeforces Round 271 (Div. 2)/" itemprop="url">
+                  Codeforces Round 271(Div. 2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Diposting di</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-03-28 19:59:42" itemprop="dateModified" datetime="2019-03-28T19:59:42+08:00">2019-03-28</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="<https://codeforces.com/contest/474>" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
+<h3 id="C-Captain-Marmot-几何-点旋转"><a href="#C-Captain-Marmot-几何-点旋转" class="headerlink" title="C.Captain Marmot (几何,点旋转)"></a>C.<a href="https://codeforces.com/contest/474/problem/C" target="_blank" rel="noopener">Captain Marmot</a> (几何,点旋转)</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>其中顺时针旋转为负，逆时针旋转为正，角度angle是弧度值，如旋转30度转换为弧度为： $angle = pi/180 * 30$。</p>
+<p>4、度与角度的转换<br>   根据圆为$360 º​$，弧度为$2π​$，即 $360º = 2π​$ </p>
+<p>   4.1 角度转弧度：$2π / 360  = π / 180 ≈ 0.0174rad$, 即: $度数 <em> (π / 180） = 弧度$<br>   例如：将30º转为弧度rad<br> $  30º </em> (π / 180）= 0.523320 rad $</p>
+<p>   4.2 弧度转角度: $360 / 2π  = 180 / π ≈ 57.3º$,  即: $ 弧度 <em> (180 / π） = 度数$<br>   例如：将$0.523320rad$转为度º<br>   $0.523320rad </em> (180 / π) = 29.9992352688º ​$</p>
+<p>若o不是原点，则可先将a点坐标转换为相对坐标计算，计算结果再加上o点坐标。</p>
+<p>参与计算的a点坐标实际应为 a - 0,最终计算公式如下：</p>
+<p>$b.x = ( a.x - o.x)<em>cos(angle) - (a.y - o.y)</em>sin(angle) + o.x​$</p>
+<p>$b.y = (a.x - o.x)<em>sin(angle) + (a.y - o.y)</em>cos(angle) + o.y$</p>
+<h3 id="Flowers-DP"><a href="#Flowers-DP" class="headerlink" title="Flowers  (DP)"></a><a href="https://codeforces.com/contest/474/problem/D" target="_blank" rel="noopener">Flowers</a>  (DP)</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>少于k的肯定全是1因为都只能放红色。</p>
+<p>大于K的可以放红色$dp[i-1]$ 或者连续的k个白色$dp[i-k]$</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +481,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -343,7 +505,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-25 18:15:38" itemprop="dateModified" datetime="2019-03-25T18:15:38+08:00">2019-03-25</time>
+                <time title="Updated at: 2019-03-25 18:15:38" itemprop="dateModified" datetime="2019-03-25T18:15:38+08:00">2019-03-25</time>
               
             
           </span>
@@ -475,14 +637,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -499,7 +661,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-19 18:00:22" itemprop="dateModified" datetime="2019-03-19T18:00:22+08:00">2019-03-19</time>
+                <time title="Updated at: 2019-03-19 18:00:22" itemprop="dateModified" datetime="2019-03-19T18:00:22+08:00">2019-03-19</time>
               
             
           </span>
@@ -645,14 +807,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -669,7 +831,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-14 20:34:04" itemprop="dateModified" datetime="2019-03-14T20:34:04+08:00">2019-03-14</time>
+                <time title="Updated at: 2019-03-14 20:34:04" itemprop="dateModified" datetime="2019-03-14T20:34:04+08:00">2019-03-14</time>
               
             
           </span>
@@ -821,14 +983,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -845,7 +1007,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-08 11:25:02" itemprop="dateModified" datetime="2019-03-08T11:25:02+08:00">2019-03-08</time>
+                <time title="Updated at: 2019-03-08 11:25:02" itemprop="dateModified" datetime="2019-03-08T11:25:02+08:00">2019-03-08</time>
               
             
           </span>
@@ -991,14 +1153,14 @@ f(1,i,ai)>f(j,n,aj)</script><h4 id="思路-2"><a href="#思路-2" class="headerl
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1015,7 +1177,7 @@ f(1,i,ai)>f(j,n,aj)</script><h4 id="思路-2"><a href="#思路-2" class="headerl
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-07 11:33:22" itemprop="dateModified" datetime="2019-03-07T11:33:22+08:00">2019-03-07</time>
+                <time title="Updated at: 2019-03-07 11:33:22" itemprop="dateModified" datetime="2019-03-07T11:33:22+08:00">2019-03-07</time>
               
             
           </span>
@@ -1196,14 +1358,14 @@ dp[i]=dp[i-1]</script><figure class="highlight cpp"><table><tr><td class="gutter
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1220,7 +1382,7 @@ dp[i]=dp[i-1]</script><figure class="highlight cpp"><table><tr><td class="gutter
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-06 13:39:38" itemprop="dateModified" datetime="2019-03-06T13:39:38+08:00">2019-03-06</time>
+                <time title="Updated at: 2019-03-06 13:39:38" itemprop="dateModified" datetime="2019-03-06T13:39:38+08:00">2019-03-06</time>
               
             
           </span>
@@ -1367,14 +1529,14 @@ dp[i]=dp[i-1]</script><figure class="highlight cpp"><table><tr><td class="gutter
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1391,7 +1553,7 @@ dp[i]=dp[i-1]</script><figure class="highlight cpp"><table><tr><td class="gutter
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-05 16:42:10" itemprop="dateModified" datetime="2019-03-05T16:42:10+08:00">2019-03-05</time>
+                <time title="Updated at: 2019-03-05 16:42:10" itemprop="dateModified" datetime="2019-03-05T16:42:10+08:00">2019-03-05</time>
               
             
           </span>
@@ -1550,14 +1712,14 @@ C_{n+s-1}^{n-1}</script><p>但是这时候有的盒子的花数量超出了，�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1574,7 +1736,7 @@ C_{n+s-1}^{n-1}</script><p>但是这时候有的盒子的花数量超出了，�
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-03-04 15:04:28" itemprop="dateModified" datetime="2019-03-04T15:04:28+08:00">2019-03-04</time>
+                <time title="Updated at: 2019-03-04 15:04:28" itemprop="dateModified" datetime="2019-03-04T15:04:28+08:00">2019-03-04</time>
               
             
           </span>
@@ -1731,14 +1893,14 @@ C_{n+s-1}^{n-1}</script><p>但是这时候有的盒子的花数量超出了，�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1755,7 +1917,7 @@ C_{n+s-1}^{n-1}</script><p>但是这时候有的盒子的花数量超出了，�
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-02-27 14:13:04" itemprop="dateModified" datetime="2019-02-27T14:13:04+08:00">2019-02-27</time>
+                <time title="Updated at: 2019-02-27 14:13:04" itemprop="dateModified" datetime="2019-02-27T14:13:04+08:00">2019-02-27</time>
               
             
           </span>
@@ -1871,187 +2033,11 @@ B>\frac{\sum u+\sum v}{\sum c}</script><p>与上面矛盾 证毕</p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Codeforces Round 253 (Div. 2)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/Codeforces Round 253 (Div. 2)/" itemprop="url">
-                  Codeforces Round 253 (Div. 2)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Scritto il</span>
-              
-
-              
-                
-              
-
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Post modificato: 2019-02-26 12:02:02" itemprop="dateModified" datetime="2019-02-26T12:02:02+08:00">2019-02-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://codeforces.com/contest/443/problem/A" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
-<h3 id="A-Anton-and-Letters-签到"><a href="#A-Anton-and-Letters-签到" class="headerlink" title="A.Anton and Letters (签到)"></a>A.<a href="https://codeforces.com/contest/443/problem/A" target="_blank" rel="noopener">Anton and Letters</a> (签到)</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>判断字符串里面有多少个不同字符</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>直接set一下</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt;st;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    getline(<span class="built_in">cin</span>,s);</span><br><span class="line">    <span class="keyword">int</span> len=s.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp;s[i]&lt;=<span class="string">'z'</span>)st.insert(s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;st.size();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="B-Kolya-and-Tandem-Repeat-暴力模拟"><a href="#B-Kolya-and-Tandem-Repeat-暴力模拟" class="headerlink" title="B.Kolya and Tandem Repeat (暴力模拟)"></a>B.<a href="https://codeforces.com/contest/443/problem/B" target="_blank" rel="noopener">Kolya and Tandem Repeat</a> (暴力模拟)</h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>给你一个字符串,你可以在末尾添加K个任意字符 ,让你找出一个最长的重复两次的字串</p>
-<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>直接暴力模拟</p>
-<p>对于每个字串长度,字串起点,开始判断，复杂度n^3</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">string</span> ss;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;ss;</span><br><span class="line">    <span class="built_in">string</span> s=<span class="string">""</span>;s+=<span class="string">'*'</span>;s+=ss;</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">        s+=<span class="string">'*'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> len=s.size()<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;len;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i+<span class="number">2</span>*j<span class="number">-1</span>&gt;len)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> head=i,tail=i+j,flag=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=j;k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s[head+k<span class="number">-1</span>]==<span class="string">'*'</span>||s[tail+k<span class="number">-1</span>]==<span class="string">'*'</span>||s[head+k<span class="number">-1</span>]==s[tail+k<span class="number">-1</span>])<span class="keyword">continue</span>;</span><br><span class="line">                flag=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!flag)ans=max(ans,j*<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="C-Borya-and-Hanabi-大模拟-二进制模拟"><a href="#C-Borya-and-Hanabi-大模拟-二进制模拟" class="headerlink" title="C.Borya and Hanabi (大模拟,二进制模拟)"></a><a href="https://codeforces.com/contest/443/problem/C" target="_blank" rel="noopener">C.Borya and Hanabi</a> (大模拟,二进制模拟)</h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>现在有五种花色五种数字组成的二十五张牌，你手里有诺干张牌，每次你可以询问一种颜色和一种数字，你会得到所有这个花色/数字牌的位置，问你最少多少次可以把所有的牌分类</p>
-<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>把题目抽象成一个二维坐标，花色为横坐标，数字为纵坐标，每次可以连接一条线，把一条线上的牌找到,对于一张牌有两种找到方法，</p>
-<p>1.这张牌被两条线连接，也就是花色和数字都固定了，</p>
-<p>2.这张牌的其他花色或其他数字都被找到了，那么剩下的就只有他了</p>
-<p>可以发现我们最多只要连接十条线，所以我们可以直接子集模拟一下十条线的搭配</p>
-<p>然后暴力判断能否在这种情况分出任意两张牌</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="keyword">int</span> x[maxn];</span><br><span class="line"><span class="keyword">int</span> y[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">who</span><span class="params">(<span class="built_in">string</span> s,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> top=s[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span>(top==<span class="string">'B'</span>)x[i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(top==<span class="string">'Y'</span>)x[i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(top==<span class="string">'W'</span>)x[i]=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(top==<span class="string">'G'</span>)x[i]=<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">else</span> x[i]=<span class="number">4</span>;</span><br><span class="line">    y[i]=s[<span class="number">1</span>]-<span class="string">'1'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bit</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="keyword">return</span> <span class="number">1</span>&lt;&lt;i;&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span> <span class="params">(<span class="keyword">int</span> sta)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(x[i]==x[j])&#123;</span><br><span class="line">                <span class="keyword">if</span>( y[i]!=y[j] &amp;&amp; (sta&amp;bit(y[i]+<span class="number">5</span>))==<span class="number">0</span>&amp;&amp; (sta&amp;bit(y[j]+<span class="number">5</span>))==<span class="number">0</span>  )<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>( (sta&amp;bit(x[i])) || (sta&amp;bit(x[j])) )<span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(y[i]!=y[j] &amp;&amp; ((sta&amp;bit(y[i]+<span class="number">5</span>)) || (sta&amp;bit(y[j]+<span class="number">5</span>)) ))<span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">        who(s,i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans=inf;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> sta=<span class="number">0</span>;sta&lt;(<span class="number">1</span>&lt;&lt;<span class="number">10</span>);sta++)&#123;</span><br><span class="line">        <span class="comment">//cout&lt;&lt;bitset&lt;11&gt;(sta)&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sta&amp;(<span class="number">1</span>&lt;&lt;i))&#123;</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sta&amp;(<span class="number">1</span>&lt;&lt;(i+<span class="number">5</span>)))&#123;</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(check(sta))ans=min(ans,num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="D-Andrey-and-Problem（贪心）"><a href="#D-Andrey-and-Problem（贪心）" class="headerlink" title="D.Andrey and Problem（贪心）"></a>D.<a href="https://codeforces.com/contest/443/problem/D" target="_blank" rel="noopener">Andrey and Problem</a>（贪心）</h3><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p>你有N个朋友，每个朋友都有百分之a[i]的几率给你出题，你现在只想要一道题，</p>
-<p>想知道你选择哪些朋友给只出一题的几率最大，输出最大几率</p>
-<p>例如 n=2</p>
-<p>a1=0.1 a2=0.2</p>
-<p>答案是 0.1×0.8 + 0.9×0.2=0.26</p>
-<h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>一开始我是直接DP背包的然后发现错了，结果答案直接排序一下，暴力枚举就行了，我也不知道怎么证明…感觉很奇怪</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">5e4</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="keyword">double</span> dp[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">double</span> yes,no;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cin</span>&gt;&gt;dp[i];</span><br><span class="line">    sort(dp+<span class="number">1</span>,dp+<span class="number">1</span>+n,[](<span class="keyword">double</span> a,<span class="keyword">double</span> b)&#123;</span><br><span class="line">         <span class="keyword">return</span> a&gt;b;&#125;);</span><br><span class="line">    yes=dp[<span class="number">1</span>],no=<span class="number">1.0</span>-dp[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">double</span> nowyes,nowno;</span><br><span class="line">        nowyes=dp[i]*(no)+(<span class="number">1</span>-dp[i])*(yes);</span><br><span class="line">        <span class="keyword">if</span>(nowyes&gt;yes)&#123;</span><br><span class="line">            yes=nowyes;</span><br><span class="line">            no=no*(<span class="number">1</span>-dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;fixed&lt;&lt;setprecision(<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;yes;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="E-Artem-and-Array-模拟栈，贪心"><a href="#E-Artem-and-Array-模拟栈，贪心" class="headerlink" title="E.Artem and Array (模拟栈，贪心)"></a>E.<a href="https://codeforces.com/contest/443/problem/E" target="_blank" rel="noopener">Artem and Array</a> (模拟栈，贪心)</h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>给你N个数,这N个数相邻，你每次可以删除一个数，然后得到这个数周围两个数的最小值，（如果有一边没有数字只能获得零值）让你求把这N个数全部删除的值</p>
-<h4 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h4><p>在纸上模拟一下，如果要最优那就是一开始把小的都删除(等于的也要删除)，最后留下的都是比较大的，会发现留下的数组是一个先递增再递减的数组，并且最大和第二大的值是相邻的无法取到，所以答案就是前面删除获取的值和后面剩下的数组的前n-2小的值</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">ll a[maxn];</span><br><span class="line">ll ans;</span><br><span class="line">ll st[maxn];</span><br><span class="line"><span class="keyword">int</span> top=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        ll x;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">        <span class="keyword">while</span>(top&gt;=<span class="number">2</span>&amp;&amp;st[top<span class="number">-1</span>]&gt;=st[top]&amp;&amp;x&gt;=st[top])&#123;</span><br><span class="line">            ans+=min(st[top<span class="number">-1</span>],x);</span><br><span class="line">            top--;</span><br><span class="line">        &#125;</span><br><span class="line">        st[++top]=x;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(st+<span class="number">1</span>,st+top+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=top<span class="number">-2</span>;i++)&#123;</span><br><span class="line">        ans+=st[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2094,8 +2080,8 @@ B>\frac{\sum u+\sum v}{\sum c}</script><p>与上面矛盾 证毕</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">120</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">121</span>
+                    <span class="site-state-item-name">posting</span>
                   </a>
                 </div>
               

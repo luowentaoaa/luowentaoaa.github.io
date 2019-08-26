@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archivi</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
   </li>
 
       
@@ -264,6 +264,154 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/08/27/HDU-6704 K-th occurrence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/27/HDU-6704 K-th occurrence/" itemprop="url">
+                  HDU-6704 K-th occurrence (后缀自动机father树上倍增建权值线段树合并)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Diposting di</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-27 01:43:35 / Updated at: 01:58:23" itemprop="dateCreated datePublished" datetime="2019-08-27T01:43:35+08:00">2019-08-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="<http://acm.hdu.edu.cn/showproblem.php?pid=6704>" target="_blank" style="font-size:24px;"><strong>传送门</strong></a></p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给出一个长度为$n$字符串$s$， $m$次询问，每次问你字符串$s$区间内的字符串$l,r$第$k$次出现的位置。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>比赛的时候一眼就知道是$sa$但是对于$sa$实在不喜欢，于是比赛的时候整场用$sam$硬怼。已经想到了用主席树记录$endpos$位置，然后从后往前推过去，但是比赛时还不会在$sam$上玩权值线段树合并，赛后学习了一下。</p>
+<p>首先，这题我们可以在$sam$上的每个新开节点上存储这个节点是在原串的那个位置是把。</p>
+<p>然后对于一个串$i​$他的$father​$肯定是他的$后缀​$ 所以他的$endpos​$肯定也是他$father​$的$endpos​$</p>
+<p>同时一个$father$不仅仅只有$i$这个儿子 所以$father$的继承是从很多儿子那边的来的，于是我们需要搞笑处理继承效果，这里用到了权值线段树合并,线段树下标是$endpos$在$s$的位置。</p>
+<p>这样我们就可以通过找到一个点而得出这个点所有的$endpos$ ，也可以很快的在权值线段树中找到第$k$大的$endpos $。但是$Q$次查询每次都可能用一个长度$1e5$的串进入$sam$中找这个点的位置，于是我们考虑离线操作，将询问按照$r$排序。但是我们找到了一个点之后可能这个长度太大了，于是我们需要跳到这个点的$father$ 知道这个点的长度刚好大于等于我们需要的长度，这样答案才完整。因为$father$的长度是单调的，于是我们可以考虑用树上倍增 快速找到合适的$father$。</p>
+<p>于是这题就愉快的结束了。真爽啊。debug都不需要。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">5e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">int</span> ls[maxn*<span class="number">80</span>],rs[maxn*<span class="number">80</span>],rt[maxn*<span class="number">80</span>],sum[maxn*<span class="number">80</span>],cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> &amp;o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!o)o=++cnt;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        sum[o]++;<span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(pos&lt;=mid)update(ls[o],l,mid,pos);</span><br><span class="line">    <span class="keyword">else</span> update(rs[o],mid+<span class="number">1</span>,r,pos);</span><br><span class="line">    sum[o]=sum[ls[o]]+sum[rs[o]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merger</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> pre,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!o)<span class="keyword">return</span> pre;<span class="keyword">if</span>(!pre)<span class="keyword">return</span> o;</span><br><span class="line">    <span class="keyword">int</span> k=++cnt;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        sum[k]=sum[o]+sum[pre];</span><br><span class="line">        <span class="keyword">return</span> k;</span><br><span class="line">    &#125;<span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">    ls[k]=merger(ls[o],ls[pre],l,mid);</span><br><span class="line">    rs[k]=merger(rs[o],rs[pre],mid+<span class="number">1</span>,r);</span><br><span class="line">    sum[k]=sum[ls[k]]+sum[rs[k]];</span><br><span class="line">    <span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sum[o]&lt;k)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)<span class="keyword">return</span> l;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(sum[ls[o]]&gt;=k)<span class="keyword">return</span> query(ls[o],l,mid,k);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> query(rs[o],mid+<span class="number">1</span>,r,k-sum[ls[o]]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Q</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r,k,id;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Q &amp;o)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> r&lt;o.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;my[maxn];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="keyword">int</span> ans[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SAM</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> fa[maxn],ch[maxn][<span class="number">26</span>],maxlen[maxn],tot,last;</span><br><span class="line">    <span class="keyword">int</span> sz[maxn],a[maxn],b[maxn];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        cnt=<span class="number">0</span>;</span><br><span class="line">        fill(rt,rt+n*<span class="number">80</span>,<span class="number">0</span>);</span><br><span class="line">        fill(ls,ls+n*<span class="number">80</span>,<span class="number">0</span>);</span><br><span class="line">        fill(rs,rs+n*<span class="number">80</span>,<span class="number">0</span>);</span><br><span class="line">        fill(sum,sum+n*<span class="number">80</span>,<span class="number">0</span>);</span><br><span class="line">        tot=last=<span class="number">1</span>;maxlen[<span class="number">1</span>]=fa[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(ch[<span class="number">1</span>],<span class="number">0</span>,<span class="keyword">sizeof</span>(ch[<span class="number">1</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> np=++tot,p=last;last=np;update(rt[np],<span class="number">1</span>,n,id);</span><br><span class="line">        maxlen[np]=maxlen[p]+<span class="number">1</span>;sz[np]=<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">memset</span>(ch[np],<span class="number">0</span>,<span class="keyword">sizeof</span>(ch[np]));</span><br><span class="line">        <span class="keyword">while</span>(p&amp;&amp;!ch[p][x])ch[p][x]=np,p=fa[p];</span><br><span class="line">        <span class="keyword">if</span>(!p)fa[np]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> q=ch[p][x];</span><br><span class="line">            <span class="keyword">if</span>(maxlen[q]==maxlen[p]+<span class="number">1</span>)fa[np]=q;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">int</span> nq=++tot;</span><br><span class="line">                <span class="built_in">memcpy</span>(ch[nq],ch[q],<span class="keyword">sizeof</span>(ch[q]));</span><br><span class="line">                fa[nq]=fa[q],fa[np]=fa[q]=nq;</span><br><span class="line">                maxlen[nq]=maxlen[p]+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(p&amp;&amp;ch[p][x]==q)ch[p][x]=nq,p=fa[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> pa[maxn][<span class="number">25</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">()</span></span>&#123;<span class="comment">///拓扑排序 得到每个集合里的串出现次数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)a[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)a[maxlen[i]]++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)a[i]+=a[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)b[a[maxlen[i]]--]=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=tot;i;i--)sz[fa[b[i]]]+=sz[b[i]];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=tot;i;i--)&#123;</span><br><span class="line">            <span class="keyword">int</span> k=b[i];</span><br><span class="line">            pa[k][<span class="number">0</span>]=fa[k];</span><br><span class="line">            rt[fa[k]]=merger(rt[fa[k]],rt[k],<span class="number">1</span>,n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">20</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=tot;j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> v=pa[j][i<span class="number">-1</span>];</span><br><span class="line">                pa[j][i]=pa[v][i<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">go</span><span class="params">(<span class="keyword">int</span> id,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(maxlen[pa[id][i]]&gt;=len)id=pa[id][i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">slove</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;my[i].l&gt;&gt;my[i].r&gt;&gt;my[i].k;</span><br><span class="line">            my[i].id=i;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(my+<span class="number">1</span>,my+<span class="number">1</span>+m);</span><br><span class="line">        <span class="keyword">int</span> now=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tail=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> x=s[i]-<span class="string">'a'</span>;</span><br><span class="line">            now=ch[now][x];</span><br><span class="line">            <span class="keyword">while</span>(tail&lt;=m&amp;&amp;my[tail].r==i)&#123;</span><br><span class="line">                <span class="keyword">int</span> len=my[tail].r-my[tail].l+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">int</span> where=go(now,len);</span><br><span class="line">                <span class="keyword">int</span> aa=query(rt[where],<span class="number">1</span>,n,my[tail].k);</span><br><span class="line">                <span class="keyword">if</span>(aa==<span class="number">-1</span>)ans[my[tail].id]=<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    ans[my[tail].id]=aa-len+<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                tail++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)<span class="built_in">cout</span>&lt;&lt;ans[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;S;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;n;<span class="built_in">cin</span>&gt;&gt;S.m;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;s+<span class="number">1</span>;</span><br><span class="line">        n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);S.init();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)S.add(s[i]-<span class="string">'a'</span>,i);</span><br><span class="line">        S.Sort();</span><br><span class="line">        S.slove();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +467,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-08-25 02:23:15 / Post modificato: 20:37:42" itemprop="dateCreated datePublished" datetime="2019-08-25T02:23:15+08:00">2019-08-25</time>
+              <time title="Post created: 2019-08-25 02:23:15 / Updated at: 20:37:42" itemprop="dateCreated datePublished" datetime="2019-08-25T02:23:15+08:00">2019-08-25</time>
             
 
             
@@ -470,7 +618,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/2019/08/17/Wood Processing 牛客多校10/" itemprop="url">
-                  Senza titolo
+                  Tidak ada title
                 </a>
               
             
@@ -489,14 +637,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-08-17 20:38:29" itemprop="dateCreated datePublished" datetime="2019-08-17T20:38:29+08:00">2019-08-17</time>
+              <time title="Post created: 2019-08-17 20:38:29" itemprop="dateCreated datePublished" datetime="2019-08-17T20:38:29+08:00">2019-08-17</time>
             
 
             
@@ -513,7 +661,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-08-18 00:43:55" itemprop="dateModified" datetime="2019-08-18T00:43:55+08:00">2019-08-18</time>
+                <time title="Updated at: 2019-08-18 00:43:55" itemprop="dateModified" datetime="2019-08-18T00:43:55+08:00">2019-08-18</time>
               
             
           </span>
@@ -649,14 +797,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-08-02 00:39:27 / Post modificato: 00:49:51" itemprop="dateCreated datePublished" datetime="2019-08-02T00:39:27+08:00">2019-08-02</time>
+              <time title="Post created: 2019-08-02 00:39:27 / Updated at: 00:49:51" itemprop="dateCreated datePublished" datetime="2019-08-02T00:39:27+08:00">2019-08-02</time>
             
 
             
@@ -795,14 +943,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-07-31 17:18:08 / Post modificato: 17:22:24" itemprop="dateCreated datePublished" datetime="2019-07-31T17:18:08+08:00">2019-07-31</time>
+              <time title="Post created: 2019-07-31 17:18:08 / Updated at: 17:22:24" itemprop="dateCreated datePublished" datetime="2019-07-31T17:18:08+08:00">2019-07-31</time>
             
 
             
@@ -938,14 +1086,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-07-29 23:41:41 / Post modificato: 23:45:51" itemprop="dateCreated datePublished" datetime="2019-07-29T23:41:41+08:00">2019-07-29</time>
+              <time title="Post created: 2019-07-29 23:41:41 / Updated at: 23:45:51" itemprop="dateCreated datePublished" datetime="2019-07-29T23:41:41+08:00">2019-07-29</time>
             
 
             
@@ -1082,14 +1230,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-07-23 16:49:59 / Post modificato: 17:10:20" itemprop="dateCreated datePublished" datetime="2019-07-23T16:49:59+08:00">2019-07-23</time>
+              <time title="Post created: 2019-07-23 16:49:59 / Updated at: 17:10:20" itemprop="dateCreated datePublished" datetime="2019-07-23T16:49:59+08:00">2019-07-23</time>
             
 
             
@@ -1223,14 +1371,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-07-22 20:29:05 / Post modificato: 21:05:13" itemprop="dateCreated datePublished" datetime="2019-07-22T20:29:05+08:00">2019-07-22</time>
+              <time title="Post created: 2019-07-22 20:29:05 / Updated at: 21:05:13" itemprop="dateCreated datePublished" datetime="2019-07-22T20:29:05+08:00">2019-07-22</time>
             
 
             
@@ -1366,14 +1514,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-06-09 14:09:29 / Post modificato: 15:10:26" itemprop="dateCreated datePublished" datetime="2019-06-09T14:09:29+08:00">2019-06-09</time>
+              <time title="Post created: 2019-06-09 14:09:29 / Updated at: 15:10:26" itemprop="dateCreated datePublished" datetime="2019-06-09T14:09:29+08:00">2019-06-09</time>
             
 
             
@@ -1539,14 +1687,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
+              <time title="Post created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
             
 
             
@@ -1563,7 +1711,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Post modificato: 2019-02-26 16:48:26" itemprop="dateModified" datetime="2019-02-26T16:48:26+08:00">2019-02-26</time>
+                <time title="Updated at: 2019-02-26 16:48:26" itemprop="dateModified" datetime="2019-02-26T16:48:26+08:00">2019-02-26</time>
               
             
           </span>
@@ -1748,284 +1896,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Python07/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/Python07/" itemprop="url">
-                  Python3 字典(map)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Scritto il</span>
-              
-
-              
-                
-              
-
-              <time title="Post creato: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Post modificato: 2019-02-26 16:34:54" itemprop="dateModified" datetime="2019-02-26T16:34:54+08:00">2019-02-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>字典是另一种可变容器模型，且可存储任意类型对象。</p>
-<p>字典的每个键值(key=&gt;value)对用冒号(<strong>:</strong>)分割，每个对之间用逗号(<strong>,</strong>)分割，整个字典包括在花括号(<strong>{})</strong>中 ,格式如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;key1 : value1, key2 : value2 &#125;</span><br></pre></td></tr></table></figure>
-<p>键必须是唯一的，但值则不必。</p>
-<p>值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组。</p>
-<p>一个简单的字典实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&apos;Alice&apos;: &apos;2341&apos;, &apos;Beth&apos;: &apos;9102&apos;, &apos;Cecil&apos;: &apos;3258&apos;&#125;</span><br></pre></td></tr></table></figure>
-<p>也可如此创建字典：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123; &apos;abc&apos;: 456 &#125;;</span><br><span class="line">dict2 = &#123; &apos;abc&apos;: 123, 98.6: 37 &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="访问字典里的值"><a href="#访问字典里的值" class="headerlink" title="访问字典里的值"></a>访问字典里的值</h2><p>把相应的键放入到方括号中，如下实例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">实例</span><br><span class="line"></span><br><span class="line">\#!/usr/bin/python3  </span><br><span class="line">dict = &#123;&apos;Name&apos;: &apos;Runoob&apos;, &apos;Age&apos;: 7, &apos;Class&apos;: &apos;First&apos;&#125;</span><br><span class="line">print (&quot;dict[&apos;Name&apos;]: &quot;, dict[&apos;Name&apos;]) </span><br><span class="line">print (&quot;dict[&apos;Age&apos;]: &quot;, dict[&apos;Age&apos;])</span><br></pre></td></tr></table></figure></p>
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict[&apos;Name&apos;]:  Runoob</span><br><span class="line">dict[&apos;Age&apos;]:  7</span><br></pre></td></tr></table></figure>
-<p>如果用字典里没有的键访问数据，会输出错误如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">实例</span><br><span class="line"></span><br><span class="line">\#!/usr/bin/python3  </span><br><span class="line">dict = &#123;&apos;Name&apos;: &apos;Runoob&apos;, &apos;Age&apos;: 7, &apos;Class&apos;: &apos;First&apos;&#125;; </span><br><span class="line">print (&quot;dict[&apos;Alice&apos;]: &quot;, dict[&apos;Alice&apos;])</span><br></pre></td></tr></table></figure></p>
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 5, in &lt;module&gt;</span><br><span class="line">    print (&quot;dict[&apos;Alice&apos;]: &quot;, dict[&apos;Alice&apos;])</span><br><span class="line">KeyError: &apos;Alice&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">dict = &#123;'Name': 'Runoob', 'Age': 7, 'Class': 'First'&#125;</span><br><span class="line"> </span><br><span class="line">dict['Age'] = 8;               # 更新 Age</span><br><span class="line">dict['School'] = "菜鸟教程"  # 添加信息</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print ("dict['Age']: ", dict['Age'])</span><br><span class="line">print ("dict['School']: ", dict['School'])</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"> result</span><br><span class="line">dict['Age']:  8</span><br><span class="line">dict['School']:  菜鸟教程</span><br></pre></td></tr></table></figure>
-<h2 id="删除字典元素"><a href="#删除字典元素" class="headerlink" title="删除字典元素"></a>删除字典元素</h2><p>能删单一的元素也能清空字典，清空只需一项操作。</p>
-<p>显示删除一个字典用del命令，如下实例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">dict = &#123;'Name': 'Runoob', 'Age': 7, 'Class': 'First'&#125;</span><br><span class="line"> </span><br><span class="line">del dict['Name'] # 删除键 'Name'</span><br><span class="line">dict.clear()     # 清空字典</span><br><span class="line">del dict         # 删除字典</span><br><span class="line"> </span><br><span class="line">print ("dict['Age']: ", dict['Age'])</span><br><span class="line">print ("dict['School']: ", dict['School'])</span><br></pre></td></tr></table></figure>
-<p>但这会引发一个异常，因为用执行 del 操作后字典不再存在：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 9, in &lt;module&gt;</span><br><span class="line">    print (&quot;dict[&apos;Age&apos;]: &quot;, dict[&apos;Age&apos;])</span><br><span class="line">TypeError: &apos;type&apos; object is not subscriptable</span><br></pre></td></tr></table></figure>
-<p><strong>注：</strong>del() 方法后面也会讨论。</p>
-<h3 id="字典键的特性"><a href="#字典键的特性" class="headerlink" title="字典键的特性"></a>字典键的特性</h3><p>字典值可以是任何的 python 对象，既可以是标准的对象，也可以是用户定义的，但键不行。</p>
-<p>两个重要的点需要记住：</p>
-<p>1）不允许同一个键出现两次。创建时如果同一个键被赋值两次，后一个值会被记住，如下实例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">dict = &#123;'Name': 'Runoob', 'Age': 7, 'Name': '小菜鸟'&#125;</span><br><span class="line"> </span><br><span class="line">print ("dict['Name']: ", dict['Name'])</span><br></pre></td></tr></table></figure>
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict[&apos;Name&apos;]:  小菜鸟</span><br></pre></td></tr></table></figure>
-<p>2）键必须不可变，所以可以用数字，字符串或元组充当，而用列表就不行，如下实例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"> </span><br><span class="line">dict = &#123;['Name']: 'Runoob', 'Age': 7&#125;</span><br><span class="line"> </span><br><span class="line">print ("dict['Name']: ", dict['Name'])</span><br></pre></td></tr></table></figure>
-<p>以上实例输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 3, in &lt;module&gt;</span><br><span class="line">    dict = &#123;[&apos;Name&apos;]: &apos;Runoob&apos;, &apos;Age&apos;: 7&#125;</span><br><span class="line">TypeError: unhashable type: &apos;list&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="字典内置函数-amp-方法"><a href="#字典内置函数-amp-方法" class="headerlink" title="字典内置函数&amp;方法"></a>字典内置函数&amp;方法</h2><p>Python字典包含了以下内置函数：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>函数及描述</th>
-<th>实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>len(dict) 计算字典元素个数，即键的总数。</td>
-<td><code>&gt;&gt;&gt; dict = {&#39;Name&#39;: &#39;Runoob&#39;, &#39;Age&#39;: 7, &#39;Class&#39;: &#39;First&#39;} &gt;&gt;&gt; len(dict) 3</code></td>
-</tr>
-<tr>
-<td>2</td>
-<td>str(dict) 输出字典，以可打印的字符串表示。</td>
-<td><code>&gt;&gt;&gt; dict = {&#39;Name&#39;: &#39;Runoob&#39;, &#39;Age&#39;: 7, &#39;Class&#39;: &#39;First&#39;} &gt;&gt;&gt; str(dict) &quot;{&#39;Name&#39;: &#39;Runoob&#39;, &#39;Class&#39;: &#39;First&#39;, &#39;Age&#39;: 7}&quot;</code></td>
-</tr>
-<tr>
-<td>3</td>
-<td>type(variable) 返回输入的变量类型，如果变量是字典就返回字典类型。</td>
-<td><code>&gt;&gt;&gt; dict = {&#39;Name&#39;: &#39;Runoob&#39;, &#39;Age&#39;: 7, &#39;Class&#39;: &#39;First&#39;} &gt;&gt;&gt; type(dict) &lt;class &#39;dict&#39;&gt;</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Python字典包含了以下内置方法：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>函数及描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-clear.html" target="_blank" rel="noopener">radiansdict.clear()</a> 删除字典内所有元素</td>
-</tr>
-<tr>
-<td>2</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-copy.html" target="_blank" rel="noopener">radiansdict.copy()</a> 返回一个字典的浅复制</td>
-</tr>
-<tr>
-<td>3</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-fromkeys.html" target="_blank" rel="noopener">radiansdict.fromkeys()</a> 创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值</td>
-</tr>
-<tr>
-<td>4</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-get.html" target="_blank" rel="noopener">radiansdict.get(key, default=None)</a> 返回指定键的值，如果值不在字典中返回default值</td>
-</tr>
-<tr>
-<td>5</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-in.html" target="_blank" rel="noopener">key in dict</a> 如果键在字典dict里返回true，否则返回false</td>
-</tr>
-<tr>
-<td>6</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-items.html" target="_blank" rel="noopener">radiansdict.items()</a> 以列表返回可遍历的(键, 值) 元组数组</td>
-</tr>
-<tr>
-<td>7</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-keys.html" target="_blank" rel="noopener">radiansdict.keys()</a> 返回一个迭代器，可以使用 list() 来转换为列表</td>
-</tr>
-<tr>
-<td>8</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-setdefault.html" target="_blank" rel="noopener">radiansdict.setdefault(key, default=None)</a> 和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default</td>
-</tr>
-<tr>
-<td>9</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-update.html" target="_blank" rel="noopener">radiansdict.update(dict2)</a> 把字典dict2的键/值对更新到dict里</td>
-</tr>
-<tr>
-<td>10</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-values.html" target="_blank" rel="noopener">radiansdict.values()</a> 返回一个迭代器，可以使用 list() 来转换为列表</td>
-</tr>
-<tr>
-<td>11</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-pop.html" target="_blank" rel="noopener">pop(key[,default])</a> 删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。</td>
-</tr>
-<tr>
-<td>12</td>
-<td><a href="http://www.runoob.com/python3/python3-att-dictionary-popitem.html" target="_blank" rel="noopener">popitem()</a> 随机返回并删除字典中的一对键和值(一般删除末尾对)。</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2068,8 +1943,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">120</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">121</span>
+                    <span class="site-state-item-name">posting</span>
                   </a>
                 </div>
               
