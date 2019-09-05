@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -319,14 +319,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -343,7 +343,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-05 18:21:25" itemprop="dateModified" datetime="2019-02-05T18:21:25+08:00">2019-02-05</time>
+                <time title="Modified: 2019-02-05 18:21:25" itemprop="dateModified" datetime="2019-02-05T18:21:25+08:00">2019-02-05</time>
               
             
           </span>
@@ -557,14 +557,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -581,7 +581,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-06 17:24:37" itemprop="dateModified" datetime="2019-02-06T17:24:37+08:00">2019-02-06</time>
+                <time title="Modified: 2019-02-06 17:24:37" itemprop="dateModified" datetime="2019-02-06T17:24:37+08:00">2019-02-06</time>
               
             
           </span>
@@ -728,14 +728,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -752,7 +752,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-09-04 02:13:21" itemprop="dateModified" datetime="2019-09-04T02:13:21+08:00">2019-09-04</time>
+                <time title="Modified: 2019-09-05 20:50:46" itemprop="dateModified" datetime="2019-09-05T20:50:46+08:00">2019-09-05</time>
               
             
           </span>
@@ -917,6 +917,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
 <h3 id="快速读入"><a href="#快速读入" class="headerlink" title="快速读入"></a>快速读入</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 适用于正负整数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">inline</span> <span class="title">bool</span> <span class="title">scan_d</span>(<span class="title">T</span> &amp;<span class="title">ret</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> sgn;</span><br><span class="line">    <span class="keyword">if</span> (c = getchar(), c == EOF) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//EOF</span></span><br><span class="line">    <span class="keyword">while</span> (c != <span class="string">'-'</span> &amp;&amp; (c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>)) c = getchar();</span><br><span class="line">    sgn = (c == <span class="string">'-'</span>) ? <span class="number">-1</span> : <span class="number">1</span>;</span><br><span class="line">    ret = (c == <span class="string">'-'</span>) ? <span class="number">0</span> : (c - <span class="string">'0'</span>);</span><br><span class="line">    <span class="keyword">while</span> (c = getchar(), c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) ret = ret * <span class="number">10</span> + (c - <span class="string">'0'</span>);</span><br><span class="line">    ret *= sgn;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">9</span>) out(x / <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="莫队算法"><a href="#莫队算法" class="headerlink" title="莫队算法"></a>莫队算法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ---</span></span><br><span class="line"><span class="comment">// 莫队算法,可以解决一类静态,离线区间查询问题。分成 $\sqrt&#123;x&#125;$ 块,分块排序。</span></span><br><span class="line"><span class="comment">// ---</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">query</span> &#123;</span> <span class="keyword">int</span> L, R, id; &#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(query node[], <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(ans, <span class="number">0</span>, <span class="keyword">sizeof</span>(ans));</span><br><span class="line">    sort(node, node + m, [](query a, query b) &#123;</span><br><span class="line">        <span class="keyword">return</span> a.l / unit &lt; b.l / unit</span><br><span class="line">               || a.l / unit == b.l / unit &amp;&amp; a.r &lt; b.r;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">int</span> L = <span class="number">1</span>, R = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (node[i].L &lt; L) add(a[--L]);</span><br><span class="line">        <span class="keyword">while</span> (node[i].L &gt; L) del(a[L++]);</span><br><span class="line">        <span class="keyword">while</span> (node[i].R &lt; R) del(a[R--]);</span><br><span class="line">        <span class="keyword">while</span> (node[i].R &gt; R) add(a[++R]);</span><br><span class="line">        ans[node[i].id] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//带修莫队，复杂度n^&#123;5/3&#125;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">query</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id,l,r,x;</span><br><span class="line">&#125;Q[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">update</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> pos,val,rval;</span><br><span class="line">&#125;C[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ac</span><span class="params">()</span></span>&#123;</span><br><span class="line">    unit=<span class="built_in">pow</span>(n,<span class="number">2.0</span>/<span class="number">3.0</span>);</span><br><span class="line">    sort(Q+<span class="number">1</span>,Q+<span class="number">1</span>+q1,[](query a,query b)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a.l/unit!=b.l/unit)<span class="keyword">return</span> a.l/unit&lt;b.l/unit;</span><br><span class="line">        <span class="keyword">if</span>(a.r/unit!=b.r/unit)<span class="keyword">return</span> b.r/unit&lt;b.r/unit;</span><br><span class="line">        <span class="keyword">return</span> a.x&lt;b.x;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">int</span> L=<span class="number">1</span>,R=<span class="number">0</span>,X=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q1;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(Q[i].l&gt;L)del(a[L++]);</span><br><span class="line">        <span class="keyword">while</span>(Q[i].l&lt;L)add(a[--L]);</span><br><span class="line">        <span class="keyword">while</span>(Q[i].r&gt;R)add(a[++R]);</span><br><span class="line">        <span class="keyword">while</span>(Q[i].r&lt;R)del(a[R--]);</span><br><span class="line">        <span class="keyword">while</span>(Q[i].x&lt;X)remove(i,X--);</span><br><span class="line">        <span class="keyword">while</span>(Q[i].x&gt;X)insert(i,++X);</span><br><span class="line">        ans[Q[i].id]=p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cdq分治"><a href="#cdq分治" class="headerlink" title="cdq分治"></a>cdq分治</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///矩形区间加 区间求和</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x1,y1,op,id;</span><br><span class="line">&#125;Q[maxn],q[maxn];ll c[MV];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> x&amp;(-x);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;MV;x+=lowbit(x))c[x]+=v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    ll ans=<span class="number">0</span>;<span class="keyword">for</span>(;x;x-=lowbit(x))ans+=c[x];<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cdq</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)<span class="keyword">return</span>;<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> lq=l,rq=mid+<span class="number">1</span>,cnt1=<span class="number">0</span>;</span><br><span class="line">    cdq(l,mid);cdq(mid+<span class="number">1</span>,r);</span><br><span class="line">    <span class="keyword">while</span>(lq&lt;=mid&amp;&amp;rq&lt;=r)&#123;</span><br><span class="line">        <span class="keyword">if</span>(Q[lq].x1&lt;=Q[rq].x1)&#123;</span><br><span class="line">            <span class="keyword">if</span>(Q[lq].op==<span class="number">1</span>)add(Q[lq].y1,Q[lq].id);</span><br><span class="line">            q[++cnt1]=Q[lq];lq++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(Q[rq].op==<span class="number">2</span>)&#123;</span><br><span class="line">                ans[Q[rq].id]+=sum(Q[rq].y1);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(Q[rq].op==<span class="number">3</span>)&#123;</span><br><span class="line">                ans[Q[rq].id]-=sum(Q[rq].y1);</span><br><span class="line">            &#125;</span><br><span class="line">            q[++cnt1]=Q[rq];rq++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(rq&lt;=r)&#123;</span><br><span class="line">        <span class="keyword">if</span>(Q[rq].op==<span class="number">2</span>)&#123;</span><br><span class="line">            ans[Q[rq].id]+=sum(Q[rq].y1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(Q[rq].op==<span class="number">3</span>)&#123;</span><br><span class="line">            ans[Q[rq].id]-=sum(Q[rq].y1);</span><br><span class="line">        &#125;</span><br><span class="line">        q[++cnt1]=Q[rq];rq++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(lq&lt;=mid)&#123;</span><br><span class="line">        <span class="keyword">if</span>(Q[lq].op==<span class="number">1</span>)add(Q[lq].y1,Q[lq].id);</span><br><span class="line">        q[++cnt1]=Q[lq];lq++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=mid;i++)<span class="keyword">if</span>(Q[i].op==<span class="number">1</span>)add(Q[i].y1,-Q[i].id);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt1;i++)&#123;</span><br><span class="line">        Q[i+l<span class="number">-1</span>]=q[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s&gt;&gt;w;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;op;</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x,y,a;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;a;x++;y++;</span><br><span class="line">            Q[++cnt]=&#123;x,y,<span class="number">1</span>,a&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x1,y1,x2,y2;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2;x1++;y1++;x2++;y2++;</span><br><span class="line">            Q[++cnt]=&#123;x1<span class="number">-1</span>,y1<span class="number">-1</span>,<span class="number">2</span>,++m&#125;;</span><br><span class="line">            Q[++cnt]=&#123;x2,y2,<span class="number">2</span>,m&#125;;</span><br><span class="line">            Q[++cnt]=&#123;x1<span class="number">-1</span>,y2,<span class="number">3</span>,m&#125;;</span><br><span class="line">            Q[++cnt]=&#123;x2,y1<span class="number">-1</span>,<span class="number">3</span>,m&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cdq(<span class="number">1</span>,cnt);</span><br></pre></td></tr></table></figure>
 <h2 id="整体二分"><a href="#整体二分" class="headerlink" title="整体二分"></a>整体二分</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///带修查区间第K大</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1e18</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="comment">//#define endl '\n'</span></span><br><span class="line"><span class="keyword">int</span> a[maxn],cnt,tot,n,m;;</span><br><span class="line"><span class="keyword">int</span> ans[maxn],c[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Q</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r,k,id,op;</span><br><span class="line">&#125;q[maxn*<span class="number">3</span>],q2[maxn*<span class="number">3</span>],q1[maxn*<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> x&amp;(-x);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;=n;x+=lowbit(x))c[x]+=v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;x;x-=lowbit(x))ans+=c[x];<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> ql,<span class="keyword">int</span> qr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ql&gt;qr)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=ql;i&lt;=qr;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(q[i].op==<span class="number">2</span>)ans[q[i].id]=l;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>,cnt1=<span class="number">0</span>,cnt2=<span class="number">0</span>,x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=ql;i&lt;=qr;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i].op==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(q[i].l&lt;=mid)q1[++cnt1]=q[i],add(q[i].id,q[i].r);</span><br><span class="line">            <span class="keyword">else</span> q2[++cnt2]=q[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            x=sum(q[i].r)-sum(q[i].l<span class="number">-1</span>);</span><br><span class="line">            <span class="keyword">if</span>(q[i].k&lt;=x)q1[++cnt1]=q[i];</span><br><span class="line">            <span class="keyword">else</span> q[i].k-=x,q2[++cnt2]=q[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt1;i++)</span><br><span class="line">        <span class="keyword">if</span>(q1[i].op==<span class="number">1</span>)add(q1[i].id,-q1[i].r);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt1;i++)q[ql+i<span class="number">-1</span>]=q1[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt2;i++)q[ql+i+cnt1<span class="number">-1</span>]=q2[i];</span><br><span class="line">    solve(l,mid,ql,ql+cnt1<span class="number">-1</span>);</span><br><span class="line">    solve(mid+<span class="number">1</span>,r,ql+cnt1,qr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>);<span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cin</span>&gt;&gt;a[i],q[++cnt]=&#123;a[i],<span class="number">1</span>,<span class="number">0</span>,i,<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">char</span> op;<span class="built_in">cin</span>&gt;&gt;op;</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="string">'Q'</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> l,r,k;<span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r&gt;&gt;k;q[++cnt]=&#123;l,r,k,++tot,<span class="number">2</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> x,t;<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;t;</span><br><span class="line">            q[++cnt]=&#123;a[x],<span class="number">-1</span>,<span class="number">0</span>,x,<span class="number">1</span>&#125;;q[++cnt]=&#123;a[x]=t,<span class="number">1</span>,<span class="number">0</span>,x,<span class="number">1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    solve(<span class="number">-1e9</span>,<span class="number">1e9</span>,<span class="number">1</span>,cnt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)<span class="built_in">cout</span>&lt;&lt;ans[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="高精度"><a href="#高精度" class="headerlink" title="高精度"></a>高精度</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加法 乘法 小于号 输出</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bint</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">short</span> <span class="keyword">int</span> w[<span class="number">100000</span>];</span><br><span class="line">    bint(ll x = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        l = x == <span class="number">0</span>, <span class="built_in">memset</span>(w, <span class="number">0</span>,<span class="keyword">sizeof</span>(w));</span><br><span class="line">        <span class="keyword">while</span> (x) w[l++] = x % <span class="number">10</span>, x /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> bint&amp; x) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (l != x.l) <span class="keyword">return</span> l &lt; x.l;</span><br><span class="line">        <span class="keyword">int</span> i = l - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; w[i] == x.w[i]) i--;</span><br><span class="line">        <span class="keyword">return</span> (i &gt;= <span class="number">0</span> &amp;&amp; w[i] &lt; x.w[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    bint <span class="keyword">operator</span>+(<span class="keyword">const</span> bint&amp; x) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        bint ans;</span><br><span class="line">        ans.l = l &gt; x.l ? l : x.l;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.l; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ans.w[i] += w[i] + x.w[i];</span><br><span class="line">            ans.w[i + <span class="number">1</span>] += ans.w[i] / <span class="number">10</span>;</span><br><span class="line">            ans.w[i] = ans.w[i] % <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ans.w[ans.l] != <span class="number">0</span>) ans.l++;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    bint <span class="keyword">operator</span>*(<span class="keyword">const</span> bint&amp; x) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        bint res;</span><br><span class="line">        <span class="keyword">int</span> up, tmp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            up = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; x.l; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                tmp = w[i] * x.w[j] + res.w[i + j] + up;</span><br><span class="line">                res.w[i + j] = tmp % <span class="number">10</span>;</span><br><span class="line">                up = tmp / <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (up != <span class="number">0</span>) res.w[i + x.l] = up;</span><br><span class="line">        &#125;</span><br><span class="line">        res.l = l + x.l;</span><br><span class="line">        <span class="keyword">while</span> (res.w[res.l - <span class="number">1</span>] == <span class="number">0</span> &amp;&amp; res.l &gt; <span class="number">1</span>) res.l--;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = l - <span class="number">1</span>; ~i; i--) <span class="built_in">printf</span>(<span class="string">"%d"</span>, w[i]);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><h3 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;ll&gt;vec;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;vec&gt;mat;</span><br><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat&amp; A,mat &amp;B)</span></span>&#123;</span><br><span class="line">    mat C(A.size(),vec(B[0].size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;B.size();k++)</span><br><span class="line">        <span class="keyword">if</span>(A[i][k])</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B[<span class="number">0</span>].size();j++)</span><br><span class="line">            C[i][j]=(C[i][j]+A[i][k]*B[k][j]%mod+mod)%mod;</span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">mat <span class="title">Pow</span><span class="params">(mat A,ll n)</span></span>&#123;</span><br><span class="line">    mat B(A.size(),vec(A.size()));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.size();i++)B[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;n;n&gt;&gt;=<span class="number">1</span>,A=mul(A,A))</span><br><span class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)B=mul(B,A);</span><br><span class="line">    <span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1013,14 +1014,14 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -1037,7 +1038,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-11-29 15:01:32" itemprop="dateModified" datetime="2018-11-29T15:01:32+08:00">2018-11-29</time>
+                <time title="Modified: 2018-11-29 15:01:32" itemprop="dateModified" datetime="2018-11-29T15:01:32+08:00">2018-11-29</time>
               
             
           </span>
@@ -1191,14 +1192,14 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -1215,7 +1216,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-03-03 23:10:52" itemprop="dateModified" datetime="2019-03-03T23:10:52+08:00">2019-03-03</time>
+                <time title="Modified: 2019-03-03 23:10:52" itemprop="dateModified" datetime="2019-03-03T23:10:52+08:00">2019-03-03</time>
               
             
           </span>
@@ -1352,14 +1353,14 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -1376,7 +1377,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-08 23:26:56" itemprop="dateModified" datetime="2019-02-08T23:26:56+08:00">2019-02-08</time>
+                <time title="Modified: 2019-02-08 23:26:56" itemprop="dateModified" datetime="2019-02-08T23:26:56+08:00">2019-02-08</time>
               
             
           </span>
@@ -1509,14 +1510,14 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -1533,7 +1534,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-13 23:28:36" itemprop="dateModified" datetime="2019-02-13T23:28:36+08:00">2019-02-13</time>
+                <time title="Modified: 2019-02-13 23:28:36" itemprop="dateModified" datetime="2019-02-13T23:28:36+08:00">2019-02-13</time>
               
             
           </span>
@@ -1664,14 +1665,14 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -1688,7 +1689,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-09 23:25:05" itemprop="dateModified" datetime="2019-02-09T23:25:05+08:00">2019-02-09</time>
+                <time title="Modified: 2019-02-09 23:25:05" itemprop="dateModified" datetime="2019-02-09T23:25:05+08:00">2019-02-09</time>
               
             
           </span>
@@ -1819,14 +1820,14 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -1843,7 +1844,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-10 18:54:38" itemprop="dateModified" datetime="2019-02-10T18:54:38+08:00">2019-02-10</time>
+                <time title="Modified: 2019-02-10 18:54:38" itemprop="dateModified" datetime="2019-02-10T18:54:38+08:00">2019-02-10</time>
               
             
           </span>
@@ -1973,14 +1974,14 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
+              <time title="Created: 2019-04-24 01:31:25" itemprop="dateCreated datePublished" datetime="2019-04-24T01:31:25+08:00">2019-04-24</time>
             
 
             
@@ -1997,7 +1998,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-07 16:35:41" itemprop="dateModified" datetime="2019-02-07T16:35:41+08:00">2019-02-07</time>
+                <time title="Modified: 2019-02-07 16:35:41" itemprop="dateModified" datetime="2019-02-07T16:35:41+08:00">2019-02-07</time>
               
             
           </span>
@@ -2128,7 +2129,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">121</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2249,7 +2250,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
                       
                     
                     <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2302,7 +2303,7 @@ F(n)=\sum_{n|d}f(d)\\f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)</script><p><img src="/2
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
