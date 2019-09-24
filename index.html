@@ -221,7 +221,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -264,6 +264,159 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/09/24/点分治是否容斥/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luowentaoaa">
+      <meta itemprop="description" content="嘤嘤嘤">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/点分治是否容斥/" itemprop="url">
+                  点分治是否容斥
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-09-24 09:47:47 / Updated at: 10:18:38" itemprop="dateCreated datePublished" datetime="2019-09-24T09:47:47+08:00">2019-09-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2019/09/24/点分治是否容斥/TIM图片20190924095017.png" alt=""></p>
+<p>该图涉及的链为</p>
+<p>$rt-u\\rt-u-a\\rt-u-b\\rt-v\\rt-v-c\\rt-v-d​$</p>
+<p>还有</p>
+<p>$a-u-rt-u-b\\c-v-rt-v-d$</p>
+<p>发现后面两个是不符合题意的</p>
+<p>于是我们要删去这两个</p>
+<p>于是我们进来rt-u这里</p>
+<p>获得这两个链 于是我们减去这两个链</p>
+<p>$rt-u-a\\ rt-u-b $ </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dep[maxn],a[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfsdeep</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    a[++a[<span class="number">0</span>]]=dep[u];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=Laxt[u];i;i=Next[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=To[i];</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==fa)<span class="keyword">continue</span>;</span><br><span class="line">        dep[v]=dep[u]+Len[i];</span><br><span class="line">        dfsdeep(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> now,<span class="keyword">int</span> op)</span></span>&#123;</span><br><span class="line">    dep[u]=now,a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    dfsdeep(u,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=a[<span class="number">0</span>];i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=a[<span class="number">0</span>];j++)&#123;</span><br><span class="line">            num[a[i]+a[j]]+=op;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    cal(u,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=Laxt[u];i;i=Next[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=To[i];</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        cal(v,Len[i],<span class="number">-1</span>);</span><br><span class="line">        sum=sz[v];</span><br><span class="line">        root=<span class="number">0</span>;findroot(v,<span class="number">0</span>);</span><br><span class="line">        solve(root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然 还有一种不需要容斥的做法，我们发现 唯一的区别就是$u,v$ 重复了。</p>
+<p>于是我们可以通过先进入$u$然后再计算u的所有答案。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[N], dis[<span class="number">10000003</span>];</span><br><span class="line"><span class="keyword">int</span> md[N], MK, cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getdis</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> pre, <span class="keyword">int</span> di)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (di &gt; MK)<span class="keyword">return</span> ;</span><br><span class="line">	md[++cnt] = di;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> k : v[now]) &#123;</span><br><span class="line">		<span class="keyword">if</span> (vis[k.fi] || k.fi == pre)<span class="keyword">continue</span>;</span><br><span class="line">		getdis(k.fi, now, di + k.se);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> qa[N], tmp;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">	dis[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> k : v[now]) &#123;</span><br><span class="line">		<span class="keyword">if</span> (k.fi == pre || vis[k.fi])<span class="keyword">continue</span>;</span><br><span class="line">		cnt = <span class="number">0</span>;</span><br><span class="line">		getdis(k.fi, now, k.se);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; ++i) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (q[j] &gt;= md[i])a[j] |= dis[q[j] - md[i]];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++)dis[md[i]] = <span class="number">1</span>, qa[++tmp] = md[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line">	vis[now] = <span class="number">1</span>;</span><br><span class="line">	tmp = <span class="number">0</span>;</span><br><span class="line">	get(now, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tmp; i++)dis[qa[i]] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> k : v[now]) &#123;</span><br><span class="line">		<span class="keyword">if</span> (vis[k.fi])<span class="keyword">continue</span>;</span><br><span class="line">		rt = <span class="number">0</span>;</span><br><span class="line">		n = sz[k.fi];</span><br><span class="line">		root(k.fi, <span class="number">0</span>);</span><br><span class="line">		dfs(rt);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「pubgoso」的原创文章，遵循 CC <span class="number">4.0</span> BY-SA 版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https:<span class="comment">//blog.csdn.net/qq_40655981/article/details/100886381</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -319,14 +472,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-27 01:43:35 / Modified: 01:58:23" itemprop="dateCreated datePublished" datetime="2019-08-27T01:43:35+08:00">2019-08-27</time>
+              <time title="Post created: 2019-08-27 01:43:35 / Updated at: 01:58:23" itemprop="dateCreated datePublished" datetime="2019-08-27T01:43:35+08:00">2019-08-27</time>
             
 
             
@@ -467,14 +620,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-25 02:23:15 / Modified: 20:37:42" itemprop="dateCreated datePublished" datetime="2019-08-25T02:23:15+08:00">2019-08-25</time>
+              <time title="Post created: 2019-08-25 02:23:15 / Updated at: 20:37:42" itemprop="dateCreated datePublished" datetime="2019-08-25T02:23:15+08:00">2019-08-25</time>
             
 
             
@@ -618,7 +771,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/2019/08/17/Wood Processing 牛客多校10/" itemprop="url">
-                  Untitled
+                  Unbenannt
                 </a>
               
             
@@ -637,14 +790,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-17 20:38:29" itemprop="dateCreated datePublished" datetime="2019-08-17T20:38:29+08:00">2019-08-17</time>
+              <time title="Post created: 2019-08-17 20:38:29" itemprop="dateCreated datePublished" datetime="2019-08-17T20:38:29+08:00">2019-08-17</time>
             
 
             
@@ -661,7 +814,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-18 00:43:55" itemprop="dateModified" datetime="2019-08-18T00:43:55+08:00">2019-08-18</time>
+                <time title="Updated at: 2019-08-18 00:43:55" itemprop="dateModified" datetime="2019-08-18T00:43:55+08:00">2019-08-18</time>
               
             
           </span>
@@ -797,14 +950,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-02 00:39:27 / Modified: 00:49:51" itemprop="dateCreated datePublished" datetime="2019-08-02T00:39:27+08:00">2019-08-02</time>
+              <time title="Post created: 2019-08-02 00:39:27 / Updated at: 00:49:51" itemprop="dateCreated datePublished" datetime="2019-08-02T00:39:27+08:00">2019-08-02</time>
             
 
             
@@ -943,14 +1096,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-07-31 17:18:08 / Modified: 17:22:24" itemprop="dateCreated datePublished" datetime="2019-07-31T17:18:08+08:00">2019-07-31</time>
+              <time title="Post created: 2019-07-31 17:18:08 / Updated at: 17:22:24" itemprop="dateCreated datePublished" datetime="2019-07-31T17:18:08+08:00">2019-07-31</time>
             
 
             
@@ -1086,14 +1239,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-07-29 23:41:41 / Modified: 23:45:51" itemprop="dateCreated datePublished" datetime="2019-07-29T23:41:41+08:00">2019-07-29</time>
+              <time title="Post created: 2019-07-29 23:41:41 / Updated at: 23:45:51" itemprop="dateCreated datePublished" datetime="2019-07-29T23:41:41+08:00">2019-07-29</time>
             
 
             
@@ -1230,14 +1383,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-07-23 16:49:59 / Modified: 17:10:20" itemprop="dateCreated datePublished" datetime="2019-07-23T16:49:59+08:00">2019-07-23</time>
+              <time title="Post created: 2019-07-23 16:49:59 / Updated at: 17:10:20" itemprop="dateCreated datePublished" datetime="2019-07-23T16:49:59+08:00">2019-07-23</time>
             
 
             
@@ -1371,14 +1524,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-07-22 20:29:05 / Modified: 21:05:13" itemprop="dateCreated datePublished" datetime="2019-07-22T20:29:05+08:00">2019-07-22</time>
+              <time title="Post created: 2019-07-22 20:29:05 / Updated at: 21:05:13" itemprop="dateCreated datePublished" datetime="2019-07-22T20:29:05+08:00">2019-07-22</time>
             
 
             
@@ -1514,14 +1667,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-06-09 14:09:29 / Modified: 15:10:26" itemprop="dateCreated datePublished" datetime="2019-06-09T14:09:29+08:00">2019-06-09</time>
+              <time title="Post created: 2019-06-09 14:09:29 / Updated at: 15:10:26" itemprop="dateCreated datePublished" datetime="2019-06-09T14:09:29+08:00">2019-06-09</time>
             
 
             
@@ -1633,269 +1786,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luowentaoaa.github.io/2019/04/28/Python08/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="luowentaoaa">
-      <meta itemprop="description" content="嘤嘤嘤">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/Python08/" itemprop="url">
-                  Python3 集合(无序的set)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-28 18:17:13" itemprop="dateCreated datePublished" datetime="2019-04-28T18:17:13+08:00">2019-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-26 16:48:26" itemprop="dateModified" datetime="2019-02-26T16:48:26+08:00">2019-02-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>集合（set）是一个无序的不重复元素序列。</p>
-<p>可以使用大括号 <strong>{ }</strong> 或者 <strong>set()</strong> 函数创建集合，注意：创建一个空集合必须用 <strong>set()</strong> 而不是 <strong>{ }</strong>，因为 <strong>{ }</strong> 是用来创建一个空字典。</p>
-<p>创建格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parame = &#123;value01,value02,...&#125;</span><br><span class="line">或者</span><br><span class="line">set(value)</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = &#123;x for x in 'abracadabra' if x not in 'abc'&#125;</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">&#123;<span class="string">'r'</span>, <span class="string">'d'</span>&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="集合的基本操作"><a href="#集合的基本操作" class="headerlink" title="集合的基本操作"></a>集合的基本操作</h2><h3 id="1、添加元素"><a href="#1、添加元素" class="headerlink" title="1、添加元素"></a>1、添加元素</h3><p><strong>语法格式如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.add( x )</span><br></pre></td></tr></table></figure>
-<p>将元素 x 添加到集合 s 中，如果元素已存在，则不进行任何操作。</p>
-<p>还有一个方法，也可以添加元素，且参数可以是列表，元组，字典等，语法格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.update( x )</span><br></pre></td></tr></table></figure>
-<p>x 可以有多个，用逗号分开。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;thisset = <span class="built_in">set</span>((<span class="string">"Google"</span>, <span class="string">"Runoob"</span>, <span class="string">"Taobao"</span>))</span><br><span class="line">&gt;&gt;&gt; thisset.update(&#123;<span class="number">1</span>,<span class="number">3</span>&#125;)</span><br><span class="line">&gt;&gt;&gt; print(thisset)</span><br><span class="line">&#123;1, 3, 'Google', 'Taobao', 'Runoob'&#125;</span><br><span class="line">&gt;&gt;&gt; thisset.update([<span class="number">1</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>])  </span><br><span class="line">&gt;&gt;&gt; print(thisset)</span><br><span class="line">&#123;1, 3, 4, 5, 6, 'Google', 'Taobao', 'Runoob'&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2、移除元素"><a href="#2、移除元素" class="headerlink" title="2、移除元素"></a>2、移除元素</h3><p><strong>语法格式如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.remove( x )</span><br></pre></td></tr></table></figure>
-<p>将元素 x 从集合 s 中移除，如果元素不存在，则会发生错误。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;thisset = <span class="built_in">set</span>((<span class="string">"Google"</span>, <span class="string">"Runoob"</span>, <span class="string">"Taobao"</span>))</span><br><span class="line">&gt;&gt;&gt; thisset.remove(<span class="string">"Taobao"</span>)</span><br><span class="line">&gt;&gt;&gt; print(thisset)</span><br><span class="line">&#123;'Google', 'Runoob'&#125;</span><br><span class="line">&gt;&gt;&gt; thisset.remove(<span class="string">"Facebook"</span>)   # 不存在会发生错误</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, in &lt;<span class="keyword">module</span>&gt;</span><br><span class="line">KeyError: 'Facebook'</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p>此外还有一个方法也是移除集合中的元素，且如果元素不存在，不会发生错误。格式如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.discard( x )</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;thisset = <span class="built_in">set</span>((<span class="string">"Google"</span>, <span class="string">"Runoob"</span>, <span class="string">"Taobao"</span>))</span><br><span class="line">&gt;&gt;&gt; thisset.discard(<span class="string">"Facebook"</span>)  # 不存在不会发生错误</span><br><span class="line">&gt;&gt;&gt; print(thisset)</span><br><span class="line">&#123;'Taobao', 'Google', 'Runoob'&#125;</span><br></pre></td></tr></table></figure>
-<p>我们也可以设置随机删除集合中的一个元素，语法格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.pop()</span><br></pre></td></tr></table></figure>
-<p>多次执行测试结果都不一样。</p>
-<p>然而在交互模式，pop 是删除集合的第一个元素（排序后的集合的第一个元素）。</p>
-<h3 id="3、计算集合元素个数"><a href="#3、计算集合元素个数" class="headerlink" title="3、计算集合元素个数"></a>3、计算集合元素个数</h3><p><strong>语法格式如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(s)</span><br></pre></td></tr></table></figure>
-<p>计算集合 s 元素个数。</p>
-<h3 id="4、清空集合"><a href="#4、清空集合" class="headerlink" title="4、清空集合"></a>4、清空集合</h3><p><strong>语法格式如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.clear()</span><br></pre></td></tr></table></figure>
-<p>清空集合 s。</p>
-<h3 id="4、判断元素是否在集合中存在"><a href="#4、判断元素是否在集合中存在" class="headerlink" title="4、判断元素是否在集合中存在"></a>4、判断元素是否在集合中存在</h3><p><strong>语法格式如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x in s</span><br></pre></td></tr></table></figure>
-<p>判断元素 x 是否在集合 s 中，存在返回 True，不存在返回 False。</p>
-<h3 id="集合内置方法完整列表"><a href="#集合内置方法完整列表" class="headerlink" title="集合内置方法完整列表"></a>集合内置方法完整列表</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-add.html" target="_blank" rel="noopener">add()</a></td>
-<td>为集合添加元素</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-clear.html" target="_blank" rel="noopener">clear()</a></td>
-<td>移除集合中的所有元素</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-copy.html" target="_blank" rel="noopener">copy()</a></td>
-<td>拷贝一个集合</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-difference.html" target="_blank" rel="noopener">difference()</a></td>
-<td>返回多个集合的差集</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-difference_update.html" target="_blank" rel="noopener">difference_update()</a></td>
-<td>移除集合中的元素，该元素在指定的集合也存在。</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-discard.html" target="_blank" rel="noopener">discard()</a></td>
-<td>删除集合中指定的元素</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-intersection.html" target="_blank" rel="noopener">intersection()</a></td>
-<td>返回集合的交集</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-intersection_update.html" target="_blank" rel="noopener">intersection_update()</a></td>
-<td>删除集合中的元素，该元素在指定的集合中不存在。</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-isdisjoint.html" target="_blank" rel="noopener">isdisjoint()</a></td>
-<td>判断两个集合是否包含相同的元素，如果没有返回 True，否则返回 False。</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-issubset.html" target="_blank" rel="noopener">issubset()</a></td>
-<td>判断指定集合是否为该方法参数集合的子集。</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-issuperset.html" target="_blank" rel="noopener">issuperset()</a></td>
-<td>判断该方法的参数集合是否为指定集合的子集</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-pop.html" target="_blank" rel="noopener">pop()</a></td>
-<td>随机移除元素</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-remove.html" target="_blank" rel="noopener">remove()</a></td>
-<td>移除指定元素</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-symmetric_difference.html" target="_blank" rel="noopener">symmetric_difference()</a></td>
-<td>返回两个集合中不重复的元素集合。</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-symmetric_difference_update.html" target="_blank" rel="noopener">symmetric_difference_update()</a></td>
-<td>移除当前集合中在另外一个指定集合相同的元素，并将另外一个指定集合中不同的元素插入到当前集合中。</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-union.html" target="_blank" rel="noopener">union()</a></td>
-<td>返回两个集合的并集</td>
-</tr>
-<tr>
-<td><a href="http://www.runoob.com/python3/ref-set-update.html" target="_blank" rel="noopener">update()</a></td>
-<td>给集合添加元素</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1943,8 +1833,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">121</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">122</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -2065,7 +1955,7 @@
                       
                     
                     <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   
                 </div>
               
@@ -2118,7 +2008,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
